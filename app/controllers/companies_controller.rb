@@ -3,4 +3,11 @@ class CompaniesController < ApplicationController
     @company = Company.find_by(name: params[:name])
   end
 
+  def to_param
+    self.name
+  end
+
+  def dashboard
+    @company = Company.find_by(name: params[:name])
+  end
 end

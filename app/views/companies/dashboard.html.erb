@@ -1,0 +1,6 @@
+<% @company.users.each do |user| %>
+  <% if user.role == 'newcomer' %>
+    <%= link_to "#{user.first_name}'s mission", user_missions_path(user)  %>
+    <%= link_to "#{user.first_name}'s habit", user_habits_path(user)  %>
+  <% end %>
+<% end %>
