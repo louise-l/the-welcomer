@@ -3,7 +3,7 @@ class CreateMissions < ActiveRecord::Migration[6.0]
     create_table :missions do |t|
       t.string :name
       t.string :description
-      t.string :status, default: 'Not understodd'
+      t.string :status, default: 'Not understood'
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

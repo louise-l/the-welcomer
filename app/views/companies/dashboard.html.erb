@@ -1,6 +1,12 @@
-<% @company.users.each do |user| %>
-  <% if user.role == 'newcomer' %>
-    <%= link_to "#{user.first_name}'s mission", user_missions_path(user)  %>
-    <%= link_to "#{user.first_name}'s habit", user_habits_path(user)  %>
+<div class="container">
+  <% @company.users.each do |user| %>
+    <% if user.role == 'newcomer'%>
+      <div class="card-homepage">
+        <%= link_to "#{user.first_name}'s mission", user_missions_path(user)  %>
+        <%= link_to "#{user.first_name}'s habit", user_habits_path(user)  %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
+
+<!-- && user.teams == current_user.teams à ajouter pour la condition-->
