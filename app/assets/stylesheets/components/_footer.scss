@@ -1,0 +1,17 @@
+footer{
+  margin-top: 50px;
+  background-color: $charcoal;
+  height:100px;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  a{
+    color:$cloud;
+    text-decoration: none;
+    font-size: 24px;
+    margin: 0 10px;
+    &:hover{
+      color: $ocean-blue;
+    }
+  }
+}
