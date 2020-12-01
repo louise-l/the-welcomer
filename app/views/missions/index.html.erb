@@ -1,3 +1,11 @@
-<%= @missions.each do |mission| %>
-  <p>mission</p>
-<% end %>
+<div class="container">
+  <% @missions.each do |mission| %>
+    <p> <%= mission.name %></p>
+    <p> <%= mission.description %></p>
+    <p> <%= mission.status %></p>
+    <%= link_to "Edit", edit_user_mission_path(@user, mission), class: 'button'  %>
+    <%= link_to "Destroy", user_mission_path(@user, mission), method: :delete, class: 'button'  %>
+  <% end %>
+</div>
+
+<%= link_to 'Add a mission',new_user_mission_path(@user), class: 'button color-yellow'  %>
