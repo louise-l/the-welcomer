@@ -30,32 +30,16 @@
   color: white;
   padding: 8px 12px;
   border-radius: 5px;
-  background: #F5B858;
+  background: $sun-yellow;
   transition: background 0.3s ease;
-  opacity: 0.8;
+  opacity: 1;
   font-size: 16px;
 
-  &:hover{
-    background: #F5B858;
-    color: white;
-    text-decoration: none;
-    opacity: 1;
-
-  }
+.button-navbar:hover {
+  background: $sun-yellow;
+  color: white;
+  text-decoration: none;
+  opacity: 0.8;
 }
-
-// Separator for the devise forms
-.btn-separator{
-  margin:20px 0;
-  border-bottom: 1px solid #606060;
-  color:#606060;
-  line-height: .1em;
-  text-align: center;
-  span{
-    padding:15px;
-    background-color: white;
-  }
-}
-
 
 
