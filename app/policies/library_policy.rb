@@ -1,4 +1,4 @@
-class LibrariesPolicy < ApplicationPolicy
+class LibraryPolicy < ApplicationPolicy
 
   def create?
     user.role =="rh"

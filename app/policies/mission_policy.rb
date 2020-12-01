@@ -1,4 +1,4 @@
-class MissionsPolicy < ApplicationPolicy
+class MissionPolicy < ApplicationPolicy
 
 
   def create?
