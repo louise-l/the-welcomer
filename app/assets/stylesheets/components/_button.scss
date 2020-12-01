@@ -2,16 +2,29 @@
   color: white;
   padding: 8px 24px;
   border-radius: 20px;
-  background: $sun-yellow;
   transition: background 0.3s ease;
   opacity: 1;
+
+  &:hover{
+    color: white;
+    opacity: 0.8;
+    text-decoration: none;
+
+  }
 }
 
-.button:hover {
-  background: $sun-yellow;
-  color: white;
-  opacity: 0.8;
+.color-blue{
+  background: $ocean-blue;
 }
+
+.color-yellow{
+  background: $sun-yellow;
+}
+
+.color-fire{
+  background:$fire;
+}
+
 
 .button-navbar {
   color: white;
@@ -21,7 +34,6 @@
   transition: background 0.3s ease;
   opacity: 1;
   font-size: 16px;
-}
 
 .button-navbar:hover {
   background: $sun-yellow;
@@ -29,7 +41,5 @@
   text-decoration: none;
   opacity: 0.8;
 }
-
-
 
 

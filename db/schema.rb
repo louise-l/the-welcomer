@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_134735) do
 
   add_foreign_key "habits", "users"
   add_foreign_key "libraries", "companies"
+
   add_foreign_key "missions", "users"
   add_foreign_key "team_members", "teams"
   add_foreign_key "team_members", "users"
