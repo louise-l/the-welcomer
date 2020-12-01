@@ -8,6 +8,18 @@
 
 
 puts "Creation..."
-company = Company.new(name: "The-Welcomer", address: "Le Wagon")
-company.save!
+Company.destroy_all
+company1 = Company.create!(name: "The-Welcomer", address: "Le Wagon")
+company2 = Company.create!(name: "Evolve", address: "Le Wagon")
+company3 = Company.create!(name: "Hoops I did it again", address: "Le Wagon")
+
 puts "..Company created"
+
+puts "Creation Users"
+User.destroy_all
+user1 = User.create!(first_name: "Caroline",last_name: "Bernard", email: "caroline@gmail.com", password: "azerty", job: "Supply chain", role:"manager")
+user2 = User.create!(first_name: "Louise",last_name: "Galliot", email: "louise@gmail.com", password: "azerty",job: "DRH", role:"hr")
+user3 = User.create!(first_name: "Charles",last_name: "Desplechin", email: "charle@gmail.com", password: "azerty", job: "stagiaire", role:"newcomer")
+
+puts "Users created"
+
