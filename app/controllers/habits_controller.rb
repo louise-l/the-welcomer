@@ -1,6 +1,9 @@
 class HabitsController < ApplicationController
+
+  before_action :authorizing_habit, only: [:new, :create, :edit, :update, :destroy]
+
   def index
-    @habits = Habit.all
+    @habits = policy_scope(Habit)
   end
 
   def new
@@ -40,5 +43,10 @@ class HabitsController < ApplicationController
 
   def set_params_habit
     params.require(:habut).permit(:name, :status)
+  end
+
+
+  def authorizing_habit
+    authorize @habit
   end
 end
