@@ -7,7 +7,17 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
+@import url('https://fonts.googleapis.com/css2?family=Cutive&family=Rubik&display=swap');
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body{
+  background-color: $cloud;
+  h1, h2{
+  font-family: 'Cutive', serif;
+  }
+  p{
+  font-family: 'Rubik', sans-serif;
+  }
+}
