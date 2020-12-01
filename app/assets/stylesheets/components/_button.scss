@@ -2,16 +2,29 @@
   color: white;
   padding: 8px 24px;
   border-radius: 20px;
-  background: #F5B858;
   transition: background 0.3s ease;
   opacity: 1;
+
+  &:hover{
+    color: white;
+    opacity: 0.8;
+    text-decoration: none;
+
+  }
 }
 
-.button:hover {
-  background: #F5B858;
-  color: white;
-  opacity: 0.8;
+.color-blue{
+  background: $ocean-blue;
 }
+
+.color-yellow{
+  background: $sun-yellow;
+}
+
+.color-fire{
+  background:$fire;
+}
+
 
 .button-navbar {
   color: white;
@@ -21,15 +34,28 @@
   transition: background 0.3s ease;
   opacity: 0.8;
   font-size: 16px;
+
+  &:hover{
+    background: #F5B858;
+    color: white;
+    text-decoration: none;
+    opacity: 1;
+
+  }
 }
 
-.button-navbar:hover {
-  background: #F5B858;
-  color: white;
-  text-decoration: none;
-  opacity: 1;
+// Separator for the devise forms
+.btn-separator{
+  margin:20px 0;
+  border-bottom: 1px solid #606060;
+  color:#606060;
+  line-height: .1em;
+  text-align: center;
+  span{
+    padding:15px;
+    background-color: white;
+  }
 }
-
 
 
 
