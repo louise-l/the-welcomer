@@ -22,4 +22,6 @@ user2 = User.create!(first_name: "Louise",last_name: "Galliot", email: "louise@g
 user3 = User.create!(first_name: "Charles",last_name: "Desplechin", email: "charle@gmail.com", password: "azerty", job: "stagiaire", role:"newcomer", company_id: company1.id)
 
 puts "Users created"
-
+Team.destroy_all
+team1 = Team.create!(name: "les indestructibles",address: "146 rue solférino lille")
+puts "Team created"

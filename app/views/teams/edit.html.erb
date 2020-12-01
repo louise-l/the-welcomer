@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="form">
+      <h1>Modifier une équipe </h1>
+      <p>Merci de compléter les champs suivants : </p>
+      <%= simple_form_for [@company, @team] do |f| %>
+        <%= f.input :name %>
+        <%= f.input :address %>
+        <%= f.input :photo, as: :file %>
+        <%= f.button :submit, class: "button" %>
+        <% end %>
+        <% console %>
+  </div>
+</div>
+
