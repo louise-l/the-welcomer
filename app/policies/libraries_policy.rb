@@ -1,11 +1,7 @@
 class LibrariesPolicy < ApplicationPolicy
 
-  def new?
-    user.role =="rh"
-  end
-
   def create?
-    new?
+    user.role =="rh"
   end
 
   def destroy?
