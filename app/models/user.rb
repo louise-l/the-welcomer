@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :role, presence: true
   has_many :missions, dependent: :destroy
   has_many :habits, dependent: :destroy
-  has_many :teams_members
+  has_many :team_members
+  has_many :teams, through: :team_members
   belongs_to :company
 end

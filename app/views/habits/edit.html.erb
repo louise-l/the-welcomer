@@ -1,7 +1,10 @@
 <div class="container">
-  <%= simple_form_for [@user, @habit], remote: true do |f| %>
-    <%= f.input :name %>
-    <%= f.input :status %>
-    <%= f.button :submit, class: 'button' %>
-  <% end %>
+  <div class="form">
+    <h2>Edit <%= @user.first_name %>'s habit </h2>
+    <%= simple_form_for [@user, @habit], remote: true do |f| %>
+      <%= f.input :name %>
+      <%= f.input :status %>
+      <%= f.button :submit, class: 'button color-yellow' %>
+    <% end %>
+  </div>
 </div>
