@@ -24,9 +24,11 @@ Rails.application.routes.draw do
 
   resources :companies, param: :name, only: [:show] do
     resources :libraries
+    resources :teams, only: [:index, :new, :create, :update, :edit, :destroy]
     member do
       get 'dashboard'
     end
+
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
