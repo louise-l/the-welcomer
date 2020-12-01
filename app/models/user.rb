@@ -9,4 +9,5 @@ class User < ApplicationRecord
   validates :role, presence: true
   has_many :missions, dependent: :destroy
   has_many :habits, dependent: :destroy
+  has_many :TeamsMembers
 end
