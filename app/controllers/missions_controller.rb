@@ -1,7 +1,10 @@
 class MissionsController < ApplicationController
+
+  before_action :authorizing_mission, only: [:new, :create, :edit, :update, :destroy]
+
   def index
+    @missions = policy_scope(Mission)
     @user = User.find(params[:user_id])
-    @missions = Mission.where(user: @user)
   end
 
   def new
@@ -47,6 +50,10 @@ class MissionsController < ApplicationController
   end
 
   private
+
+  def authorizing_mission
+    authorize @mission
+  end
 
   def set_params_mission
     params.require(:mission).permit(:name, :description, :status)
