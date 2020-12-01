@@ -1,4 +1,4 @@
-class HabitsPolicy < ApplicationPolicy
+class HabitPolicy < ApplicationPolicy
 
   def create?
     user.role == "manager" || user.role =="rh"
