@@ -1,1 +1,9 @@
-new.html.erb
+<div class="container">
+  <%= simple_form_for [@user, @habit], remote: true do |f| %>
+    <%= f.input :name %>
+    <%= f.input :status %>
+    <%= f.button :submit, class: 'button' %>
+  <% end %>
+</div>
+
+<%= console %>

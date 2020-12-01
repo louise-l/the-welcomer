@@ -1,1 +1,10 @@
-index.html.erb
+<div class="container">
+  <% @habits.each do |habit| %>
+    <p> <%= habit.name %></p>
+    <p> <%= habit.status %></p>
+    <%= link_to "Edit", edit_user_habit_path(@user, habit), class: 'button'  %>
+    <%= link_to "Destroy", user_habit_path(@user, habit), method: :delete, class: 'button'  %>
+  <% end %>
+</div>
+
+<%= link_to 'Add an habit',new_user_habit_path(@user), class: 'button'  %>
