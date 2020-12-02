@@ -19,7 +19,7 @@
     </div>
   <% elsif current_user.role == 'manager' %>
     <div>
-      <%= link_to "Dashboard", overview_company_path, class: 'navbar-tabs' %>
+      <%= link_to "Dashboard", root_path, class: 'navbar-tabs' %>
       <%= link_to "Entreprise", root_path, class: 'navbar-tabs' %>
       <%= link_to "Planning", root_path, class: 'navbar-tabs' %>
       <%= link_to "Team", root_path, class: 'navbar-tabs no-margin-last' %>
