@@ -1,1 +1,28 @@
-<h2> Online Libraries </h2>
+<div class="container">
+  <h1>Online Library</h1>
+  <%= console %>
+  <%= current_user.first_name %>
+  <%= current_user.company.name %>
+
+  <% if @company_libraries.exists? %>
+  <% @company_libraries.each do |library| %>
+    <% library.files.each do |file| %>
+      <%= cl_image_tag file.key, height: 300, width: 400, crop: :fill, format: :png%>
+    <% end %>
+  <% end %>
+
+  <%= simple_form_for [@company, @library] do |f|%>
+    <%= f.input :files, as: :file, input_html: { multiple: true } %>
+    <%= f.submit("Add") %>
+  <% end %>
+
+
+
+    <%= link_to "Add a file", company_libraries_path, class: "button color-blue" %>
+  <% else %>
+    <%= link_to "Add a file and create the library", new_company_library_path, class: "button color-blue" %>
+  <% end %>
+
+
+
+</div>
