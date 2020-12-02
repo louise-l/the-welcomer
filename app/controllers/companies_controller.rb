@@ -8,7 +8,8 @@ class CompaniesController < ApplicationController
     self.name
   end
 
-  def dashboard
+  def overview
     @company = Company.find_by(name: params[:name])
+    authorize @company
   end
 end

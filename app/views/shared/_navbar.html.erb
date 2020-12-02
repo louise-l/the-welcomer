@@ -2,12 +2,38 @@
   <%= link_to "/", class: "navbar-icon" do %>
       <i class="fab fa-2x fa-ioxhost"></i>
   <% end %>
-  <div>
-    <%= link_to "Dashboard", root_path, class: 'navbar-tabs' %>
-    <%= link_to "Entreprise", root_path, class: 'navbar-tabs' %>
-    <%= link_to "Planning", root_path, class: 'navbar-tabs' %>
-    <%= link_to "Team", root_path, class: 'navbar-tabs no-margin-last' %>
-  </div>
+
+<!-- Les routes ne sont pas encore actualisées car elle n'existe pas encore -->
+<% if user_signed_in? %>
+  <% if current_user.role == 'newcomer' %>
+    <div>
+      <%= link_to "Dashboard", root_path, class: 'navbar-tabs' %>
+      <%= link_to "Entreprise", root_path, class: 'navbar-tabs' %>
+      <%= link_to "Planning", root_path, class: 'navbar-tabs' %>
+      <%= link_to "Team", root_path, class: 'navbar-tabs no-margin-last' %>
+    </div>
+  <% elsif current_user.role == 'hr' %>
+    <div>
+      <%= link_to "Overview", root_path, class: 'navbar-tabs' %>
+      <%= link_to "Entreprise", root_path, class: 'navbar-tabs' %>
+    </div>
+  <% elsif current_user.role == 'manager' %>
+    <div>
+      <%= link_to "Dashboard", overview_company_path, class: 'navbar-tabs' %>
+      <%= link_to "Entreprise", root_path, class: 'navbar-tabs' %>
+      <%= link_to "Planning", root_path, class: 'navbar-tabs' %>
+      <%= link_to "Team", root_path, class: 'navbar-tabs no-margin-last' %>
+    </div>
+  <% else %>
+    <div>
+      <%= link_to "Dashboard", root_path, class: 'navbar-tabs' %>
+      <%= link_to "Entreprise", root_path, class: 'navbar-tabs' %>
+      <%= link_to "Planning", root_path, class: 'navbar-tabs' %>
+      <%= link_to "Team", root_path, class: 'navbar-tabs no-margin-last' %>
+    </div>
+  <% end %>
+<% else %>
+<% end %>
   <% if user_signed_in? %>
     <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar dropdown-toggle avatar-bordered", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
