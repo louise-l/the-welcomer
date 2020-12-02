@@ -7,9 +7,4 @@ class CompaniesController < ApplicationController
   def to_param
     self.name
   end
-
-  def overview
-    @company = Company.find_by(name: params[:name])
-    authorize @company
-  end
 end

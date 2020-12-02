@@ -5,7 +5,7 @@ class HabitPolicy < ApplicationPolicy
   end
 
   def update?
-    user.role == "manager" || user.role =="rh"
+    user.role == "manager" || user.role =="newcomer"
   end
 
   def destroy?

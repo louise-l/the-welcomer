@@ -1,7 +1,7 @@
 <div class="container">
   <div class="form">
     <h2>Add a good practice to help <%= @user.first_name %></h2>
-    <%= simple_form_for [@user, @habit], remote: true do |f| %>
+    <%= simple_form_for [@company, @user, @habit], remote: true do |f| %>
       <%= f.input :name %>
       <%= f.input :status %>
       <%= f.button :submit, class: 'button color-yellow' %>

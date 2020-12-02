@@ -1,8 +1,27 @@
-<div class="container fix_footer">
-  <div class="row justify-content-center">
-    <div class="col-md-6 col text-center">
+<div class="container mt-5">
+    <div class="card-team-infos">
+      <div>
       <% if @team.photo.attachment %>
         <%= cl_image_tag @team.photo.key, class: "photo" %>
       <% else  %>
-        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80", class= "photo" />
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1650&q=80" class= "photo">
       <% end %>
+      </div>
+      <div class="card-display">
+        <div class="card-infos-text text-center">
+         <h1><%= @team.name  %></h1>
+          <%= @team.address  %>
+        </div>
+        <div class="card-infos-user">
+        <% @team.users.each do |user| %>
+          <% if user.photo.attachment %>
+            <%= cl_image_tag user.photo.key, class: "avatar-bordered defaut" %>
+          <% else %>
+            <img src="https://res.cloudinary.com/dsaxkp6xo/image/upload/v1606476250/xeufvuv1hyp198mg13x09b6y3iim.jpg" class="avatar-bordered defaut">
+          <% end %>
+          <%= user.description  %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+</div>
