@@ -1,9 +1,12 @@
 class LibrariesController < ApplicationController
 
-  before_action :authorizing_library, only: [:new, :create, :destroy]
+  after_action :authorizing_library, only: [:new, :create, :destroy]
 
   def index
-    @libraries = policy_scope(Library)
+    @library = policy_scope(Library)
+    @library = Library.new
+    @company = current_user.company
+    @company_libraries = Library.where(company_id: current_user.company.id)
   end
 
   def show
@@ -11,10 +14,17 @@ class LibrariesController < ApplicationController
   end
 
   def new
-    @library = Library.new
+    @library = Library.new()
   end
 
   def create
+    @library = Library.new(library_params)
+    @library.company = current_user.company
+    if @library.save
+      redirect_to company_libraries_path
+    else
+      render :index
+    end
   end
 
   # est-ce utile d'update la library ?
@@ -32,6 +42,10 @@ class LibrariesController < ApplicationController
   end
 
   private
+
+  def library_params
+    params.require(:library).permit(files:[])
+  end
 
   def authorizing_library
     authorize @library
