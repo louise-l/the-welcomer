@@ -1,0 +1,17 @@
+<div class="container">
+
+	<% if current_user.role == "hr" || current_user.role == "manager" %>
+
+		<%= simple_form_for :profile, url: company_profiles_path(current_user.company.name) do |f| %>
+		<%= f.input :first_name, input_html: { value: nil } %>
+		<%= f.input :last_name, input_html: { value: nil } %>
+		<%= f.input :email, input_html: { value: nil } %>
+		<%= f.input :job, input_html: { value: nil } %>
+		<%= f.input :role, input_html: { value: nil }, collection: ["RH", "manager", "newcomer"] %>
+		<%= f.submit %>
+		<% end %>
+
+  <% else %>
+	  <h2 class="text-center">You can't access to this page</h2>
+	<% end %>
+</div>

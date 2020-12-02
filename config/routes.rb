@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :companies, param: :name, only: [:show] do
+    #Libraries
     resources :libraries
     # Dashboards
     resources :teams, only: [:index, :new, :create, :update, :edit, :destroy]
@@ -26,6 +27,10 @@ Rails.application.routes.draw do
     get '/users/:user_id/habits/:id/edit', to: 'habits#edit', as: 'edit_user_habit'
     patch '/users/:user_id/habits/:id', to: 'habits#update'
     delete '/users/:user_id/habits/:id', to: 'habits#destroy'
+    #Teams
+    resources :teams, only: [:index, :new, :create, :update, :edit, :destroy,:show]
+    #Profiles
+    resources :profiles, only: [:new, :create]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
