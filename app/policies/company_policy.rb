@@ -8,8 +8,4 @@ class CompanyPolicy < ApplicationPolicy
   def show?
     user.company == record
   end
-
-  def overview?
-    user.company == record
-  end
 end

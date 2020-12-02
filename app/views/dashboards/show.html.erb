@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="grid-dashboard-container">
+    <div class='missions-section card-dashboard'>
+      <div class='d-flex'>
+        <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered m-2" %>
+        <h2 class='title-dashboard'> <%= @user.first_name + " " + @user.last_name %> </h2>
+      </div>
+      <div class='mt-2'>
+        <h2>Missions</h2>
+        <% @missions.each do |mission| %>
+          <div class='d-flex px-3 align-items-center'>
+            <%if mission.status == 'Not understood' %>
+              <% if current_user == @user %>
+                <%= link_to company_edit_user_mission_path(@company, @user, mission) do  %>
+                  <p class='mr-1 tag-progress'>In progress</p>
+                <% end %>
+              <% else %>
+                <p class='mr-1 tag-progress'>In progress</p>
+              <% end %>
+              <p class='mr-1'><%= mission.name %><p>
+              <% if current_user.role == 'manager' %>
+                <%= link_to company_edit_user_mission_path(@company, @user, mission) do%>
+                  <i class="far fa-edit" style='color: #F5B858;'></i>
+                <% end %>
+                <%= link_to company_user_mission_path(@company, @user, mission), method: :delete do%>
+                  <i class="far fa-times-circle" style='color: #F5B858;'></i>
+                <% end %>
+              <% end %>
+            <% else %>
+              <% if current_user == @user %>
+                <%= link_to company_edit_user_mission_path(@company, @user, mission) do  %>
+                  <p class='mr-1 tag-understood'>Understood</i></p>
+                <% end %>
+              <% else %>
+                <p class='mr-1 tag-understood'>Understood</i></p>
+              <% end %>
+              <p class='mr-1'><%= mission.name %><p>
+              <% if current_user.role == 'manager' %>
+                <%= link_to company_edit_user_mission_path(@company, @user, mission) do%>
+                  <i class="far fa-edit" style='color: #F5B858;'></i>
+                <% end %>
+                <%= link_to company_user_mission_path(@company, @user, mission), method: :delete do%>
+                  <i class="far fa-times-circle" style='color: #F5B858;'></i>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <% if current_user.role == 'manager' %>
+        <div class='text-center'>
+          <%= link_to 'Add a mission', company_new_user_mission_path(@company, @user), class: 'button-dashboard color-yellow'  %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class='habits-section card-dashboard'>
+      <h2>Habits</h2>
+      <% @habits.each do |habit| %>
+        <div class='d-flex px-3 align-items-center'>
+          <%if habit.status == 'Not understood' %>
+            <% if current_user == @user %>
+              <%= link_to company_edit_user_habit_path(@company, @user, habit) do  %>
+                <p class='mr-1 tag-progress'>In progress</p>
+              <% end %>
+            <% else %>
+              <p class='mr-1 tag-progress'>In progress</p>
+            <% end %>
+            <p class='mr-1'><%= habit.name %><p>
+            <% if current_user.role == 'manager' %>
+              <%= link_to company_user_habit_path(@company, @user, habit), method: :delete do%>
+                <i class="far fa-times-circle" style='color: #F5B858;'></i>
+              <% end %>
+            <% end %>
+          <% else %>
+            <% if current_user == @user %>
+              <%= link_to company_edit_user_habit_path(@company, @user, habit) do  %>
+                <p class='mr-1 tag-understood'>Mastered</p>
+              <% end %>
+            <% else %>
+              <p class='mr-1 tag-understood'>Mastered</p>
+            <% end %>
+            <p class='mr-1'><%= habit.name %><p>
+            <% if current_user.role == 'manager' %>
+              <%= link_to company_user_habit_path(@company, @user, habit), method: :delete do%>
+                <i class="far fa-times-circle" style='color: #F5B858;'></i>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      <% if current_user.role == 'manager' %>
+        <div class="text-center">
+          <%= link_to 'Add a habit', company_new_user_habit_path(@company, @user), class: 'button-dashboard color-yellow'  %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class='documents-section card-dashboard'>
+      <p>It will become the document session</p>
+    </div>
+    <div class ='chat-section card-dashboard'>
+      <p>It will become the chat section</p>
+    </div>
+  </div>
+</div>
