@@ -1,0 +1,12 @@
+Bonjour <%= @user.first_name %>,
+
+Nous te souhaitons la bienvenue au sein de <%= @user.company.name %>. Nous t'invitons à te connecter sur le site "https://the-welcomer.herokuapp.com/" pour réaliser ton intégration à l'entreprise.
+Tes identifiants de connexion sont les suivants :
+Identifiant : <%= @user.email %>
+Password : azerty
+
+Nous t'invitons à choisir un nouveau mot de passe lors de ta premiere connexion et d'éditer ton profil afin de nous aider à mieux te connaître
+
+A bientôt,
+
+Toute l'équipe de <%= @user.company.name %>

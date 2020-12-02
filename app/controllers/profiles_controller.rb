@@ -9,6 +9,7 @@ class ProfilesController < ApplicationController
     @user.company = current_user.company
     @user.password = "azerty"
     if @user.save
+      UserMailer.with(user: @user).welcome.deliver_now
       redirect_to company_path(current_user.company.name)
     else
       render :new

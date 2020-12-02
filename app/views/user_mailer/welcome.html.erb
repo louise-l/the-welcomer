@@ -1,0 +1,12 @@
+<p>Bonjour <%= @user.first_name %>,</p>
+
+<p>Nous te souhaitons la bienvenue au sein de <%= @user.company.name %>. Nous t'invitons à te connecter sur le site <a href="https://the-welcomer.herokuapp.com/"> TheWelcomer.com</a> pour réaliser ton intégration à l'entreprise.</p>
+<p>Tes identifiants de connexion sont les suivants :</p>
+<p>Identifiant : <%= @user.email %></p>
+<p>Password : azerty</p>
+
+<p>Nous t'invitons à choisir un nouveau mot de passe lors de ta premiere connexion et d'éditer ton profil afin de nous aider à mieux te connaître</p>
+
+<p>A bientôt,</p>
+
+<p>Toute l'équipe de <%= @user.company.name %></p>

@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   patch '/users/:user_id/habits/:id', to: 'habits#update'
   delete '/users/:user_id/habits/:id', to: 'habits#destroy'
 
-
   resources :companies, param: :name, only: [:show] do
     resources :libraries
     resources :teams, only: [:index, :new, :create, :update, :edit, :destroy]
