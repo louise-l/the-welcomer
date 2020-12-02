@@ -1,9 +1,8 @@
 class MissionsController < ApplicationController
-
   before_action :authorizing_mission, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @missions = policy_scope(Mission)
+    @missions = policy_scope(Mission).where(user: params[:user_id])
     @user = User.find(params[:user_id])
   end
 

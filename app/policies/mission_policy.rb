@@ -1,5 +1,7 @@
 class MissionPolicy < ApplicationPolicy
-
+  def index
+    user.role =='manager' || user.role == 'teammate'
+  end
 
   def create?
     user.role == "manager"
@@ -18,7 +20,7 @@ class MissionPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.where(company: user.company)
+      scope.all
     end
   end
 end
