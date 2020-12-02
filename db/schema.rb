@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_155705) do
   create_table "missions", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "status", default: "Not understodd"
+    t.string "status", default: "Not understood"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

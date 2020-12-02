@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :libraries
     resources :teams, only: [:index, :new, :create, :update, :edit, :destroy]
     member do
-      get 'dashboard'
+      get 'overview'
     end
 
   end
