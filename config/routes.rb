@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   resources :companies, param: :name, only: [:show] do
     resources :libraries
-    resources :teams, only: [:index, :new, :create, :update, :edit, :destroy]
+    resources :teams, only: [:index, :new, :create, :update, :edit, :destroy,:show]
     member do
       get 'overview'
     end

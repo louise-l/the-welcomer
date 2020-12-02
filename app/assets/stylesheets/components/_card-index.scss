@@ -1,0 +1,41 @@
+.card-team {
+  width:32%;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  margin-right: 10px;
+  display:flex;
+  margin-bottom:10px;
+}
+
+.display-index {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-team-image {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+  border-radius:10px;
+}
+
+.card-team h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-team p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-team .card-infos {
+  padding: 16px;
+  flex-grow: 1;
+}

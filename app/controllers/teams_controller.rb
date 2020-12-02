@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
 def index
-  @teams = Team.all
+  @teams = policy_scope(Team)
 end
 
 def new
@@ -18,6 +18,11 @@ def create
   else
     render :new
   end
+end
+
+def show
+  @team = Team.find(params[:id])
+  authorize @team
 end
 
 def edit
