@@ -14,12 +14,12 @@
     </div>
   <% elsif current_user.role == 'hr' %>
     <div>
-      <%= link_to "Overview", root_path, class: 'navbar-tabs' %>
+      <%= link_to "Overview", company_dashboards_path(current_user.company.name), class: 'navbar-tabs' %>
       <%= link_to "Entreprise", root_path, class: 'navbar-tabs' %>
     </div>
   <% elsif current_user.role == 'manager' %>
-    <div>
-      <%= link_to "Dashboard", root_path, class: 'navbar-tabs' %>
+   <div>
+      <%= link_to "Dashboard", company_dashboards_path(current_user.company.name), class: 'navbar-tabs' %>
       <%= link_to "Entreprise", root_path, class: 'navbar-tabs' %>
       <%= link_to "Planning", root_path, class: 'navbar-tabs' %>
       <%= link_to "Team", root_path, class: 'navbar-tabs no-margin-last' %>

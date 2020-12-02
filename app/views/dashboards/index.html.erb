@@ -1,23 +1,51 @@
 <div class="container">
-  <div class="white-card p-4">
-      <h2>Current onboarding (<%= @company.users.where(role: 'newcomer').count  %>) </h2>
-    <div class="card-container">
-      <% @company.users.each do |user| %>
-        <% if user.role == 'newcomer'%>
-          <%= link_to company_dashboard_path(@company,user), class: 'card-homepage' do  %>
-            <div class="image">
-              <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered" %>
-            </div>
-            <div class='text'>
-              <h2> <%= user.first_name + " " + user.last_name %> </h2>
-              <p> <%= user.email %> </p>
-              <p> <%= user.job %> </p>
-            </div>
+  <% if current_user.role == 'manager' %>
+    <div class="white-card p-4">
+        <h2>Current onboarding (<%= @company.users.where(role: 'newcomer').count  %>) </h2>
+      <div class="card-container">
+        <% @company.users.each do |user| %>
+          <% if user.role == 'newcomer'%>
+            <%= link_to company_dashboard_path(@company,user), class: 'card-homepage' do  %>
+              <div class="image">
+                <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered" %>
+              </div>
+              <div class='text'>
+                <h2> <%= user.first_name + " " + user.last_name %> </h2>
+                <p> <%= user.email %> </p>
+                <p> <%= user.job %> </p>
+              </div>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% elsif current_user.role == 'hr' %>
+    <div class="white-card p-4">
+      <h1>Onboardings in progress</h1>
+      <p class= "text-center">Keep up with all the people onboarding at the moment</p>
+      <div class="card-container">
+        <% @company.users.each do |user| %>
+          <% if @company.users.where(role: 'newcomer').count == 0 %>
+            <p>There are no onboardings at the moment</p>
+          <% else %>
+            <% if user.role == 'newcomer'%>
+              <%= link_to company_dashboard_path(user.company.name, user), class: 'card-homepage' do  %>
+                <div class="image">
+                  <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered" %>
+                </div>
+                <div class='text'>
+                  <h2> <%= user.first_name + " " + user.last_name %> </h2>
+                  <p> <%= user.email %> </p>
+                  <p> <%= user.job %> </p>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="button color-blue"><i class="fas fa-plus"></i>  Add a newcomer</div>
+    </div>
+  <% end %>
 </div>
 
 <!-- && user.teams == current_user.teams à ajouter pour la condition-->
