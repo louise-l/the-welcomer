@@ -1,2 +1,6 @@
 <h2>Company : <%= @company.name %></h2>
 <p>Address : <%= @company.address %></p>
+
+<% if current_user.role == "hr" || current_user.role == "manager"%>
+<%= link_to 'Add an employee', new_company_profile_path(current_user.company.name) %>
+<% end %>
