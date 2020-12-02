@@ -1,23 +1,29 @@
 <div class="container">
   <div class="white-card p-4">
-      <h2>Current onboarding (<%= @company.users.where(role: 'newcomer').count  %>) </h2>
+    <h1>Onboardings in progress</h1>
+    <p class= "text-center">Keep up with all the people onboarding at the moment</p>
     <div class="card-container">
       <% @company.users.each do |user| %>
-        <% if user.role == 'newcomer'%>
-          <%= link_to user_missions_path(user), class: 'card-homepage' do  %>
-            <div class="image">
-              <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered" %>
-            </div>
-            <div class='text'>
-              <h2> <%= user.first_name + " " + user.last_name %> </h2>
-              <p> <%= user.email %> </p>
-              <p> <%= user.job %> </p>
-            </div>
+        <% if @company.users.where(role: 'newcomer').count == 0 %>
+          <p>There are no onboardings at the moment</p>
+        <% else %>
+          <% if user.role == 'newcomer'%>
+            <%= link_to user_missions_path(user), class: 'card-homepage' do  %>
+              <div class="image">
+                <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered" %>
+              </div>
+              <div class='text'>
+                <h2> <%= user.first_name + " " + user.last_name %> </h2>
+                <p> <%= user.email %> </p>
+                <p> <%= user.job %> </p>
+              </div>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
     </div>
+    <div class="button color-blue"><i class="fas fa-plus"></i>  Add a newcomer</div>
   </div>
 </div>
 
-<!-- && user.teams == current_user.teams à ajouter pour la condition-->
+<!-- MANAGERS -- && user.teams == current_user.teams à ajouter pour la condition-->
