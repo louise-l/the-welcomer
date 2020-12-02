@@ -69,15 +69,6 @@ ActiveRecord::Schema.define(version: 2020_12_02_145355) do
     t.index ["user_id"], name: "index_missions_on_user_id"
   end
 
-  create_table "team_members", force: :cascade do |t|
-    t.bigint "team_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["team_id"], name: "index_team_members_on_team_id"
-    t.index ["user_id"], name: "index_team_members_on_user_id"
-  end
-
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -110,8 +101,6 @@ ActiveRecord::Schema.define(version: 2020_12_02_145355) do
   add_foreign_key "habits", "users"
   add_foreign_key "libraries", "companies"
   add_foreign_key "missions", "users"
-  add_foreign_key "team_members", "teams"
-  add_foreign_key "team_members", "users"
   add_foreign_key "users", "companies"
   add_foreign_key "users", "teams"
 end
