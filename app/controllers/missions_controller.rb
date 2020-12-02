@@ -1,14 +1,10 @@
 class MissionsController < ApplicationController
-  before_action :authorizing_mission, only: [:new, :create, :edit, :update, :destroy]
-
-  def index
-    @missions = policy_scope(Mission).where(user: params[:user_id])
-    @user = User.find(params[:user_id])
-  end
+  after_action :authorizing_mission, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @mission = Mission.new
     @user = User.find(params[:user_id])
+    @company = @user.company
   end
 
   def show
@@ -18,10 +14,11 @@ class MissionsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
+    @company = @user.company.name
     @mission = Mission.new(set_params_mission)
     @mission.user = @user
     if @mission.save
-      redirect_to user_missions_path
+      redirect_to company_dashboard_path(@company, @user)
     else
       render :new
     end
@@ -30,12 +27,15 @@ class MissionsController < ApplicationController
   def edit
     @mission = Mission.find(params[:id])
     @user = User.find(params[:user_id])
+    @company = @user.company
   end
 
   def update
+    @user = User.find(params[:user_id])
+    @company = @user.company.name
     @mission = Mission.find(params[:id])
     if @mission.update(set_params_mission)
-      redirect_to user_missions_path
+      redirect_to company_dashboard_path(@company, @user)
     else
       render :edit
     end
@@ -43,9 +43,10 @@ class MissionsController < ApplicationController
 
   def destroy
     @user = User.find(params[:user_id])
+    @company = @user.company.name
     @mission = Mission.find(params[:id])
     @mission.destroy
-    redirect_to user_missions_path(@user)
+    redirect_to company_dashboard_path(@company, @user)
   end
 
   private

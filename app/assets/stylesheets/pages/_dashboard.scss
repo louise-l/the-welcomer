@@ -1,0 +1,87 @@
+.grid-dashboard-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 15px;
+  margin-top: 100px;
+  min-height: 500px;
+}
+
+.card-dashboard {
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.missions-section {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  height: 100%;
+  & h2 {
+    font-size: 24px;
+    padding-left: 10px;
+    padding-top: 10px;
+  }
+}
+
+.habits-section {
+  grid-column: 2 / span 3;
+  grid-row: 1;
+  min-height: 300px;
+  width:calc(100% - 15px);
+  & h2 {
+    font-size: 24px;
+    padding-left: 10px;
+    padding-top: 10px;
+  }
+}
+
+.documents-section {
+  grid-column: 2;
+  grid-row: 2;
+  min-height: 200px;
+}
+
+.chat-section {
+  grid-column: 3;
+  grid-row: 2;
+  min-height: 200px;
+}
+
+.tag-progress {
+  border-radius: 3px;
+  color: white;
+  background-color: $sun-yellow;
+  font-size: 9px;
+  height: 20px;
+  text-align: center;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 3px;
+}
+
+.tag-understood {
+  border-radius: 3px;
+  color: white;
+  background-color: $ocean-blue;
+  font-size: 9px;
+  height: 20px;
+  text-align: center;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 3px;
+}
+
+.button-dashboard {
+  color: white;
+  padding: 4px 8px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  opacity: 1;
+  &:hover{
+    color: white;
+    opacity: 0.8;
+    text-decoration: none;
+
+  }
+}

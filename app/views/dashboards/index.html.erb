@@ -4,7 +4,7 @@
     <div class="card-container">
       <% @company.users.each do |user| %>
         <% if user.role == 'newcomer'%>
-          <%= link_to user_missions_path(user), class: 'card-homepage' do  %>
+          <%= link_to company_dashboard_path(@company,user), class: 'card-homepage' do  %>
             <div class="image">
               <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered" %>
             </div>

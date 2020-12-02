@@ -1,11 +1,12 @@
 <div class="container">
-  <div class="form">
-    <h2>Add a mission to <%= @user.first_name %></h2>
-    <%= simple_form_for [@user, @mission], remote: true do |f| %>
-      <%= f.input :name %>
-      <%= f.input :description %>
-      <%= f.input :status %>
-      <%= f.button :submit, class: 'button color-yellow' %>
-    <% end %>
-  </div>
+  <% if current_user.role == 'manager' %>
+    <div class="form">
+      <h2>Add a mission </h2>
+      <%= simple_form_for [@company, @user, @mission], remote: true do |f| %>
+        <%= f.input :name %>
+        <%= f.input :description %>
+        <%= f.button :submit, class: 'button color-yellow' %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
