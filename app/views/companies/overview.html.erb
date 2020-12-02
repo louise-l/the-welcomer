@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="white-card p-4">
+      <h2>Current onboarding (<%= @company.users.where(role: 'newcomer').count  %>) </h2>
+    <div class="card-container">
+      <% @company.users.each do |user| %>
+        <% if user.role == 'newcomer'%>
+          <%= link_to user_missions_path(user), class: 'card-homepage' do  %>
+            <div class="image">
+              <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered" %>
+            </div>
+            <div class='text'>
+              <h2> <%= user.first_name + " " + user.last_name %> </h2>
+              <p> <%= user.email %> </p>
+              <p> <%= user.job %> </p>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- && user.teams == current_user.teams à ajouter pour la condition-->
