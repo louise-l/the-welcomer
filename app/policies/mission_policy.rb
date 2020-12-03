@@ -1,21 +1,21 @@
 class MissionPolicy < ApplicationPolicy
   def index
-    user.role =='manager' || user.role == 'teammate'
+    user.role =='Manager' || user.role == 'Teammate'
   end
 
   def create?
-    user.role == "manager"
+    user.role == "Manager"
   end
 
-  # le manager pourra changer UNIQUEMENT le contenu et le newcomer pourra changer UNIQUEMENT son status.
+  # le Manager pourra changer UNIQUEMENT le contenu et le newcomer pourra changer UNIQUEMENT son status.
   # boutons a ajuster dans le view
 
   def update?
-    user.role == "manager" || user.role == "newcomer"
+    user.role == "Manager" || user.role == "Newcomer"
   end
 
   def destroy?
-    user.role == "manager"
+    user.role == "Manager"
   end
 
   class Scope < Scope

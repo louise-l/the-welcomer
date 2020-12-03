@@ -1,11 +1,11 @@
 class ProfilePolicy < ApplicationPolicy
 
   def new?
-    user.role == "RH" || user.role == "manager"
+    user.role == "RH" || user.role == "Manager"
   end
 
   def create?
-    user.role == "RH" || user.role == "manager"
+    user.role == "RH" || user.role == "Manager"
   end
 
   class Scope < Scope

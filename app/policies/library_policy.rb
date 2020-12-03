@@ -5,11 +5,11 @@ class LibraryPolicy < ApplicationPolicy
   end
 
   def create?
-    user.role =="hr"
+    user.role =="RH"
   end
 
   def destroy?
-    user.role =="hr"
+    user.role =="RH"
   end
 
   class Scope < Scope

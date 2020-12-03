@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_130053) do
 
   create_table "habits", force: :cascade do |t|
     t.string "name"
-    t.string "status", default: "Not understood"
+    t.string "status", default: "Not mastered"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_130053) do
   create_table "missions", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "status", default: "Not understood"
+    t.string "status", default: "Not mastered"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

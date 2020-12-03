@@ -1,13 +1,17 @@
 <div class="container">
-  <% if current_user.role == 'manager' %>
+  <% if current_user.role == 'Manager' %>
     <div class="white-card p-4">
-        <h2>Current onboarding (<%= @company.users.where(role: 'newcomer').count  %>) </h2>
+        <h2>Current onboarding (<%= @company.users.where(role: 'Newcomer', team: current_user.team).count  %>) </h2>
       <div class="card-container">
         <% @company.users.each do |user| %>
-          <% if user.role == 'newcomer'%>
+          <% if user.role == 'Newcomer' && user.team == current_user.team %>
             <%= link_to company_dashboard_path(@company,user), class: 'card-homepage' do  %>
               <div class="image">
-                <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered" %>
+                <% if user.photo.attachment%>
+                  <%= cl_image_tag user.photo.key, class: "avatar defaut avatar-bordered" %>
+                <% else %>
+                  <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered" %>
+                <% end %>
               </div>
               <div class='text'>
                 <h2> <%= user.first_name + " " + user.last_name %> </h2>
@@ -19,19 +23,23 @@
         <% end %>
       </div>
     </div>
-  <% elsif current_user.role == 'hr' %>
+  <% elsif current_user.role == 'RH' %>
     <div class="white-card p-4">
       <h1>Onboardings in progress</h1>
       <p class= "text-center">Keep up with all the people onboarding at the moment</p>
       <div class="card-container">
         <% @company.users.each do |user| %>
-          <% if @company.users.where(role: 'newcomer').count == 0 %>
+          <% if @company.users.where(role: 'Newcomer').count == 0 %>
             <p>There are no onboardings at the moment</p>
           <% else %>
-            <% if user.role == 'newcomer'%>
+            <% if user.role == 'Newcomer'%>
               <%= link_to company_dashboard_path(user.company.name, user), class: 'card-homepage' do  %>
                 <div class="image">
-                  <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered" %>
+                  <% if user.photo.attachment%>
+                    <%= cl_image_tag user.photo.key, class: "avatar defaut avatar-bordered" %>
+                   <% else %>
+                    <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered" %>
+                  <% end %>
                 </div>
                 <div class='text'>
                   <h2> <%= user.first_name + " " + user.last_name %> </h2>

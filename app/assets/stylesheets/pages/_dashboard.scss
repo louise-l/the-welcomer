@@ -58,6 +58,9 @@
   padding-left: 3px;
   padding-right: 3px;
   padding-top: 3px;
+  &:hover {
+    text-decoration: none !important;
+  }
 }
 
 .tag-understood {
@@ -70,6 +73,24 @@
   padding-left: 3px;
   padding-right: 3px;
   padding-top: 3px;
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
+.tag-alert {
+  border-radius: 3px;
+  color: white;
+  background-color: $fire;
+  font-size: 9px;
+  height: 20px;
+  text-align: center;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 3px;
+  &:hover {
+    text-decoration-color: none !important;
+  }
 }
 
 .button-dashboard {
