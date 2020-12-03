@@ -1,5 +1,5 @@
 <div class="container">
-  <% if current_user.role == 'manager' %>
+  <% if current_user.role == 'Manager' %>
     <div class="form">
       <h2>Edit <%= @user.first_name %>'s habit </h2>
       <%= simple_form_for [@user, @habit], remote: true do |f| %>
