@@ -7,7 +7,11 @@ class ApplicationController < ActionController::Base
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
   def after_sign_in_path_for(resource)
-    company_path(resource.company.name)
+    if resource.role == "Newcomer"
+      company_dashboard_path(resource.company.name, @user.id)
+    else
+      company_dashboards_path(resource.company.name)
+    end
   end
 
   protected

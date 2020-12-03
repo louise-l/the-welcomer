@@ -1,33 +1,46 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-welcomer d-flex">
-  <%= link_to "/", class: "navbar-icon" do %>
-      <i class="fab fa-2x fa-ioxhost"></i>
-  <% end %>
+  <% if user_signed_in? %>
+    <% if current_user.company.logo.attachment %>
+      <%= cl_image_tag current_user.company.logo.key, class: "avatar" %>
+    <% else %>
+      <%= link_to "/", class: "navbar-icon" do %>
+        <i class="fab fa-2x fa-ioxhost"></i>
+      <% end %>
+    <% end %>
+  <% else %>
+    <%= link_to "/", class: "navbar-icon" do %>
+        <i class="fab fa-2x fa-ioxhost"></i>
+    <% end %>
+  <% end   %>
 
-<!-- Les routes ne sont pas encore actualisées car elle n'existe pas encore -->
+<%= console %>
 <% if user_signed_in? %>
-  <% if current_user.role == 'newcomer' %>
+  <% if current_user.role == 'Newcomer' %>
     <div>
-      <%= link_to "Dashboard", root_path, class: 'navbar-tabs' %>
-      <%= link_to "Entreprise", root_path, class: 'navbar-tabs' %>
+      <%= link_to "Dashboard", company_dashboard_path(current_user.company.name, current_user.id), class: 'navbar-tabs' %>
+      <%= link_to "Entreprise", company_libraries_path(current_user.company), class: 'navbar-tabs' %>
+      <!-- Route du calendrier de Pierre Damien -->
       <%= link_to "Planning", root_path, class: 'navbar-tabs' %>
-      <%= link_to "Team", root_path, class: 'navbar-tabs no-margin-last' %>
+      <%= link_to "Team", company_team_path(current_user.company.name, current_user.team), class: 'navbar-tabs no-margin-last' %>
     </div>
-  <% elsif current_user.role == 'hr' %>
+  <% elsif current_user.role == 'RH' %>
     <div>
       <%= link_to "Overview", company_dashboards_path(current_user.company.name), class: 'navbar-tabs' %>
-      <%= link_to "Entreprise", root_path, class: 'navbar-tabs' %>
+      <%= link_to "Entreprise", company_libraries_path(current_user.company), class: 'navbar-tabs' %>
     </div>
-  <% elsif current_user.role == 'manager' %>
+  <% elsif current_user.role == 'Manager' %>
    <div>
       <%= link_to "Dashboard", company_dashboards_path(current_user.company.name), class: 'navbar-tabs' %>
-      <%= link_to "Entreprise", root_path, class: 'navbar-tabs' %>
+      <%= link_to "Entreprise", company_libraries_path(current_user.company), class: 'navbar-tabs' %>
+      <!-- Route du calendrier de Pierre Damien -->
       <%= link_to "Planning", root_path, class: 'navbar-tabs' %>
-      <%= link_to "Team", root_path, class: 'navbar-tabs no-margin-last' %>
+      <%= link_to "Team", company_team_path(current_user.company.name, current_user.team), class: 'navbar-tabs no-margin-last' %>
     </div>
   <% else %>
     <div>
       <%= link_to "Dashboard", root_path, class: 'navbar-tabs' %>
       <%= link_to "Entreprise", root_path, class: 'navbar-tabs' %>
+      <!-- Route du calendrier de Pierre Damien -->
       <%= link_to "Planning", root_path, class: 'navbar-tabs' %>
       <%= link_to "Team", root_path, class: 'navbar-tabs no-margin-last' %>
     </div>
@@ -41,9 +54,7 @@
       <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar dropdown-toggle avatar-bordered", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
     <% end %>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <%= link_to "My account", root_path, class: "dropdown-item" %>
-              <%= link_to "My team", root_path, class: "dropdown-item" %>
-              <%= link_to "Onboard", root_path, class: "dropdown-item" %>
+              <%= link_to "My account", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
     </div>
   <% else %>
