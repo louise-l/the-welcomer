@@ -1,0 +1,33 @@
+.simple-calendar {
+  .day {
+      font-size: 14px;
+  }
+
+//   .wday-0 {}
+//   .wday-1 {}
+//   .wday-2 {}
+//   .wday-3 {}
+//   .wday-4 {}
+//   .wday-5 {}
+//   .wday-6 {}
+
+//   .past {}
+//   .future {}
+
+  // .start-date {}
+
+  .prev-month {
+    background-color: #DDDDDD;
+  }
+  .next-month { 
+    background-color:#DDDDDD;
+  }
+  .current-month {
+    background-color: white;
+  }
+  .today {
+    background-color: rgba(265, 165, 0, 0.5);
+  }
+
+//   .has-events {}
+}

@@ -1,6 +1,6 @@
 class LibrariesController < ApplicationController
 
-  after_action :authorizing_library, only: [:new, :create, :destroy]
+  after_action :authorizing_library, only: [:show, :new, :create, :destroy]
 
   def index
     @library = policy_scope(Library)

@@ -4,7 +4,9 @@
       <% if @company_libraries.exists? %>
         <% @company_libraries.each do |library| %>
           <div class="card-library color-yellow">
-            <%= cl_image_tag library.file.key, height: 100, width: 100, crop: :fill, format: :png, radius: "max", gravity: "north"%>
+            <%= link_to company_library_path(current_user.company.name, library) do  %>
+              <%= cl_image_tag library.file.key, height: 100, width: 100, crop: :fill, format: :png, radius: "max", gravity: "north"%>
+            <% end %>
             <h5><%= library.label %></h5>
           </div>
          <% end %>
@@ -35,3 +37,5 @@
 
 
 </div>
+
+<%= console %>
