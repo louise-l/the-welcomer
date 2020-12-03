@@ -1,0 +1,11 @@
+<div class="container">
+	<div>
+		<%= simple_form_for [@company, @meeting] do |f| %>
+		<%= f.input :start_time, label: "Heure de départ", as: :string, required: false, input_html: {class: "datepicker"} %>
+		<%= f.input :end_time, label: "Heure de fin", as: :string, required: false, input_html: {class: "datepicker"} %>
+		<%= f.input :title, label: "Objet de la réunion" %>
+		<%= f.input :description %>
+		<%= f.submit %>
+		<% end %>
+	</div>
+</div>

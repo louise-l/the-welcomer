@@ -1,3 +1,5 @@
 class Meeting < ApplicationRecord
-  validates :date_in, :date_out, :title, :description, presence: true
+  validates :start_time, :end_time, :title, :description, presence: true
+  has_many :participates, dependent: :destroy
+  has_many :users, through: :participates
 end
