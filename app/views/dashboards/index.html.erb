@@ -7,7 +7,11 @@
           <% if user.role == 'newcomer'%>
             <%= link_to company_dashboard_path(@company,user), class: 'card-homepage' do  %>
               <div class="image">
-                <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered" %>
+                <% if user.photo.attachment%>
+                  <%= cl_image_tag user.photo.key, class: "avatar defaut avatar-bordered" %>
+                <% else %>
+                  <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered" %>
+                <% end %>
               </div>
               <div class='text'>
                 <h2> <%= user.first_name + " " + user.last_name %> </h2>
@@ -31,7 +35,11 @@
             <% if user.role == 'newcomer'%>
               <%= link_to company_dashboard_path(user.company.name, user), class: 'card-homepage' do  %>
                 <div class="image">
-                  <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered" %>
+                  <% if user.photo.attachment%>
+                    <%= cl_image_tag user.photo.key, class: "avatar defaut avatar-bordered" %>
+                   <% else %>
+                    <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered" %>
+                  <% end %>
                 </div>
                 <div class='text'>
                   <h2> <%= user.first_name + " " + user.last_name %> </h2>

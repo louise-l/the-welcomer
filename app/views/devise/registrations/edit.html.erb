@@ -16,6 +16,8 @@
                     hint: "leave it blank if you don't want to change it",
                     required: false,
                     input_html: { autocomplete: "new-password" } %>
+        <%= f.input :first_name%>
+        <%= f.input :last_name%>
         <%= f.input :password_confirmation,
                     required: false,
                     input_html: { autocomplete: "new-password" } %>
@@ -23,6 +25,7 @@
                     hint: "we need your current password to confirm your changes",
                     required: true,
                     input_html: { autocomplete: "current-password" } %>
+        <%= f.input :description, as: :text%>
         <%= f.input :photo, as: :file %>
       </div>
 

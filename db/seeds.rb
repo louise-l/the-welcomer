@@ -28,4 +28,4 @@ User.destroy_all
 user1 = User.create!(first_name: "Caroline",last_name: "Bernard", email: "caroline@gmail.com", password: "azerty", job: "Supply chain", role:"manager", company_id: company1.id, team_id: team1.id)
 user2 = User.create!(first_name: "Louise",last_name: "Galliot", email: "louise@gmail.com", password: "azerty",job: "DRH", role:"hr", company_id: company1.id, team_id: team1.id)
 user3 = User.create!(first_name: "Charles",last_name: "Desplechin", email: "charle@gmail.com", password: "azerty", job: "stagiaire", role:"newcomer", company_id: company1.id, team_id: team1.id)
-
+user4 = User.create!(first_name: "Charles",last_name: "Desplechin", email: "charles@gmail.com", password: "azerty", job: "stagiaire", role:"newcomer", company_id: company1.id, team_id: team1.id)

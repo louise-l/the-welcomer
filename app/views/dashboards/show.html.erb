@@ -2,7 +2,11 @@
   <div class="grid-dashboard-container">
     <div class='missions-section card-dashboard'>
       <div class='d-flex'>
-        <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered m-2" %>
+        <% if @user.photo.attachment%>
+          <%= cl_image_tag @user.photo.key, class: "avatar defaut avatar-bordered m-2" %>
+        <% else %>
+          <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered m-2" %>
+        <% end %>
         <h2 class='title-dashboard'> <%= @user.first_name + " " + @user.last_name %> </h2>
       </div>
       <div class='mt-2'>
