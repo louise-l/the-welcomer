@@ -13,16 +13,21 @@
         <div class="display-card">
           <% @team.users.each do |user| %>
           <div class="card-infos-user">
+            <div class="avatar-show">
               <% if user.photo.attachment %>
-                <%= cl_image_tag user.photo.key, class: "avatar-bordered defaut m-1" %>
+                <%= cl_image_tag user.photo.key, class: "avatar-large defaut m-1" %>
               <% else %>
-                <img src="https://res.cloudinary.com/dsaxkp6xo/image/upload/v1606476250/xeufvuv1hyp198mg13x09b6y3iim.jpg" class="avatar-bordered defaut m-1">
+                <img src="https://res.cloudinary.com/dsaxkp6xo/image/upload/v1606476250/xeufvuv1hyp198mg13x09b6y3iim.jpg" class="avatar-large defaut m-1">
               <% end %>
-              <div class="text-center">
-                <%= user.first_name%>
-                <%= user.last_name%>
-              </div>
-            <%= user.description  %>
+            </div>
+              <div class="text-show mt-1">
+                <strong><%= user.first_name%> <%= user.last_name%></strong>
+                <br>
+                <p><strong>Email: </strong><%= user.email%></p>
+                <p><strong>Role: </strong><%= user.role %></p>
+                <p><strong>Job: </strong><%= user.job%></p>
+                <p><strong>Description: </strong><%= user.description %></p>
+            </div>
           </div>
           <% end %>
         </div>

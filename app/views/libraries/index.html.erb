@@ -11,7 +11,7 @@
           </div>
          <% end %>
       <% else %>
-        <% if current_user.role == "hr" %>
+        <% if current_user.role == "RH" %>
           <p>The library is empty ! Start uploading documents </p>
         <% else %>
           <p>The library is empty !</p>
@@ -20,7 +20,7 @@
   </div>
 
   <div class="form-box">
-    <% if current_user.role == "hr" %>
+    <% if current_user.role == "RH" %>
     <div class="button color-fire" id="addfile">Add a file</div>
     <% end %>
 
