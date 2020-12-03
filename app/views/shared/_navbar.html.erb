@@ -1,7 +1,9 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-welcomer d-flex">
   <% if user_signed_in? %>
     <% if current_user.company.logo.attachment %>
-      <%= cl_image_tag current_user.company.logo.key, class: "avatar" %>
+      <%= link_to "/" do%>
+        <%= cl_image_tag current_user.company.logo.key, class: "avatar" %>
+      <% end %>
     <% else %>
       <%= link_to "/", class: "navbar-icon" do %>
         <i class="fab fa-2x fa-ioxhost"></i>
