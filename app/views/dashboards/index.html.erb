@@ -1,10 +1,10 @@
 <div class="container">
-  <% if current_user.role == 'Manager' %>
+  <% if current_user.role == 'anager' %>
     <div class="white-card p-4">
-        <h2>Current onboarding (<%= @company.users.where(role: 'Newcomer', team: current_user.team).count  %>) </h2>
+        <h2>Current onboarding (<%= @company.users.where(role: 'newcomer').count  %>) </h2>
       <div class="card-container">
         <% @company.users.each do |user| %>
-          <% if user.role == 'Newcomer' && user.team == current_user.team  %>
+          <% if user.role == 'newcomer'%>
             <%= link_to company_dashboard_path(@company,user), class: 'card-homepage' do  %>
               <div class="image">
                 <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered" %>
@@ -19,16 +19,16 @@
         <% end %>
       </div>
     </div>
-  <% elsif current_user.role == 'RH' %>
+  <% elsif current_user.role == 'hr' %>
     <div class="white-card p-4">
       <h1>Onboardings in progress</h1>
       <p class= "text-center">Keep up with all the people onboarding at the moment</p>
       <div class="card-container">
         <% @company.users.each do |user| %>
-          <% if @company.users.where(role: 'Newcomer').count == 0 %>
+          <% if @company.users.where(role: 'newcomer').count == 0 %>
             <p>There are no onboardings at the moment</p>
           <% else %>
-            <% if user.role == 'Newcomer'%>
+            <% if user.role == 'newcomer'%>
               <%= link_to company_dashboard_path(user.company.name, user), class: 'card-homepage' do  %>
                 <div class="image">
                   <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar defaut avatar-bordered" %>
