@@ -1,4 +1,5 @@
 class Library < ApplicationRecord
   belongs_to :company
-  has_many_attached :files
+  has_one_attached :file
+  validates :label, presence: true
 end

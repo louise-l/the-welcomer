@@ -44,7 +44,7 @@ class LibrariesController < ApplicationController
   private
 
   def library_params
-    params.require(:library).permit(files:[])
+    params.require(:library).permit(:label, :file)
   end
 
   def authorizing_library
