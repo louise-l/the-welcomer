@@ -11,5 +11,8 @@ class DashboardsController < ApplicationController
     @company = @user.company.name
     @missions = Mission.where(user: @user)
     @habits = Habit.where(user: @user)
+    @meetings = Meeting.all.order(:start_time).select { |meeting| meeting.users.include?(current_user)}.select do |meeting|
+      meeting.start_time.strftime("%d") == Time.now.strftime("%d")
+    end
   end
 end

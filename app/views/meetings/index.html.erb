@@ -3,10 +3,11 @@
 		<div class="col-md-9">
 			<%= month_calendar(events: @meetings) do |date, meetings| %>
 				<%= date %>
-
-				<% meetings.each do |meeting| %>
-					<%= link_to meeting.title, company_meeting_path(current_user.company.name, meeting) %>
-				<% end %>
+				<div class="d-flex flex-column">
+					<% meetings.each do |meeting| %>
+						<%= link_to meeting.title, company_meeting_path(current_user.company.name, meeting) %>
+					<% end %>
+				</div>
 			<% end %>
 		</div>
 

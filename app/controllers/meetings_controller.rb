@@ -3,7 +3,7 @@ class MeetingsController < ApplicationController
   skip_after_action :verify_policy_scoped, :only => [:index, :new, :create, :edit, :update, :destroy, :show]
 
   def index
-    @meetings = Meeting.all.select { |meeting| meeting.users.include?(current_user)}
+    @meetings = Meeting.all.order(:start_time).select { |meeting| meeting.users.include?(current_user)}
   end
 
   def show
@@ -20,8 +20,8 @@ class MeetingsController < ApplicationController
   def create
     @meeting = Meeting.new(meeting_params)
     if @meeting.save
-      Participate.create(user: current_user, meeting: @meeting)
-      redirect_to company_meetings_path(current_user.company.name)
+      Participate.create(user: current_user, meeting: @meeting, owner: true)
+      redirect_to company_meeting_path(current_user.company.name, @meeting)
     else
       render :new
     end

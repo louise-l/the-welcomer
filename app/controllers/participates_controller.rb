@@ -14,7 +14,7 @@ class ParticipatesController < ApplicationController
 				flash[:alert] = "#{@fullname} est déjà inscrit dans la réunion"
 				redirect_to company_meeting_path(current_user.company.name, @meeting)
 			else
-				@participate = Participate.create(user: @user, meeting: @meeting)
+				@participate = Participate.create(user: @user, meeting: @meeting, owner: false)
 				redirect_to company_meeting_path(current_user.company.name, @meeting)
 			end
 		else
@@ -26,7 +26,7 @@ class ParticipatesController < ApplicationController
 				if @meeting_participates.include?(user)
 					flash[:alert] = "Un ou plusieurs utilisateurs étaient déjà inscrits."
 				else
-					@participate = Participate.create(user: user, meeting: @meeting)
+					@participate = Participate.create(user: user, meeting: @meeting, owner: false)
 				end
 			end
 			redirect_to company_meeting_path(current_user.company.name, @meeting)

@@ -21,7 +21,7 @@
       <%= link_to "Dashboard", company_dashboard_path(current_user.company.name, current_user.id), class: 'navbar-tabs' %>
       <%= link_to "Entreprise", company_libraries_path(current_user.company), class: 'navbar-tabs' %>
       <!-- Route du calendrier de Pierre Damien -->
-      <%= link_to "Planning", root_path, class: 'navbar-tabs' %>
+      <%= link_to "Planning", company_meetings_path(current_user.company.name), class: 'navbar-tabs' %>
       <%= link_to "Team", company_team_path(current_user.company.name, current_user.team), class: 'navbar-tabs no-margin-last' %>
     </div>
   <% elsif current_user.role == 'RH' %>
