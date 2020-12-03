@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :missions, dependent: :destroy
   has_many :habits, dependent: :destroy
   has_many :participates, dependent: :destroy
+  has_many :meetings, through: :participates
   belongs_to :company
   has_one_attached :photo
   belongs_to :team

@@ -168,7 +168,17 @@
       <p>It will become the document session</p>
     </div>
     <div class ='chat-section card-dashboard'>
-      <p>It will become the chat section</p>
+      <h2><%= Time.now.strftime("Today : %d %B %Y") %></h2>
+      <p>Meetings :</p>
+      <% if @meetings != [] %>
+        <ul>
+          <% @meetings.each do |meeting| %>
+            <li><%= meeting.title %> <%= meeting.start_time.strftime(" le %d/%m à %H:%M") %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No meetings for today !</p>
+      <% end %>
     </div>
   </div>
 </div>

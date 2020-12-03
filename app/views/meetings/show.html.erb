@@ -6,9 +6,10 @@
 	<p>A <%= @meeting.end_time.strftime("%H:%M") %></p>
 
 	<%= link_to "Mon planning", company_meetings_path(current_user.company.name) %>
-	<%= link_to "Modifier la réunion", edit_company_meeting_path(current_user.company.name, @meeting) %>
-	<%= link_to "Annuler la réunion", company_meeting_path(current_user.company.name, @meeting), method: :delete %>
-
+	<% if Participate.where(user: current_user, meeting: @meeting)[0].owner %>
+		<%= link_to "Modifier la réunion", edit_company_meeting_path(current_user.company.name, @meeting) %>
+		<%= link_to "Annuler la réunion", company_meeting_path(current_user.company.name, @meeting), method: :delete %>
+	<% end %>
 
 	<h3>Participants :</h3>
 	<ul>
