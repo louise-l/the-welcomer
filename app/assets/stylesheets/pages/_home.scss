@@ -21,7 +21,46 @@ header{
   background-color: $ocean-blue;
 }
 
-.presentation-cards{
-  display:flex;
+section{
+  padding: 60px;
 }
+
+#section-arguments{
+  .content-arguments{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  background-color: $fire;
+}
+
+#contrasted-arguments{
+  background-color: $charcoal;
+  color: white;
+  h2{
+    padding: 50px 0;
+    text-align: center;
+    font-weight:bolder;
+  }
+}
+.minimal-card-grid{
+  display:grid;
+  grid-template-columns:1fr 8fr;
+}
+
+#list-arguments-homepage{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+#biggest-true-argument{
+  text-align: center;
+  h2{
+    margin: 50px;
+  }
+}
+
+
+
 
