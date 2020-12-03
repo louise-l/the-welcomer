@@ -1,8 +1,19 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-welcomer d-flex">
-  <%= link_to "/", class: "navbar-icon" do %>
-      <i class="fab fa-2x fa-ioxhost"></i>
-  <% end %>
+  <% if user_signed_in? %>
+    <% if current_user.company.logo.attachment %>
+      <%= cl_image_tag current_user.company.logo.key, class: "avatar" %>
+    <% else %>
+      <%= link_to "/", class: "navbar-icon" do %>
+        <i class="fab fa-2x fa-ioxhost"></i>
+      <% end %>
+    <% end %>
+  <% else %>
+    <%= link_to "/", class: "navbar-icon" do %>
+        <i class="fab fa-2x fa-ioxhost"></i>
+    <% end %>
+  <% end   %>
 
+<%= console %>
 <% if user_signed_in? %>
   <% if current_user.role == 'Newcomer' %>
     <div>
