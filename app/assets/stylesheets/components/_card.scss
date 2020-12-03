@@ -107,3 +107,27 @@
   }
 }
 
+.rounded-corners{
+  border-radius: 10px;
+}
+
+// pour la carte des arguments en liste de la page d'accueil
+.minimal-card{
+  display: flex;
+  flex-direction:column;
+  align-items:center;
+  width:250px;
+  img{
+    height:200px;
+    margin-bottom: 40px;
+  }
+  .number{
+    color:$fire;
+    font-size: 24px;
+  }
+}
+
+
+
+
+
