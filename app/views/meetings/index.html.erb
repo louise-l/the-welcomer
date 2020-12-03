@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-9">
+			<%= month_calendar(events: @meetings) do |date, meetings| %>
+				<%= date %>
+
+				<% meetings.each do |meeting| %>
+					<%= link_to meeting.title, company_meeting_path(current_user.company.name, meeting) %>
+				<% end %>
+			<% end %>
+		</div>
+
+		<div class="col-md-3">
+			<h3 class="text-center">Réunion du jour</h3>
+
+			<ul>
+			<% @meetings.each do |meeting| %>
+			  <% if meeting.start_time.strftime("%d") == Time.now.strftime("%d") %>
+				<li><%= meeting.title %> <%= meeting.start_time.strftime(" le %d/%m à %H:%M") %></li>
+				<% end %>
+			<% end %>
+			</ul>
+
+			<%= link_to "Planifier une réunion", new_company_meeting_path(current_user.company.name) %>
+
+		</div>
+	</div>
+</div>

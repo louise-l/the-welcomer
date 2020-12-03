@@ -34,8 +34,12 @@ gem 'pundit'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
+gem "simple_calendar", "~> 2.0"
 gem 'letter_opener', group: :development
+
+gem 'flatpickr'
 gem 'cloudinary', '~> 1.16.0'
+
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'

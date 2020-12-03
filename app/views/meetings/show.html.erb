@@ -1,0 +1,28 @@
+<div class="container">
+	<h2><%= @meeting.title %></h2>
+	<p><%= @meeting.description %></p>
+	<p>Réunion le <%= @meeting.start_time.strftime("%d/%m/%Y") %></p>
+	<p>De <%= @meeting.start_time.strftime("%H:%M") %></p>
+	<p>A <%= @meeting.end_time.strftime("%H:%M") %></p>
+
+	<%= link_to "Mon planning", company_meetings_path(current_user.company.name) %>
+	<%= link_to "Modifier la réunion", edit_company_meeting_path(current_user.company.name, @meeting) %>
+	<%= link_to "Annuler la réunion", company_meeting_path(current_user.company.name, @meeting), method: :delete %>
+
+
+	<h3>Participants :</h3>
+	<ul>
+	  <% @meeting.participates.each do |participate|%>
+		  <li> <%= participate.user.first_name %> <%= participate.user.last_name %> </li>
+			<%= link_to "Supprimer ce participant", company_meeting_participate_path(current_user.company.name, @meeting, participate), method: :delete %>
+		<% end %>
+	</ul>
+
+	<h3>Ajouter un participant</h3>
+	<div>
+		<%= simple_form_for :name, url:  company_meeting_participates_path(current_user.company.name, @meeting) do |f| %>
+		<%= f.input :participate, label: "Participant", collection: current_user.company.full_name, input_html: { multiple: true } %>
+		<%= f.submit "Ajouter un participant" %>
+		<% end %>
+	</div>
+</div>
