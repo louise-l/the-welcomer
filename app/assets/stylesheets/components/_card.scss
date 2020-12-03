@@ -67,13 +67,13 @@
   grid-gap: 20px;
 }
 
+// card for a white background on a page
 .white-card {
   background-color: white;
   border-radius: 10px;
   border: 0.5px #F1F2F4 solid;
   margin-top: 70px;
   position: relative;
-  padding-bottom: 50px;
   .button {
     width:200px;
     text-align:center;
@@ -83,4 +83,27 @@
   }
 }
 
+.card-library{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  border-radius: 10px;
+  width:150px;
+  height:180px;
+  padding:15px;
+  margin:20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  transition: all 0.5s ease-out;
+  img{
+    margin-bottom: 10px;
+  }
+  h5{
+    text-align: center;
+  }
+  &:hover{
+    color: black;
+    text-decoration: none;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  }
+}
 

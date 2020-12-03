@@ -1,0 +1,11 @@
+.layout-library{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.form-box{
+  width:250px;
+  margin-top: 50px;
+}

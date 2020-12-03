@@ -1,7 +1,7 @@
 class LibraryPolicy < ApplicationPolicy
 
   def new?
-    true
+    user.role =="hr"
   end
 
   def create?
