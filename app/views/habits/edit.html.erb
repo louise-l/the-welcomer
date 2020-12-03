@@ -11,7 +11,7 @@
     <div class="form">
       <h2>Edit my habit </h2>
       <%= simple_form_for [@company, @user, @habit], remote: true do |f| %>
-        <%= f.input :status %>
+        <%= f.input :status, collection: ["Not mastered", "Mastered", "Require help"] %>
         <%= f.button :submit, class: 'button color-yellow' %>
       <% end %>
     </div>

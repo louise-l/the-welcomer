@@ -12,7 +12,7 @@
     <div class="form">
       <h2>Edit <%= @user.first_name %>'s mission </h2>
       <%= simple_form_for [@company, @user, @mission], remote: true do |f| %>
-        <%= f.input :status %>
+        <%= f.input :status, collection: ["Not mastered", "Mastered", "Require help"] %>
         <%= f.button :submit, class: 'button color-yellow' %>
       <% end %>
     </div>

@@ -5,6 +5,7 @@ class MissionsController < ApplicationController
     @mission = Mission.new
     @user = User.find(params[:user_id])
     @company = @user.company
+    authorize @mission
   end
 
   def show
