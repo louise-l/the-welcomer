@@ -30,10 +30,10 @@ puts "..library created"
 
 puts "Users created"
 Team.destroy_all
-team1 = Team.create!(name: "les indestructibles",address: "146 rue solférino lille")
-team2 = Team.create!(name: "les artistes",address: "24 rue de la clé lille")
-team3 = Team.create!(name: "Avengers",address: "25 rue de la clé lille")
-team4 = Team.create!(name: "ok",address: "26 rue de la clé lille")
+team1 = Team.create!(name: "les indestructibles",address: "146 rue solférino lille", company_id: company1.id)
+team2 = Team.create!(name: "les artistes",address: "24 rue de la clé lille", company_id: company1.id)
+team3 = Team.create!(name: "Avengers",address: "25 rue de la clé lille", company_id: company1.id)
+team4 = Team.create!(name: "ok",address: "26 rue de la clé lille", company_id: company1.id)
 puts "Team created"
 
 puts "Creation Users"
@@ -49,10 +49,8 @@ user7 = User.create!(first_name: "Tim",last_name: "Mate", email: "tim@gmail.com"
 user8 = User.create!(first_name: "Chloé",last_name: "Quipuier", email: "chloé@gmail.com", password: "azerty", job: "Product Owner", role:"Teammate", company_id: company1.id, team_id: team2.id)
 file5 = URI.open('https://ofad.org/files/daily-photo/recent-and-random-portraits_8.jpg')
 file6 = URI.open('https://www.slate.fr/sites/default/files/styles/1200x680/public/reine-elizabeth-ii_0.jpg')
-file7 = URI.open('https://www.practicaespanol.com/wp-content/uploads/Alt-Fotograf%C3%ADa-de-Arthur-Sasse-de-la-instant%C3%A1nea-de-Albert-Einstein-EFE.jpg')
 user2.photo.attach(io: file5, filename: 'logo5.jpg', content_type: 'image/jpg')
 user1.photo.attach(io: file6, filename: 'logo6.jpg', content_type: 'image/jpg')
-user3.photo.attach(io: file7, filename: 'logo7.jpg', content_type: 'image/jpg')
 puts "..users created"
 
 puts "Creation Habits"
