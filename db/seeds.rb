@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "open-uri"
 
 
 puts "Creation..."
@@ -12,7 +13,12 @@ Company.destroy_all
 company1 = Company.create!(name: "The-Welcomer", address: "Le Wagon")
 company2 = Company.create!(name: "Evolve", address: "Le Wagon")
 company3 = Company.create!(name: "Hoops I did it again", address: "Le Wagon")
-
+file1 = URI.open('https://lntp.net/wp-content/uploads/2016/12/Tesla-logo-2003-2500x2500.png')
+file2 = URI.open('https://upload.wikimedia.org/wikipedia/fr/thumb/6/62/Logo_LOSC_Lille_2018.svg/1200px-Logo_LOSC_Lille_2018.svg.png')
+file3 = URI.open('https://e7.pngegg.com/pngimages/727/1005/png-clipart-apple-logo-business-apple-heart-computer.png')
+company1.logo.attach(io: file1, filename: 'logo1.png', content_type: 'image/png')
+company2.logo.attach(io: file2, filename: 'logo2.png', content_type: 'image/png')
+company3.logo.attach(io: file3, filename: 'logo3.png', content_type: 'image/png')
 puts "..Company created"
 
 puts "Users created"
