@@ -12,6 +12,10 @@ class LibraryPolicy < ApplicationPolicy
     user.role =="RH"
   end
 
+  def show
+    true
+  end
+
   class Scope < Scope
     def resolve
       scope.where(company: user.company)

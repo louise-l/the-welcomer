@@ -21,6 +21,15 @@ company2.logo.attach(io: file2, filename: 'logo2.png', content_type: 'image/png'
 company3.logo.attach(io: file3, filename: 'logo3.png', content_type: 'image/png')
 puts "..Company created"
 
+puts "Library"
+library1 = Library.create!(label: "Rule", company_id: company1.id)
+file4 = URI.open('https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf')
+library1.file.attach(io: file4, filename: 'pdf1.pdf', content_type: 'image/pdf' )
+puts "..library created"
+
+
+
+
 puts "Users created"
 Team.destroy_all
 team1 = Team.create!(name: "les indestructibles",address: "146 rue solférino lille")

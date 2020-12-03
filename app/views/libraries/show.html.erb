@@ -1,1 +1,6 @@
-<h2> Online Libraries </h2>
+<div class="container">
+  <h1 style='margin-top: 100px;'> <%= @library.label %> </h1>
+  <div class='container-pdf'>
+      <%= cl_image_tag @library.file.key, format: :png %>
+  </div>
+</div>
