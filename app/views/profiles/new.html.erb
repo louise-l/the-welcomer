@@ -1,13 +1,13 @@
 <div class="container">
 
-	<% if current_user.role == "hr" || current_user.role == "manager" %>
+	<% if current_user.role == "RH" || current_user.role == "Manager" %>
 
 		<%= simple_form_for :profile, url: company_profiles_path(current_user.company.name) do |f| %>
 		<%= f.input :first_name, input_html: { value: nil } %>
 		<%= f.input :last_name, input_html: { value: nil } %>
 		<%= f.input :email, input_html: { value: nil } %>
 		<%= f.input :job, input_html: { value: nil } %>
-		<%= f.input :role, input_html: { value: nil }, collection: ["RH", "manager", "newcomer"] %>
+		<%= f.input :role, input_html: { value: nil }, collection: ["RH", "Manager", "Newcomer","Teammate"] %>
 		<%= f.submit %>
 		<% end %>
 

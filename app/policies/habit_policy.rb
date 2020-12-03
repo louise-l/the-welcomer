@@ -1,15 +1,15 @@
 class HabitPolicy < ApplicationPolicy
 
   def create?
-    user.role == "manager" || user.role =="rh"
+    user.role == "Manager" || user.role =="RH"
   end
 
   def update?
-    user.role == "manager" || user.role =="newcomer"
+    user.role == "Manager" || user.role =="Newcomer"
   end
 
   def destroy?
-    user.role == "manager" || user.role =="rh"
+    user.role == "Manager" || user.role =="RH"
   end
 
   class Scope < Scope

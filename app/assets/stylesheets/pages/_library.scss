@@ -1,0 +1,17 @@
+.layout-library{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.form-box{
+  width:250px;
+  margin-top: 50px;
+}
+
+.container-pdf {
+  margin-right: auto;
+  margin-left: auto;
+  box-shadow: 0 10 10px rgba(0,0,0,0.2);
+}
