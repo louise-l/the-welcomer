@@ -24,17 +24,21 @@
       <% end %>
   </div>
 
-  <div class="form-box">
-    <% if current_user.role == "RH" %>
-    <div class="button color-fire" id="addfile">Add a file</div>
-    <% end %>
+  <div class="d-flex justify-content-center">
+    <div class="form-box d-flex justify-content-center">
+      <% if current_user.role == "RH" %>
+      <div class="button color-fire" id="addfile">Add a file</div>
+      <% end %>
 
-    <div class="d-none" id="tohide">
-        <%= simple_form_for [@company, @library] do |f|%>
-        <%= f.input :label, label: "Title of the document" %>
-        <%= f.input :file, as: :file, label: false%>
-        <%= f.submit"Add", class: "button color-fire", id:"submit-button" %>
-        <% end %>
+      <div class="d-none" id="tohide">
+          <%= simple_form_for [@company, @library] do |f|%>
+          <%= f.input :label, label: "Title of the document" %>
+          <%= f.input :file, as: :file, label: false%>
+          <div class="d-flex justify-content-center">
+            <%= f.submit"Add", class: "button color-fire", id:"submit-button" %>
+          </div>
+          <% end %>
+      </div>
     </div>
   </div>
 
