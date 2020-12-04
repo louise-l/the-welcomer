@@ -31,6 +31,7 @@ import "../plugins/flatpickr"
 import { picker } from "../plugins/flatpickr"
 
 import { buttonAddFiles } from './components/hide_button'
+import { hideIcons } from './components/hide_icon'
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -40,5 +41,6 @@ document.addEventListener('turbolinks:load', () => {
   picker();
 
   buttonAddFiles();
+  hideIcons();
 
 });
