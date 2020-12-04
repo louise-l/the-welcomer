@@ -22,6 +22,9 @@
     padding-top: 10px;
     color: $ocean-blue;
   }
+  &:hover {
+    transform: scale(1.015);
+  }
 
 }
 
@@ -42,6 +45,9 @@
     margin-bottom: 8px;
     color: $cloud;
   }
+    &:hover {
+    transform: scale(1.015);
+  }
 }
 
 .habits-section {
@@ -53,6 +59,9 @@
     padding-left: 10px;
     padding-top: 10px;
     color: $ocean-blue
+  }
+  &:hover {
+    transform: scale(1.015);
   }
 }
 
@@ -71,6 +80,9 @@
     padding-left: 11px;
     margin-bottom: 8px;
     }
+    &:hover {
+    transform: scale(1.015);
+  }
 }
 
 .chat-section {
@@ -89,12 +101,16 @@
     padding-left: 11px;
     margin-bottom: 8px;
   }
+  &:hover {
+    transform: scale(1.015);
+  }
 }
 
 .calendar-section {
   grid-column: 1;
   grid-row: 2;
   min-height: 175px;
+  color: charcoal;
   & h2 {
     font-size: 24px;
     padding-left: 10px;
@@ -105,6 +121,10 @@
     font-size: 14px;
     padding-left: 11px;
     margin-bottom: 8px;
+  }
+  &:hover {
+    transform: scale(1.015);
+    text-decoration: none;
   }
 }
 
