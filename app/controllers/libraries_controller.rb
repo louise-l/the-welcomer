@@ -39,6 +39,9 @@ class LibrariesController < ApplicationController
 
   def destroy
     @library = Libray.find(params[:id])
+    @library.destroy
+
+    redirect_to company_libraries_path
   end
 
   private
