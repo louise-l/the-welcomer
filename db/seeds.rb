@@ -30,44 +30,19 @@ puts "..library created"
 
 puts "Users created"
 Team.destroy_all
-team1 = Team.create!(name: "les indestructibles",address: "146 rue solférino lille", company_id: company1.id)
-team2 = Team.create!(name: "les artistes",address: "24 rue de la clé lille", company_id: company1.id)
-team3 = Team.create!(name: "Avengers",address: "25 rue de la clé lille", company_id: company1.id)
-team4 = Team.create!(name: "ok",address: "26 rue de la clé lille", company_id: company1.id)
 puts "Team created"
 
 puts "Creation Users"
 User.destroy_all
 
-user1 = User.create!(first_name: "Caroline",last_name: "Bernard", email: "caroline@gmail.com", password: "azerty", job: "Supply chain", role:"Manager", company_id: company1.id, team_id: team1.id)
-user2 = User.create!(first_name: "Louise",last_name: "Galliot", email: "louise@gmail.com", password: "azerty",job: "DRH", role:"RH", company_id: company1.id, team_id: team3.id)
-user3 = User.create!(first_name: "Charles",last_name: "Desplechin", email: "charle@gmail.com", password: "azerty", job: "stagiaire", role:"Newcomer", company_id: company1.id, team_id: team1.id)
-user4 = User.create!(first_name: "Jean",last_name: "Rooney", email: "jean@gmail.com", password: "azerty", job: "Supply chain", role:"Manager", company_id: company1.id, team_id: team2.id)
-user5 = User.create!(first_name: "Pierre",last_name: "Xavi", email: "pierre@gmail.com", password: "azerty",job: "DRH", role:"RH", company_id: company1.id, team_id: team3.id)
-user6 = User.create!(first_name: "Ousmane",last_name: "Dembélé", email: "ousmane@gmail.com", password: "azerty", job: "stagiaire", role:"Newcomer", company_id: company1.id, team_id: team2.id)
-user7 = User.create!(first_name: "Tim",last_name: "Mate", email: "tim@gmail.com", password: "azerty",job: "Developpeur", role:"Teammate", company_id: company1.id, team_id: team1.id)
-user8 = User.create!(first_name: "Chloé",last_name: "Quipuier", email: "chloé@gmail.com", password: "azerty", job: "Product Owner", role:"Teammate", company_id: company1.id, team_id: team2.id)
-file5 = URI.open('https://ofad.org/files/daily-photo/recent-and-random-portraits_8.jpg')
-file6 = URI.open('https://www.slate.fr/sites/default/files/styles/1200x680/public/reine-elizabeth-ii_0.jpg')
-user2.photo.attach(io: file5, filename: 'logo5.jpg', content_type: 'image/jpg')
-user1.photo.attach(io: file6, filename: 'logo6.jpg', content_type: 'image/jpg')
 puts "..users created"
 
 puts "Creation Habits"
 Habit.destroy_all
-habit1 = Habit.create!(name: "Don't forget your pass every morning", user_id: user3.id)
-habit2 = Habit.create!(name: "On tuesday, your turn to bring coffee", user_id: user3.id)
-habit3 = Habit.create!(name:"Never mail someone out the company without checking the adress", user_id: user3.id)
-habit4 = Habit.create!(name: "Please warn everyone when you are on holiday", user_id: user3.id)
-habit5 = Habit.create!(name: "Home-office available on thursday and friday !", user_id: user3.id)
 puts "..habits created"
 
 puts "Creation Missions"
 Mission.destroy_all
-mission1 = Mission.create!(name: "Prepare the technical reunions", description:'this the missions description', user_id: user3.id)
-mission2 = Mission.create!(name:"Assist your coworkers", description: 'this the missions description', user_id: user3.id)
-mission3 = Mission.create!(name: "Watch for new tendances", description: 'this the missions description', user_id: user3.id)
-mission4 = Mission.create!(name:"Build commercial proposals", description: 'this the missions description', user_id: user3.id)
-mission5 = Mission.create!(name: "Invent water", description: 'this the missions description', user_id: user3.id)
+
 puts "..missions created"
 
