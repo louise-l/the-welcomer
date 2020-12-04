@@ -1,6 +1,7 @@
 <div class="container">
   <div class="grid-dashboard-container">
 
+    <!-- Présentation -->
     <div class="presentation-section card-dashboard">
       <div class='d-flex'>
         <% if @user.photo.attachment%>
@@ -17,7 +18,9 @@
       </div>
     </div>
 
-    <div class ='calendar-section card-dashboard'>
+    <!-- Calendar -->
+    <%= link_to company_meetings_path(current_user.company.name) do  %>
+      <div class ='calendar-section card-dashboard'>
       <h2><%= Time.now.strftime("%d %B %Y") %></h2>
       <% if @meetings != [] %>
           <% @meetings.first(4).each do |meeting| %>
@@ -26,8 +29,10 @@
       <% else %>
         <p>No meetings for today !</p>
       <% end %>
-    </div>
+      </div>
+    <% end %>
 
+    <!-- Missions -->
     <div class='missions-section card-dashboard'>
         <% if current_user.role =='Manager' %>
           <div class="d-flex justify-content-between mb-3">
@@ -111,8 +116,8 @@
         <% end %>
     </div>
 
+    <!-- Habits -->
     <div class='habits-section card-dashboard'>
-
       <% if current_user.role =='Manager' %>
           <div class="d-flex justify-content-between mb-3">
             <h2>Habits</h2>
@@ -124,7 +129,6 @@
         <% else %>
           <h2 class='mb-3'>Habits</h2>
         <% end %>
-
       <% @habits.each do |habit| %>
         <div class='d-flex px-3 justify-content-between align-items-center'>
           <%if habit.status == 'Not mastered' %>
@@ -195,10 +199,13 @@
       <% end %>
     </div>
 
+    <!-- Documents -->
     <div class='documents-section card-dashboard'>
       <h2>Documents</h2>
       <p>Work in progress. Ready next Friday.</p>
     </div>
+
+    <!-- Chat -->
     <div class='chat-section card-dashboard'>
       <h2>Chat</h2>
       <p>Work in progress. Ready next Friday.</p>
