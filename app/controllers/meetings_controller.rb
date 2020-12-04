@@ -10,6 +10,7 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
     @company = current_user.company
     @participate = Participate.new
+    @owner = Participate.where(meeting: @meeting, owner: true)[0].user
   end
 
   def new

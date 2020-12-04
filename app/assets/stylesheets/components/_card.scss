@@ -127,7 +127,33 @@
   }
 }
 
+.meeting-show-card {
+  background-color: white;
+  width: 70%;
+  border-radius: 10px;
+  border: 0.5px #F1F2F4 solid;
+  padding: 30px;
+  margin: 70px auto;
+  display: flex;
+  flex-direction: column;
+}
 
+.fa-user-times {
+  color: $fire;
+}
 
+.title-card {
+  margin-bottom: 0px;
+}
 
+.underlined {
+  text-decoration: underline;
+}
 
+.card-meeting-index {
+  padding: 10px;
+}
+
+.color-title {
+  color: $ocean-blue;
+}

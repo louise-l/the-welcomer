@@ -1,13 +1,15 @@
 <div class="container">
-	<h2>Créer une réunion</h2>
-	<div>
-		<%= simple_form_for [@company, @meeting] do |f| %>
-		<%= f.input :start_time, label: "Heure de départ", as: :string, required: false, input_html: {class: "datepicker"} %>
-		<%= f.input :end_time, label: "Heure de fin", as: :string, required: false, input_html: {class: "datepicker"} %>
-		<%= f.input :title, label: "Objet de la réunion" %>
-		<%= f.input :description %>
-		<%= f.submit %>
-		<%= link_to "Back", company_meetings_path(current_user.company.name) %>
+	<div class="form-with-title">
+		<h2 class="text-center mb-4">Create a meeting</h2>
+		<%= simple_form_for [@company, @meeting], remote: true do |f| %>
+			<%= f.input :start_time, label: "Start at", as: :string, required: false, input_html: {class: "datepicker"} %>
+			<%= f.input :end_time, label: "End", as: :string, required: false, input_html: {class: "datepicker"} %>
+			<%= f.input :title, label: "Object" %>
+			<%= f.input :description %>
+			<div class="form-actions d-flex justify-content-center">
+				<%= f.submit "Create Meeting", class: 'btn button color-yellow' %>
+				<%= link_to "Back", :back, class: 'btn button color-yellow ml-4' %>
+			</div>
 		<% end %>
 	</div>
 </div>

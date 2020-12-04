@@ -1,6 +1,7 @@
 .simple-calendar {
   .day {
       font-size: 14px;
+      color: $charcoal;
   }
 
 //   .wday-0 {}
@@ -17,17 +18,61 @@
   // .start-date {}
 
   .prev-month {
-    background-color: #DDDDDD;
+    background-color: $charcoal;
+    color: white;
   }
   .next-month { 
-    background-color:#DDDDDD;
+    background-color:$charcoal;
+    color: white;
   }
   .current-month {
     background-color: white;
   }
   .today {
-    background-color: rgba(265, 165, 0, 0.5);
+    background-color: $orange-soda;
+    color: white;
   }
 
 //   .has-events {}
+}
+
+.days {
+  background-color: $sun-yellow;
+  color: white;
+  font-weight: lighter;
+  
+}
+
+.link-into-calendar {
+  text-decoration: none;
+  color: $orange-soda;
+  &:hover {
+    text-decoration-style: none;
+    color: $orange-soda;
+    text-decoration: underline;
+  }
+}
+
+.link-into-calendar-today {
+  text-decoration: none;
+  color: white;
+  &:hover {
+    text-decoration-style: none;
+    color: white;
+    text-decoration: underline;
+  }
+}
+
+.link-into-today-calendar {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    text-decoration-style: none;
+    color: black;
+    text-decoration: underline;
+  }
+}
+
+.month-name {
+  font-size: 22px;
 }

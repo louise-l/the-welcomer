@@ -5,24 +5,32 @@
 				<%= date %>
 				<div class="d-flex flex-column">
 					<% meetings.each do |meeting| %>
-						<%= link_to meeting.title, company_meeting_path(current_user.company.name, meeting) %>
+						<% if meeting.start_time.strftime("%d") == Time.now.strftime("%d") %>
+							<%= link_to "#{meeting.title[0..7]}...", company_meeting_path(current_user.company.name, meeting), class:"link-into-calendar-today" %>
+						<% else %>
+							<%= link_to meeting.title, company_meeting_path(current_user.company.name, meeting), class:"link-into-calendar"%>
+						<% end %>
 					<% end %>
 				</div>
 			<% end %>
 		</div>
 
-		<div class="col-md-3">
-			<h3 class="text-center">Réunion du jour</h3>
+		<div class="col-md-3 mt-3">
+			<div class="white-card card-meeting-index d-flex flex-column align-items-center justify-content-center">
+				<h3 class="text-center color-title mb-3">Today</h3>
 
-			<ul>
-			<% @meetings.each do |meeting| %>
-			  <% if meeting.start_time.strftime("%d") == Time.now.strftime("%d") %>
-				<li><%= meeting.title %> <%= meeting.start_time.strftime(" le %d/%m à %H:%M") %></li>
+			<div class="d-flex justify-content-center flex-column">
+				<% @meetings.each do |meeting| %>
+					<% if meeting.start_time.strftime("%d") == Time.now.strftime("%d") %>
+					<%= link_to company_meeting_path(current_user.company.name, meeting), class:"link-into-today-calendar" do %>
+						<p class="p-1"><%= meeting.title %> <%= meeting.start_time.strftime("at %H:%M") %></p>
+					<% end %>
+					<% end %>
 				<% end %>
-			<% end %>
-			</ul>
+			</div>
 
-			<%= link_to "Planifier une réunion", new_company_meeting_path(current_user.company.name) %>
+				<%= link_to "Plan a meeting", new_company_meeting_path(current_user.company.name), class: "button color-yellow" %>
+			</div>
 
 		</div>
 	</div>
