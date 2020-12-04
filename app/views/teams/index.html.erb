@@ -1,21 +1,23 @@
 <div class="container">
-  <h2 class="text-center">Les équipes de l'entreprise :</h2>
+  <h2 class="text-center mt-5">The company's teams :</h2>
   <div class="display-index">
     <% @teams.each do |team| %>
-      <div class="card-team">
-        <% if team.photo.attachment %>
-          <%= cl_image_tag team.photo.key class: "card-team-image"%>
-        <% else  %>
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1650&q=80" class= "card-team-image">
+      <%= link_to company_team_path(current_user.company.name, team.id), class: 'card-team' do  %>
+          <% if team.photo.attachment %>
+            <%= cl_image_tag team.photo.key class: "card-team-image"%>
+          <% else  %>
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1650&q=80" class= "card-team-image">
+          <% end %>
+          <div class="card-infos">
+            <h2><%= team.name %></h2>
+            <p><%= team.address %></p>
+          </div>
         <% end %>
-        <div class="card-infos text-center">
-          <h2><%= team.name %></h2>
-          <p><%= team.address %></p>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
   </div>
+<%= link_to "Add a team","/companies/#{current_user.company.name}/teams/new", class: 'button color-blue' %>
 </div>
+
 
 
 

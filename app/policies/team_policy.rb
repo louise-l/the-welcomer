@@ -4,6 +4,8 @@ class TeamPolicy < ApplicationPolicy
       scope.all
     end
 
+
+  end
     def show?
       true
     end
@@ -12,5 +14,11 @@ class TeamPolicy < ApplicationPolicy
       true
     end
 
-  end
+    def new?
+      true
+    end
+
+    def create?
+      true
+    end
 end
