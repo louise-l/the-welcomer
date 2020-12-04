@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
     @user.team_id = @team_id
     if @user.save
       UserMailer.with(user: @user).welcome.deliver_now
-      redirect_to company_path(current_user.company.name)
+      redirect_to company_dashboards_path(current_user.company.name)
     else
       render :new
     end
