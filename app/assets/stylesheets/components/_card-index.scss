@@ -7,6 +7,14 @@
   margin-right: 10px;
   display:flex;
   margin-bottom:10px;
+  text-align: center;
+  align-items: center;
+  text-decoration:none;
+  color:black;
+    &:hover {
+      text-decoration:none;
+      color:black;
+    }
 }
 
 .display-index {
@@ -26,6 +34,8 @@
   font-weight: bold;
   margin: 0;
 }
+
+
 
 .card-team p {
   font-size: 12px;
