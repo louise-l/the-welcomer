@@ -28,7 +28,7 @@
         <%= simple_form_for [@company, @library] do |f|%>
         <%= f.input :label, label: "Title of the document" %>
         <%= f.input :file, as: :file, label: false%>
-        <%= f.submit"Add", class: "button color-fire" %>
+        <%= f.submit"Add", class: "button color-fire", id:"submit-button" %>
         <% end %>
     </div>
   </div>
