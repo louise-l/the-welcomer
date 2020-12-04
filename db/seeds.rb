@@ -21,7 +21,7 @@ puts "..Company created"
 
 puts "Library"
 library1 = Library.create!(label: "Rule", company_id: company1.id)
-file4 = URI.open('https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf')
+file4 = URI.open('https://cdn2.hubspot.net/hubfs/4419217/fullstack-syllabus%20(2).pdf')
 library1.file.attach(io: file4, filename: 'pdf1.pdf', content_type: 'image/pdf' )
 puts "..library created"
 
@@ -30,10 +30,17 @@ puts "..library created"
 
 puts "Users created"
 Team.destroy_all
-team1 = Team.create!(name: "les indestructibles",address: "146 rue solférino lille", company_id: company1.id)
-team2 = Team.create!(name: "les artistes",address: "24 rue de la clé lille", company_id: company1.id)
-team3 = Team.create!(name: "Avengers",address: "25 rue de la clé lille", company_id: company1.id)
-team4 = Team.create!(name: "ok",address: "26 rue de la clé lille", company_id: company1.id)
+team1 = Team.create!(name: "Back-end development team",address: "146 rue solférino, Lille", company_id: company1.id)
+team2 = Team.create!(name: "Artists of front-end",address: "12 rue de la clé, Lille", company_id: company1.id)
+team3 = Team.create!(name: "Community of comptability",address: "25 bis avenue du simflouz, Lille", company_id: company1.id)
+team4 = Team.create!(name: "Public relations",address: "HQ, La Défense, Paris, center of the world", company_id: company1.id)
+file7 = URI.open("https://source.unsplash.com/500x350/?team,company")
+file8 = URI.open("https://source.unsplash.com/500x350/?team,company")
+file9 = URI.open("https://source.unsplash.com/500x351/?team,company")
+team1.photo.attach(io: file7, filename: 'image1.jpg', content_type: 'image/jpg')
+team2.photo.attach(io: file8, filename: 'image2.jpg', content_type: 'image/jpg')
+team3.photo.attach(io: file9, filename: 'image3.jpg', content_type: 'image/jpg')
+
 puts "Team created"
 
 puts "Creation Users"
@@ -47,10 +54,6 @@ user5 = User.create!(first_name: "Pierre",last_name: "Xavi", email: "pierre@gmai
 user6 = User.create!(first_name: "Ousmane",last_name: "Dembélé", email: "ousmane@gmail.com", password: "azerty", job: "stagiaire", role:"Newcomer", company_id: company1.id, team_id: team2.id)
 user7 = User.create!(first_name: "Tim",last_name: "Mate", email: "tim@gmail.com", password: "azerty",job: "Developpeur", role:"Teammate", company_id: company1.id, team_id: team1.id)
 user8 = User.create!(first_name: "Chloé",last_name: "Quipuier", email: "chloé@gmail.com", password: "azerty", job: "Product Owner", role:"Teammate", company_id: company1.id, team_id: team2.id)
-file5 = URI.open('https://ofad.org/files/daily-photo/recent-and-random-portraits_8.jpg')
-file6 = URI.open('https://www.slate.fr/sites/default/files/styles/1200x680/public/reine-elizabeth-ii_0.jpg')
-user2.photo.attach(io: file5, filename: 'logo5.jpg', content_type: 'image/jpg')
-user1.photo.attach(io: file6, filename: 'logo6.jpg', content_type: 'image/jpg')
 puts "..users created"
 
 puts "Creation Habits"
