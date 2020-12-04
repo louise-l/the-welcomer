@@ -1,4 +1,6 @@
 class TeamsController < ApplicationController
+after_action :authorizing_team, only: [:new, :create, :edit, :update, :destroy]
+
 def index
   @teams = policy_scope(Team)
 end
@@ -6,13 +8,12 @@ end
 def new
   @company = Company.find_by(name: params[:company_name])
   @team = Team.new
+  authorize @team
 end
 
 def create
-  @user = User.find(params[:user_id])
   @company = Company.find_by(name: params[:company_name])
   @team = Team.new(set_params_team)
-  @team.user = @user
   @team.company = current_user.company
   if @team.save
     redirect_to company_teams_path
@@ -46,6 +47,10 @@ def destroy
 end
 
   private
+
+  def authorizing_team
+    authorize @team
+  end
 
 def set_params_team
   params.require(:team).permit(:name, :address, :photo)

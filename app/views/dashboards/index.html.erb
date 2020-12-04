@@ -1,7 +1,8 @@
 <div class="container">
   <% if current_user.role == 'Manager' %>
     <div class="white-card p-4">
-        <h2>Current onboarding (<%= @company.users.where(role: 'Newcomer', team: current_user.team).count  %>) </h2>
+        <h2 class= "text-center">Onboardings in progress (<%= @company.users.where(role: 'Newcomer', team: current_user.team).count  %>) </h2>
+        <p class= "text-center">Keep up with all the people onboarding at the moment</p>
       <div class="card-container">
         <% @company.users.each do |user| %>
           <% if user.role == 'Newcomer' && user.team == current_user.team %>
@@ -21,6 +22,7 @@
             <% end %>
           <% end %>
         <% end %>
+        <%= link_to "Add a newcomer", new_company_profile_path, class: 'button color-blue' %>
       </div>
     </div>
   <% elsif current_user.role == 'RH' %>
@@ -51,9 +53,8 @@
           <% end %>
         <% end %>
       </div>
-      <div class="button color-blue"><i class="fas fa-plus"></i>  Add a newcomer</div>
+      <%= link_to "Add a newcomer", new_company_profile_path, class: 'button color-blue' %>
     </div>
   <% end %>
 </div>
-
 <!-- && user.teams == current_user.teams à ajouter pour la condition-->

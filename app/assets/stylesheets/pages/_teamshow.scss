@@ -17,7 +17,6 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 10px;
-  padding: 10px 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,22 +31,24 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 10px;
   display: flex;
-  text-align: center;
-  align-items: center;
+  flex-direction: column;
+  padding: 15px;
 }
 
-.avatar-show {
-  width:20%;
+.display-photo {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  align-items:center;
+  strong {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 18px;
+    color: $fire;
+  }
 }
 
 .text-show {
-  width:80%;
-  display:flex;
-  flex-direction: column;
-  align-items: start;
+  font-size: 14px;
 }
 
 .display-card {
@@ -55,4 +56,8 @@
   grid-template-columns: repeat(2, 400px);
   grid-gap: 10px;
   justify-content: center;
+}
+
+.margin-top {
+  margin-top: 100px;
 }
