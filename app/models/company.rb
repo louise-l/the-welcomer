@@ -1,6 +1,7 @@
 class Company < ApplicationRecord
   has_many :users, dependent: :destroy
   has_many :teams
+  has_many :libraries, dependent: :destroy
   has_one_attached :logo
 
 

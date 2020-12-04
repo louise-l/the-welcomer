@@ -1,16 +1,21 @@
 <div class="container">
-
 	<% if current_user.role == "RH" || current_user.role == "Manager" %>
-
-		<%= simple_form_for :profile, url: company_profiles_path(current_user.company.name) do |f| %>
-		<%= f.input :first_name, input_html: { value: nil } %>
-		<%= f.input :last_name, input_html: { value: nil } %>
-		<%= f.input :email, input_html: { value: nil } %>
-		<%= f.input :job, input_html: { value: nil } %>
-		<%= f.input :role, input_html: { value: nil }, collection: ["RH", "Manager", "Newcomer","Teammate"] %>
-		<%= f.input :team_id, collection: @teams %>
-		<%= f.submit %>
-		<% end %>
+		<div class="form-with-title form-show-meeting">
+			<h2 class="text-center mb-4">Welcome an employee</h2>
+			<%= simple_form_for :profile, url: company_profiles_path(current_user.company.name) do |f| %>
+			<%= f.input :first_name, input_html: { value: nil } %>
+			<%= f.input :last_name, input_html: { value: nil } %>
+			<%= f.input :email, input_html: { value: nil } %>
+			<%= f.input :job, input_html: { value: nil } %>
+			<%= f.input :role, input_html: { value: nil }, collection: ["RH", "Manager", "Newcomer","Teammate"] %>
+			<%= f.input :team_id, collection: @teams %>
+			<div class="form-actions d-flex justify-content-center">
+			  <%= f.submit "Add an employee", class: 'btn button color-yellow' %>
+			  <%= link_to "Back", :back, class: 'btn button color-yellow ml-4' %>
+			</div>
+		
+			<% end %>
+		</div>
   <% else %>
 	  <h2 class="text-center">You can't access to this page</h2>
 	<% end %>
