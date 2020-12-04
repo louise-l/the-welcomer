@@ -23,7 +23,7 @@ class LibrariesController < ApplicationController
     if @library.save
       redirect_to company_libraries_path
     else
-      render :index
+      redirect_back(fallback_location: company_libraries_path)
     end
   end
 
