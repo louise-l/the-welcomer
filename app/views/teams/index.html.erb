@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="text-center mt-5">The company's teams :</h2>
+  <h2 class="text-center margin-top">The company's teams :</h2>
   <div class="display-index">
     <% @teams.each do |team| %>
       <%= link_to company_team_path(current_user.company.name, team.id), class: 'card-team' do  %>
