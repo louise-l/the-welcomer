@@ -7,7 +7,7 @@
             <%= link_to company_library_path(current_user.company.name, library) do  %>
               <%= cl_image_tag library.file.key, height: 100, width: 100, crop: :fill, format: :png, radius: "max", gravity: "north"%>
               <% if current_user.role == "RH" %>
-                <%= link_to company_libraries_path(@company), method: :delete do%>
+                <%= link_to company_library_path(@company, library), method: :delete do%>
                   <i class="far fa-times-circle" style='color: #353A47;'></i>
                 <% end %>
               <% end %>
@@ -37,8 +37,6 @@
         <% end %>
     </div>
   </div>
-
-
 
 
 </div>
