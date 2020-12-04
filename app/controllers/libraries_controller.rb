@@ -27,7 +27,6 @@ class LibrariesController < ApplicationController
     end
   end
 
-  # est-ce utile d'update la library ?
 
   def edit
     @library = Library.find(params[:id])
@@ -38,7 +37,10 @@ class LibrariesController < ApplicationController
   end
 
   def destroy
-    @library = Libray.find(params[:id])
+    @library = Library.find(params[:id])
+    @library.destroy
+
+    redirect_to company_libraries_path
   end
 
   private

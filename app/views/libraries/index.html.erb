@@ -6,8 +6,13 @@
           <div class="card-library color-yellow">
             <%= link_to company_library_path(current_user.company.name, library) do  %>
               <%= cl_image_tag library.file.key, height: 100, width: 100, crop: :fill, format: :png, radius: "max", gravity: "north"%>
-            <% end %>
+              <% if current_user.role == "RH" %>
+                <%= link_to company_library_path(@company, library), method: :delete do%>
+                  <i class="far fa-times-circle" style='color: #353A47;'></i>
+                <% end %>
+              <% end %>
             <h5><%= library.label %></h5>
+            <% end %>
           </div>
          <% end %>
       <% else %>
@@ -32,8 +37,6 @@
         <% end %>
     </div>
   </div>
-
-
 
 
 </div>
