@@ -13,6 +13,7 @@ def create
   @company = Company.find_by(name: params[:company_name])
   @team = Team.new(set_params_team)
   @team.user = @user
+  @team.company = current_user.company
   if @team.save
     redirect_to company_teams_path
   else

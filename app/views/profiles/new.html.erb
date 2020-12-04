@@ -8,9 +8,9 @@
 		<%= f.input :email, input_html: { value: nil } %>
 		<%= f.input :job, input_html: { value: nil } %>
 		<%= f.input :role, input_html: { value: nil }, collection: ["RH", "Manager", "Newcomer","Teammate"] %>
+		<%= f.input :team_id, collection: @teams %>
 		<%= f.submit %>
 		<% end %>
-
   <% else %>
 	  <h2 class="text-center">You can't access to this page</h2>
 	<% end %>
