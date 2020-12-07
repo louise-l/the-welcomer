@@ -105,6 +105,15 @@ ActiveRecord::Schema.define(version: 2020_12_07_151538) do
     t.index ["user_id"], name: "index_participates_on_user_id"
   end
 
+  create_table "personal_libraries", force: :cascade do |t|
+    t.string "label"
+    t.string "status", default: "Not read"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_personal_libraries_on_user_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -129,6 +138,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_151538) do
     t.text "description"
     t.bigint "company_id", null: false
     t.bigint "team_id"
+    t.date "arrival_date"
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -141,6 +151,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_151538) do
   add_foreign_key "missions", "users"
   add_foreign_key "participates", "meetings"
   add_foreign_key "participates", "users"
+  add_foreign_key "personal_libraries", "users"
   add_foreign_key "teams", "companies"
   add_foreign_key "users", "companies"
   add_foreign_key "users", "teams"

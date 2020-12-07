@@ -29,6 +29,8 @@ import "../plugins/flatpickr"
 
 // import { initSelect2 } from '../components/init_select2';
 import { picker } from "../plugins/flatpickr"
+import { pickernotime } from "../plugins/flatpickr"
+
 
 import { buttonAddFiles } from './components/hide_button'
 import { hideIcons } from './components/hide_icon'
@@ -41,7 +43,7 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
 
   picker();
-
+  pickernotime();
   buttonAddFiles();
   hideIcons();
   displayNotifs();
