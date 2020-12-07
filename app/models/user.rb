@@ -14,4 +14,6 @@ class User < ApplicationRecord
   belongs_to :company
   has_one_attached :photo
   belongs_to :team
+  # Notifications
+  has_many :notifications, as: :recipient
 end
