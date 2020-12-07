@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     patch 'notifications/:id', to: 'notifications#update', as: 'edit_notification'
     #Libraries
     resources :libraries
+    #Messagerie
+    resources :conversations, only: [:index, :show]
+    resources :messages, only: [:new, :create]
+    resources :users, only: [:index]
     # Dashboards
     resources :teams, only: [:index, :new, :create, :update, :edit, :destroy]
     get 'dashboards', to: 'dashboards#index', as: 'dashboards'

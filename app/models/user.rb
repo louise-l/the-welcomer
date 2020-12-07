@@ -11,6 +11,9 @@ class User < ApplicationRecord
   has_many :habits, dependent: :destroy
   has_many :participates, dependent: :destroy
   has_many :meetings, through: :participates
+  has_many :authored_conversations, class_name: 'Conversation', foreign_key: 'author_id'
+  has_many :received_conversations, class_name: 'Conversation', foreign_key: 'received_id'
+  has_many :messages, dependent: :destroy
   belongs_to :company
   has_one_attached :photo
   belongs_to :team
