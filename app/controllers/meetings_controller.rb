@@ -22,6 +22,7 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.new(meeting_params)
     if @meeting.save
       Participate.create(user: current_user, meeting: @meeting, owner: true)
+      MeetingNotification.with(meeting: @meeting).deliver(User.where(id: @meeting.users.ids))
       redirect_to company_meeting_path(current_user.company.name, @meeting)
     else
       render :new
@@ -35,7 +36,7 @@ class MeetingsController < ApplicationController
 
   def update
     @meeting = Meeting.find(params[:id])
-    
+
     if @meeting.update(meeting_params)
       redirect_to company_meeting_path(current_user.company.name, @meeting)
     else
@@ -43,7 +44,7 @@ class MeetingsController < ApplicationController
     end
   end
 
-  def destroy 
+  def destroy
     @meeting = Meeting.find(params[:id])
     @meeting.destroy
 
@@ -51,9 +52,8 @@ class MeetingsController < ApplicationController
   end
 
   private
-  
+
   def meeting_params
     params.require(:meeting).permit(:start_time, :end_time, :title, :description)
   end
-
 end

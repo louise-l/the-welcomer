@@ -1,0 +1,6 @@
+<div class="message d-none" data-sender-id="<%= user_id %>">
+  <p><%= message.content %></p>
+  <p class="text-right">at <strong><%= message.created_at.strftime('%Y-%m-%d %H:%M:%S') %></strong>
+  by <strong><%= message.user.first_name %> <%= message.user.last_name %></strong></p>
+</div>
+

@@ -5,8 +5,14 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :companies, param: :name, only: [:show] do
+    get 'notifications', to: 'notifications#index', as: 'notifications'
+    patch 'notifications/:id', to: 'notifications#update', as: 'edit_notification'
     #Libraries
     resources :libraries
+    #Messagerie
+    resources :conversations, only: [:index, :show]
+    resources :messages, only: [:new, :create]
+    resources :users, only: [:index]
     # Dashboards
     resources :teams, only: [:index, :new, :create, :update, :edit, :destroy]
     get 'dashboards', to: 'dashboards#index', as: 'dashboards'

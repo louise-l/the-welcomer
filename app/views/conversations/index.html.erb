@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="row">
+		<div class="col-3">
+			<h3 class="text-center mt-5">Users</h3>
+				<select onchange="location = this.value;" class="select2">
+					<option selected>Select an user</option>
+					<% @users.each do |user| %>
+						<option value=<%= new_company_message_path(current_user.company.name, receiver_id: user) %> ><%= user.first_name %> <%= user.last_name %></option>
+					<% end %>
+				</select>
+		</div>
+		<div class=col-9>
+			<h2 class="text-center mt-5">Your conversations</h2>
+
+			<div id="conversations">
+				<%= render @conversations %>
+			</div>
+		</div>
+	</div>
+	
+</div>

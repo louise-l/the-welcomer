@@ -1,0 +1,31 @@
+<div class="container">
+  <h2 class="text-center my-5">Chatting with <%= @conversation.with(current_user).first_name %> <%= @conversation.with(current_user).last_name %> </h2>
+
+  <div id="conversation-main">
+    <div id="conversation-content" data-conversation-id="<%= @conversation.id %>" data-user-id="<%= current_user.id %>">
+      <% @conversation.messages.each_with_index do |message, index| %>
+        <% if message.user == current_user %>
+          <div class = "message author" id="message-<%= index + 1 %>">
+        <% else %>
+          <div class = "message receiver" id="message-<%= index + 1 %>">
+        <% end %>
+          <p><%= message.content %></p>
+          <p class="text-right">at <strong><%= message.created_at.strftime('%Y-%m-%d %H:%M:%S') %></strong>
+            by <strong><%= message.user.first_name %> <%= message.user.last_name %></strong></p>
+        </div>
+      <% end %>
+    </div>
+
+    <%= simple_form_for [current_user.company, @chatroom, @message] do |f| %>
+      <div>
+        <%= hidden_field_tag 'conversation_id', @conversation.id %>
+        <%= f.label :content %>
+        <%= f.text_area :content, class:"w-100" %>
+      </div>
+      <div class="form-actions d-flex justify-content-center mt-3">
+        <%= f.submit "Send Message", class: "btn button color-yellow" %>
+        <%= link_to "Conversations", company_conversations_path(current_user.company.name), class:"button color-yellow ml-3" %>
+      </div>
+    <% end %>
+  </div>
+</div>

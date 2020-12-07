@@ -1,0 +1,14 @@
+
+<div class="container">
+  <h2 class="text-center my-5">New message to <%= @receiver.first_name %> <%= @receiver.last_name %></h2>
+  <%= simple_form_for [current_user.company, @message] do |f| %>
+    <%= hidden_field_tag 'receiver_id', @receiver.id %>
+
+    <%= f.label :content %>
+    <%= f.text_area :content, class:"w-100" %>
+    <div class="form-actions d-flex justify-content-center mt-3">
+      <%= f.submit "Send Message", class: "btn button color-yellow" %>
+      <%= link_to "Conversations", company_conversations_path(current_user.company.name), class:"button color-yellow ml-3" %>
+    </div>
+  <% end %>
+</div>
