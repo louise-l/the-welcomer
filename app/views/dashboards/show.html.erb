@@ -24,6 +24,10 @@
         <div class="progress">
           <div class="progress-bar bg-yellow" role="progressbar" style="width: <%="#{@user.progression}%"%>;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><%= @user.progression %>%</div>
         </div>
+        <br>
+        <div>
+          <%= link_to "Change the status", company_edit_user_role_path(@company, @user), class: 'button color-yellow text-center' %>
+        </div>
       <% end %>
     </div>
 
