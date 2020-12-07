@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  skip_after_action :verify_authorized, only: [:new, :create]
+  skip_after_action :verify_authorized, only: [:new, :create, :edit,:update]
 
   def new
     @teams = current_user.company.teams.map{ |team| team.name }
@@ -17,6 +17,25 @@ class ProfilesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @user = User.find(params[:user_id])
+    @company = @user.company
+    @role = @user.role
+  end
+
+    def update
+      raise
+    @user = User.find(params[:user][:user_id])
+    if @user.update(profile_params)
+      redirect_to company_dashboards_path
+    else
+      render :edit
+    end
+  end
+
+  def show
   end
 
   private

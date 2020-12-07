@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     delete '/users/:user_id/habits/:id', to: 'habits#destroy'
     #Teams
     resources :teams, only: [:index, :new, :create, :update, :edit, :destroy,:show]
+
     #Personal Libraries
     get 'personal_libraries/:user_id', to: 'personal_libraries#index', as: 'personal_libraries'
     get 'personal_libraries/:user_id/:id', to: 'personal_libraries#show', as: 'personal_library'
@@ -44,11 +45,19 @@ Rails.application.routes.draw do
     patch 'personal_libraries/:user_id/:id', to: 'personal_libraries#update'
     delete 'personal_libraries/:user_id/:id', to: 'personal_libraries#destroy'
 
+    #profiles status
+    get '/users/:id', to: 'profiles#show', as: 'user'
+    get '/users/:user_id/role/edit', to: 'profiles#edit', as: 'edit_user_role'
+    patch '/users/:user_id', to: 'profiles#update', as: 'company_user_path'
+
+
     #Profiles
     resources :profiles, only: [:new, :create]
     resources :meetings do
       resources :participates, only: [:new, :create, :destroy, :show]
     end
+
+
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
