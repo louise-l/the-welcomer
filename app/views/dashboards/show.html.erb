@@ -215,9 +215,12 @@
 
     <!-- Documents -->
     <div class='documents-section card-dashboard'>
-      <h2>Documents</h2>
-      <%= link_to "documents", company_personal_libraries_path(@company, @user) %>
-      <p>Work in progress. Ready next Friday.</p>
+      <%= link_to company_personal_libraries_path(@company, @user) do %>
+        <h2>Documents</h2>
+      <% end %>
+      <%@personal_libraries.each do |library| %>
+      <p> <%= library.label %> : <%= library.status %></p>
+      <% end %>
     </div>
 
     <!-- Chat -->
