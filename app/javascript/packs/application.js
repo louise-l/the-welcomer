@@ -28,11 +28,16 @@ import "../plugins/flatpickr"
 // Internal imports, e.g:
 
 // import { initSelect2 } from '../components/init_select2';
+
 import { picker } from '../plugins/flatpickr'
 import { anchor } from '../plugins/anchor'
 import { buttonAddFiles } from './components/hide_button'
 import { hideIcons } from './components/hide_icon'
 import { initConversationCable } from '../channels/conversation_channel'
+
+import { pickernotime } from "../plugins/flatpickr"
+import { hideIcons } from './components/hide_icon'
+import { displayNotifs } from './components/notifications_display'
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -46,4 +51,6 @@ document.addEventListener('turbolinks:load', () => {
   hideIcons();
   initConversationCable();
 
+  pickernotime();
+  displayNotifs();
 });

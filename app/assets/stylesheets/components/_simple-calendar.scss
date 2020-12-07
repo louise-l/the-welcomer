@@ -2,10 +2,23 @@
   .day {
       font-size: 14px;
       color: $charcoal;
+      border: 0.3px solid rgba(220,220,220,0.3);
+      border-bottom: none;
   }
 
-//   .wday-0 {}
-//   .wday-1 {}
+
+  .table {
+    border: none;
+  }
+
+.wday-0 {
+  border-right: none;
+}
+
+.wday-1 {
+  border-left: none;
+}
+
 //   .wday-2 {}
 //   .wday-3 {}
 //   .wday-4 {}
@@ -17,19 +30,32 @@
 
   // .start-date {}
 
+  #Monday {
+    border-top-left-radius: 10px;
+  }
+
+  #Sunday {
+    border-top-right-radius: 10px;
+  }
+
+  th {
+    border: none;
+  }
+
   .prev-month {
-    background-color: $charcoal;
+    background-color: rgba(220,220,220,0.3);
     color: white;
   }
-  .next-month { 
-    background-color:$charcoal;
+  .next-month {
+    background-color:rgba(220,220,220,0.3);
     color: white;
   }
   .current-month {
     background-color: white;
   }
   .today {
-    background-color: $orange-soda;
+    background-color: $fire;
+    opacity: 0.4;
     color: white;
   }
 
@@ -37,10 +63,11 @@
 }
 
 .days {
-  background-color: $sun-yellow;
+  background-color: $fire;
   color: white;
   font-weight: lighter;
-  
+  border: none;
+
 }
 
 .link-into-calendar {
@@ -75,4 +102,5 @@
 
 .month-name {
   font-size: 22px;
+  font-weight: lighter;
 }

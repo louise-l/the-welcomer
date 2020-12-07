@@ -1,0 +1,60 @@
+<div class="container">
+  <h1>Personal library of <%= @user.first_name + " " + @user.last_name %></h1>
+  <div class="layout-library white-card">
+      <% if @personal_libraries.exists? %>
+        <% @personal_libraries.each do |library| %>
+        <div class="container-personal-library">
+          <div class="card-personal-library color-yellow">
+            <%= link_to company_personal_library_path(current_user.company.name, @user.id, library) do  %>
+              <%= cl_image_tag library.file.key, height: 100, width: 100, crop: :fill, format: :png, radius: "max", gravity: "north"%>
+              <% if current_user.role == "RH" || "Newcomer"%>
+                <%= link_to company_personal_library_path(current_user.company.name, @user.id, library), method: :delete, data: { confirm: "Are you sure you want to delete this document?"} do%>
+                  <i class="far fa-times-circle" style='color: #353A47;'></i>
+                <% end %>
+              <% end %>
+            <h5><%= library.label %></h5>
+            <% end %>
+          </div>
+          <% if current_user.role == "RH" || "Newcomer"%>
+            <%= link_to company_edit_personal_library_path(current_user.company.name, @user.id, library) do   %>
+              <% if library.status == "Not read" %>
+                  <p class='mr-3 tag-alert'> <%= library.status%></p>
+              <% elsif library.status == "Read" %>
+                  <p class='mr-3 tag-progress'> <%= library.status%></p>
+              <% else %>
+                  <p class='mr-3 tag-understood'> <%= library.status%></p>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+         <% end %>
+      <% else %>
+        <% if current_user.role == "RH" %>
+          <p>The library is empty ! Start uploading documents </p>
+        <% else %>
+          <p>The library is empty !</p>
+        <% end %>
+      <% end %>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <div class="form-box d-flex justify-content-center">
+      <% if current_user.role == "RH" || "Newcomer" %>
+      <div class="button color-fire" id="addfile">Add a file</div>
+      <% end %>
+
+      <div class="d-none" id="tohide">
+          <%= simple_form_for [@company, @user, @personal_library], url: company_personal_libraries_path do |f|%>
+          <%= f.input :label, label: "Title of the document" %>
+          <%= f.input :file, as: :file, label: false%>
+          <div class="d-flex justify-content-center">
+            <%= f.submit"Add", class: "button color-fire", id:"submit-button" %>
+          </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+

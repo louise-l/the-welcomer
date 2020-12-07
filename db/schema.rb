@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_07_093714) do
+
+ActiveRecord::Schema.define(version: 2020_12_07_151538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +100,22 @@ ActiveRecord::Schema.define(version: 2020_12_07_093714) do
     t.index ["user_id"], name: "index_missions_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.bigint "recipient_id", null: false
+    t.string "type", null: false
+    t.jsonb "params"
+    t.datetime "read_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "seen", default: false
+    t.string "notifiable_type", null: false
+    t.bigint "notifiable_id", null: false
+    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient_type_and_recipient_id"
+  end
+
   create_table "participates", force: :cascade do |t|
     t.bigint "meeting_id", null: false
     t.bigint "user_id", null: false
@@ -107,6 +124,15 @@ ActiveRecord::Schema.define(version: 2020_12_07_093714) do
     t.boolean "owner"
     t.index ["meeting_id"], name: "index_participates_on_meeting_id"
     t.index ["user_id"], name: "index_participates_on_user_id"
+  end
+
+  create_table "personal_libraries", force: :cascade do |t|
+    t.string "label"
+    t.string "status", default: "Not read"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_personal_libraries_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -133,6 +159,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_093714) do
     t.text "description"
     t.bigint "company_id", null: false
     t.bigint "team_id"
+    t.date "arrival_date"
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -147,6 +174,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_093714) do
   add_foreign_key "missions", "users"
   add_foreign_key "participates", "meetings"
   add_foreign_key "participates", "users"
+  add_foreign_key "personal_libraries", "users"
   add_foreign_key "teams", "companies"
   add_foreign_key "users", "companies"
   add_foreign_key "users", "teams"

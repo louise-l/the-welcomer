@@ -12,9 +12,11 @@ class ParticipatesController < ApplicationController
 			@user = current_user.company.users[@index_user]
 			if @meeting_participates.include?(@user)
 				flash[:alert] = "#{@fullname} est déjà inscrit dans la réunion"
+        MeetingNotification.with(meeting: @meeting).deliver(User.where(id: @participate.user_id))
 				redirect_to company_meeting_path(current_user.company.name, @meeting)
 			else
 				@participate = Participate.create(user: @user, meeting: @meeting, owner: false)
+        MeetingNotification.with(meeting: @meeting).deliver(User.where(id: @participate.user_id))
 				redirect_to company_meeting_path(current_user.company.name, @meeting)
 			end
 		else
@@ -29,6 +31,7 @@ class ParticipatesController < ApplicationController
 					@participate = Participate.create(user: user, meeting: @meeting, owner: false)
 				end
 			end
+      MeetingNotification.with(meeting: @meeting).deliver(User.where(id: @participate.user_id))
 			redirect_to company_meeting_path(current_user.company.name, @meeting)
 		end
 	end

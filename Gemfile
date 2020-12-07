@@ -39,6 +39,7 @@ gem 'letter_opener', group: :development
 
 gem 'flatpickr'
 gem 'cloudinary', '~> 1.16.0'
+gem 'noticed'
 
 
 group :development, :test do  gem 'pry-byebug'

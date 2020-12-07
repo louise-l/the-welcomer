@@ -1,0 +1,15 @@
+<div class="container">
+  <% if current_user.role == 'Newcomer' || "RH" %>
+    <div class="form">
+      <h2>Edit <%= @user.first_name %>'s document </h2>
+      <p><%= @personal_library.label %></p>
+      <%= simple_form_for [@company, @user, @personal_library], url: company_personal_library_path do |f| %>
+        <%= f.input :label %>
+        <%= f.input :status , collection: ["Not read", "Read", "Signed"]%>
+        <%= f.button :submit, class: 'button color-yellow' %>
+      <% end %>
+    </div>
+  <% else %>
+    <p>HI</p>
+  <% end %>
+</div>
