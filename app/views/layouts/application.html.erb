@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TheWelcomer</title>
+    <title>The Welcomer</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= favicon_link_tag 'https://res.cloudinary.com/dsaxkp6xo/image/upload/v1607366241/logo_welcomer_zogh93.png' %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
@@ -13,7 +13,11 @@
 
   <body <%= "data-no-turbolinks='true'".html_safe if controller_name=="conversations" && action_name=="show" %>>
     <!-- Faire les IF pour la navbar une fois que le front sera codé -->
-    <%= render 'shared/navbar' %>
+    <% if controller_name == "pages" %>
+      <%= render 'shared/navbar_home' %>
+    <% else %>
+      <%= render 'shared/navbar' %>
+    <% end %>
     <%= render 'shared/flashes' %>
     
     <%= yield %>

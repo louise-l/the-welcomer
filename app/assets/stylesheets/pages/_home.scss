@@ -1,19 +1,44 @@
 // Specific CSS for your home-page
 
+body{
+  margin-top:0 !important;
+}
+
+.home-navbar{
+  position:sticky;
+  top:30px;
+  height:56px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  vertical-align: top;
+  z-index: 1;
+
+}
 header{
   background-size: cover;
   background-position: center;
   padding: 150px 0;
   position: relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
   top: -60px;
-  height: 550px;
-  background-image: linear-gradient(rgba($charcoal,.1),rgba($charcoal,.1)),url(https://res.cloudinary.com/devnkcikq/image/upload/v1606816656/image_banner_p6pcms.png);
+  height: 100vh;
+  background-color: $sun-yellow;
+  // background-image: linear-gradient(rgba($charcoal,.1),rgba($charcoal,.1)),url(https://res.cloudinary.com/devnkcikq/image/upload/v1606816656/image_banner_p6pcms.png);
   text-align:center;
   h1{
     font-weight: bolder;
+    font-size: 72px;
+    margin-bottom: 50px;
   }
 }
 
+.highlight-text{
+  text-shadow: 5px 5px 2px $ocean-blue;
+}
 
 .presentation{
   margin:20px 0;
@@ -58,9 +83,41 @@ section{
   text-align: center;
   h2{
     margin: 50px;
+    span{
+      color:$fire;
+    }
+    i{
+      font-size: 12px;
+    }
   }
 }
 
+#arrow-homepage{
+  position:absolute;
+  bottom: -50px;
+  height:100px;
+  width:100px;
+  margin: 0 46.5%;
+  border: 0.5px #F1F2F4 solid;
+  text-align: center;
+  padding:20px;
+  background-color: $cloud;
+  border-radius: 50%
+}
 
+.title-homepage{
+  position:absolute;
+  top:40px;
+  left: 40px;
+  font-size: 32px;
+  color: $fire;
+  font-family: 'Cutive', serif;
+  i{
+    font-size: 12px;
+  }
+}
 
+.rounded-corners{
+  border-radius: 30% 10px;
+}
 
