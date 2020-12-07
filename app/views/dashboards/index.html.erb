@@ -46,10 +46,17 @@
                 </div>
                 <div class='text'>
                   <h2> <%= user.first_name + " " + user.last_name %> </h2>
-
-                  <p> <%= user.email %> </p>
                   <p> <%= user.job %> </p>
                   <p> <%= user.arrives_in %></p>
+                  <% if user.progression == 100 %>
+                  <div class="progress large">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: <%="#{user.progression}%"%>;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><%= user.progression %>%</div>
+                  </div>
+                <% else %>
+                  <div class="progress large">
+                    <div class="progress-bar bg-yellow" role="progressbar" style="width: <%="#{user.progression}%"%>;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><%= user.progression %>%</div>
+                  </div>
+                <% end %>
                 </div>
               <% end %>
             <% end %>
