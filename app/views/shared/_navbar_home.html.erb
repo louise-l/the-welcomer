@@ -1,0 +1,15 @@
+<div class="home-navbar">
+    <% if user_signed_in? %>
+      <% if current_user.photo.attachment%>
+        <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle avatar-bordered m-3", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+      <% else %>
+        <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar dropdown-toggle avatar-bordered", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% end %>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <%= link_to "My account", edit_user_registration_path, class: "dropdown-item" %>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+      </div>
+    <% else %>
+      <%= link_to 'Log in', new_user_session_path, class: 'button-navbar m-2'  %>
+    <% end %>
+</div>

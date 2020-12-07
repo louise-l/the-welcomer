@@ -1,15 +1,18 @@
 footer{
   margin-top: 50px;
-  background-color: $charcoal;
-  height:100px;
   display: flex;
   justify-content:center;
-  align-items:center;
+  background-image: url(https://res.cloudinary.com/dsaxkp6xo/image/upload/v1607358096/Group_1_rlxypy.png);
+  background-size:cover;
+  background-position: center;
+  height:70vh;
+  align-items:flex-end;
   a{
     color:$cloud;
     text-decoration: none;
     font-size: 24px;
     margin: 0 10px;
+    padding-bottom: 100px;
     &:hover{
       color: $ocean-blue;
     }
