@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_07_090046) do
+ActiveRecord::Schema.define(version: 2020_12_07_111334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,15 @@ ActiveRecord::Schema.define(version: 2020_12_07_090046) do
     t.index ["user_id"], name: "index_participates_on_user_id"
   end
 
+  create_table "personal_libraries", force: :cascade do |t|
+    t.string "label"
+    t.string "status", default: "Not read"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_personal_libraries_on_user_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -126,6 +135,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_090046) do
   add_foreign_key "missions", "users"
   add_foreign_key "participates", "meetings"
   add_foreign_key "participates", "users"
+  add_foreign_key "personal_libraries", "users"
   add_foreign_key "teams", "companies"
   add_foreign_key "users", "companies"
   add_foreign_key "users", "teams"
