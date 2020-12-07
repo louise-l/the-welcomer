@@ -25,9 +25,8 @@ class ProfilesController < ApplicationController
     @role = @user.role
   end
 
-    def update
-      raise
-    @user = User.find(params[:user][:user_id])
+  def update
+    @user = User.find(params[:user_id])
     if @user.update(profile_params)
       redirect_to company_dashboards_path
     else
@@ -41,6 +40,6 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :role, :email, :job, :team, :arrival_date)
+    params.require(:user).permit(:first_name, :last_name, :role, :email, :job, :team, :arrival_date)
   end
 end

@@ -46,13 +46,13 @@ Rails.application.routes.draw do
     delete 'personal_libraries/:user_id/:id', to: 'personal_libraries#destroy'
 
     #profiles status
-    get '/users/:id', to: 'profiles#show', as: 'user'
+    resources :profiles, only: [:new, :create]
     get '/users/:user_id/role/edit', to: 'profiles#edit', as: 'edit_user_role'
     patch '/users/:user_id', to: 'profiles#update', as: 'company_user_path'
+    get '/users/:id', to: 'profiles#show', as: 'user'
 
 
     #Profiles
-    resources :profiles, only: [:new, :create]
     resources :meetings do
       resources :participates, only: [:new, :create, :destroy, :show]
     end
