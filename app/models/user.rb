@@ -15,12 +15,22 @@ class User < ApplicationRecord
   has_one_attached :photo
   belongs_to :team
 
-  def arrives_in
-    days_until_arrival = (arrival_date - Date.today).to_i
-    if days_until_arrival.positive?
-      "Arrives in #{days_until_arrival} days"
+    def arrives_in
+      days_until_arrival = (arrival_date - Date.today).to_i
+      if days_until_arrival.positive?
+        "Arrives in #{days_until_arrival} days"
+      else
+        "Arrived since #{- days_until_arrival} days"
+      end
+   end
+
+  def progression
+  @sum_mastered = self.missions.where(status: "Mastered").count + self.habits.where(status: "Mastered").count
+  @sum_missions = self.missions.count + self.habits.count
+    if @sum_mastered == 0
+      @average = 0
     else
-      "Arrived since #{- days_until_arrival} days"
+      @average = ((@sum_mastered.to_f / @sum_missions.to_f) * 100).round
     end
   end
 end
