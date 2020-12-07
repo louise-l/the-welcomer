@@ -50,3 +50,52 @@
     opacity: 0.8;
   }
 }
+
+// Notifications
+
+.bell-class {
+  color: $sun-yellow;
+  position: relative;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
+
+.red-circle {
+  height: 13px;
+  width: 13px;
+  background-color: $fire;
+  font-size: 8px;
+  color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 12px;
+  right: 65px;
+  text-align: center;
+  padding-top: 1px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.icon-calendar {
+  color: $sun-yellow;
+  &:hover {
+    color: $sun-yellow;
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
+#notifications-dropdown {
+  position: absolute;
+  top: 58px;
+  right: 60px;
+  padding-right: 20px;
+  padding-left: 20px;
+  display: flex;
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid rgb(220,220,220);
+}

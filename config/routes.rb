@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :companies, param: :name, only: [:show] do
+    get 'notifications', to: 'notifications#index', as: 'notifications'
+    patch 'notifications/:id', to: 'notifications#update', as: 'edit_notification'
     #Libraries
     resources :libraries
     # Dashboards

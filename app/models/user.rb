@@ -14,6 +14,8 @@ class User < ApplicationRecord
   belongs_to :company
   has_one_attached :photo
   belongs_to :team
+  # Notifications
+  has_many :notifications, as: :recipient
   has_many :libraries, dependent: :destroy
 
     def arrives_in

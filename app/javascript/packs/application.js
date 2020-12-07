@@ -34,6 +34,8 @@ import { pickernotime } from "../plugins/flatpickr"
 
 import { buttonAddFiles } from './components/hide_button'
 import { hideIcons } from './components/hide_icon'
+import { displayNotifs } from './components/notifications_display'
+import { readNotifs } from './components/notifications_read'
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -44,5 +46,5 @@ document.addEventListener('turbolinks:load', () => {
   pickernotime();
   buttonAddFiles();
   hideIcons();
-
+  displayNotifs();
 });
