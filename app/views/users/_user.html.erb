@@ -1,0 +1,3 @@
+<li class="list-unstyled">
+  <%= user.first_name %> <%= user.last_name %> | <%= link_to 'Send a message', new_company_message_path(current_user.company.name, receiver_id: user) %>
+</li>

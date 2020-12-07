@@ -1,0 +1,8 @@
+<div>
+  Chatting with <%= conversation.with(current_user).first_name %> <%= conversation.with(current_user).last_name %>
+  <br>
+  Last Message : <em><%= conversation.messages.last.content.truncate(50) %></em>
+  <br>
+  <p class="text-right"> <%= link_to 'View conversation', company_conversation_path(current_user.company.name, conversation, anchor: "message-#{conversation.messages.size}"), class:"button color-yellow text-right" %> </p>
+  <hr>
+</div>
