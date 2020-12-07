@@ -14,6 +14,7 @@ class DashboardsController < ApplicationController
     @meetings = Meeting.all.order(:start_time).select { |meeting| meeting.users.include?(current_user)}.select do |meeting|
       meeting.start_time.strftime("%d") == Time.now.strftime("%d")
     end
+
     @sum_mastered = Mission.where(status: "Mastered").count + Habit.where(status: "Mastered").count
     @sum_missions = Mission.count + Habit.count
     if @sum_mastered == 0
@@ -22,4 +23,6 @@ class DashboardsController < ApplicationController
       @average = ((@sum_mastered.to_f / @sum_missions.to_f) * 100).round
     end
     end
+
+  end
 end
