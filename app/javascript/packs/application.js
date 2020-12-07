@@ -36,7 +36,6 @@ import { hideIcons } from './components/hide_icon'
 import { initConversationCable } from '../channels/conversation_channel'
 
 import { pickernotime } from "../plugins/flatpickr"
-import { hideIcons } from './components/hide_icon'
 import { displayNotifs } from './components/notifications_display'
 
 
