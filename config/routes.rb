@@ -29,9 +29,18 @@ Rails.application.routes.draw do
     delete '/users/:user_id/habits/:id', to: 'habits#destroy'
     #Teams
     resources :teams, only: [:index, :new, :create, :update, :edit, :destroy,:show]
+    #Personal Libraries
+    get 'personal_libraries/:user_id', to: 'personal_libraries#index', as: 'personal_libraries'
+    get 'personal_libraries/:user_id/:id', to: 'personal_libraries#show', as: 'personal_library'
+    post 'personal_libraries/:user_id', to: 'personal_libraries#create'
+    get 'personal_libraries/:user_id/new', to: 'personal_libraries#new', as: 'new_personal_library'
+    get 'personal_libraries/:user_id/:id/edit', to: 'personal_libraries#edit', as: 'edit_personal_library'
+    patch 'personal_libraries/:user_id/:id', to: 'personal_libraries#update'
+    delete 'personal_libraries/:user_id/:id', to: 'personal_libraries#destroy'
+
     #Profiles
     resources :profiles, only: [:new, :create]
-    resources :meetings do 
+    resources :meetings do
       resources :participates, only: [:new, :create, :destroy, :show]
     end
   end
