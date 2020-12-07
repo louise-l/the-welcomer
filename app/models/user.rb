@@ -14,4 +14,13 @@ class User < ApplicationRecord
   belongs_to :company
   has_one_attached :photo
   belongs_to :team
+
+  def arrives_in
+    days_until_arrival = (arrival_date - Date.today).to_i
+    if days_until_arrival.positive?
+      "Arrives in #{days_until_arrival} days"
+    else
+      "Arrived since #{- days_until_arrival} days"
+    end
+  end
 end

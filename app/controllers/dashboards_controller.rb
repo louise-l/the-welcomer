@@ -15,4 +15,5 @@ class DashboardsController < ApplicationController
       meeting.start_time.strftime("%d") == Time.now.strftime("%d")
     end
   end
+
 end

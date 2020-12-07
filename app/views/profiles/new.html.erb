@@ -8,12 +8,13 @@
 			<%= f.input :email, input_html: { value: nil } %>
 			<%= f.input :job, input_html: { value: nil } %>
 			<%= f.input :role, input_html: { value: nil }, collection: ["RH", "Manager", "Newcomer","Teammate"] %>
+      <%= f.input :arrival_date, as: :string, input_html: { class: "datepickernotime" } %>
 			<%= f.input :team_id, collection: @teams %>
 			<div class="form-actions d-flex justify-content-center">
 			  <%= f.submit "Add an employee", class: 'btn button color-yellow' %>
 			  <%= link_to "Back", :back, class: 'btn button color-yellow ml-4' %>
 			</div>
-		
+
 			<% end %>
 		</div>
   <% else %>
