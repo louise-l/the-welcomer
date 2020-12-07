@@ -24,6 +24,16 @@
   background:$fire;
 }
 
+.color-fire-font{
+  color:$fire;
+  font-size: 20px;
+  font-weight: bolder;
+  &:hover {
+    color:$fire;
+    opacity: 0.8;
+  }
+}
+
 .color-orange-soda {
   background: $orange-soda
 }
