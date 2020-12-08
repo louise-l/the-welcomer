@@ -27,8 +27,7 @@ import "../plugins/flatpickr"
 
 // Internal imports, e.g:
 
-// import { initSelect2 } from '../components/init_select2';
-
+import { initSelect2 } from '../plugins/init_select2';
 import { picker } from '../plugins/flatpickr'
 import { anchor } from '../plugins/anchor'
 import { buttonAddFiles } from './components/hide_button'
@@ -49,7 +48,7 @@ document.addEventListener('turbolinks:load', () => {
   buttonAddFiles();
   hideIcons();
   initConversationCable();
-
+  initSelect2();
   pickernotime();
   displayNotifs();
 });

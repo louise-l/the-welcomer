@@ -29,7 +29,7 @@
 		<h3 class="mb-4">Participates :</h3>
 			<div class="row">
 				<% @meeting.participates.each do |participate|%>
-					<div class="col-4"> 
+					<div class="col-4">
 						<%= participate.user.first_name %> <%= participate.user.last_name %>
 						<%= link_to company_meeting_participate_path(current_user.company.name, @meeting, participate), method: :delete do %>
 							<i class="fas fa-user-times"></i>
@@ -40,12 +40,13 @@
 	</div>
 
 	<div class="form-with-title form-show-meeting">
-	  <h2 class="text-center mb-4">Ajouter un participant</h3>
-		<%= simple_form_for :name, url:  company_meeting_participates_path(current_user.company.name, @meeting) do |f| %>
-		<%= f.input :participate, label: "Participant", collection: current_user.company.full_name, input_html: { multiple: true } %>
+	  <h2 class="text-center mb-4">Add participants</h2>
+    <div class="d-flex justify-content-center">
+  		<%= simple_form_for :name, url:  company_meeting_participates_path(current_user.company.name, @meeting), remote: true do |f| %>
+  		<%= f.input :participate, label: false, collection: current_user.company.full_name, input_html: {multiple: 'multiple', hidden: true, class: 'js-example-basic-multiple', style: 'width: 500px;'} %>
+    </div>
 		<div class="form-actions d-flex justify-content-center">
 		  <%= f.submit "Ajouter un participant", class: "btn button color-yellow" %>
 		</div>
 		<% end %>
 	</div>
-</div>
