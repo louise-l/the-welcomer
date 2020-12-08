@@ -8,7 +8,7 @@
             <%= link_to company_personal_library_path(current_user.company.name, @user.id, library) do  %>
               <%= cl_image_tag library.file.key, height: 100, width: 100, crop: :fill, format: :png, radius: "max", gravity: "north"%>
               <% if current_user.role == "RH" || "Newcomer"%>
-                <%= link_to company_personal_library_path(current_user.company.name, @user.id, library), method: :delete, data: { confirm: "Are you sure you want to delete this document?"} do%>
+                <%= link_to company_personal_library_path(current_user.company.name, @user.id, library), method: :delete, data: { confirm: 'Are you sure?' }  do%>
                   <i class="far fa-times-circle" style='color: #353A47;'></i>
                 <% end %>
               <% end %>

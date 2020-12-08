@@ -35,7 +35,10 @@ class MissionsController < ApplicationController
     @user = User.find(params[:user_id])
     @company = @user.company.name
     @mission = Mission.find(params[:id])
-    if @mission.update(set_params_mission)
+    if current_user == @user && @mission.update(set_params_mission)
+      HelpNotification.with(mission_change: @mission).deliver(User.where(team: @user.team, role: 'Manager'))
+      redirect_to company_dashboard_path(@company, @user)
+    elsif @mission.update(set_params_mission)
       redirect_to company_dashboard_path(@company, @user)
     else
       render :edit
@@ -49,7 +52,6 @@ class MissionsController < ApplicationController
     @mission.destroy
     redirect_to company_dashboard_path(@company, @user)
   end
-
 
   private
 
