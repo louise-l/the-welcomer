@@ -113,7 +113,7 @@
               <% elsif notif.type == "NewProfileNotification" %>
                 <i class="fas fa-user-check mr-2"></i>
               <% else %>
-                <i class="far fa-file-alt mr_2"></i>
+                <i class="far fa-file-alt mr-2"></i>
               <% end %>
               <%= link_to notif.to_notification.message, notif.to_notification.url, method: :patch, class: 'icon-calendar'  %>
             </p>

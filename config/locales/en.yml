@@ -44,3 +44,6 @@ en:
     new_profile_notification:
       message:
         "%{name} just joined your team"
+    help_notification:
+      message:
+        "%{name} has change a mission status to \"%{status}\""
