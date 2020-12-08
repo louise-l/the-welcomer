@@ -28,7 +28,7 @@ class ProfilesController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     if @user.update(profile_params)
-      redirect_to company_dashboards_path
+      redirect_to company_dashboard_path
     else
       render :edit
     end
