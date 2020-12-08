@@ -16,7 +16,7 @@
       <% end %>
     </div>
 
-    <%= simple_form_for [current_user.company, @chatroom, @message] do |f| %>
+    <%= simple_form_for [current_user.company, @chatroom, @message], remote: true do |f| %>
       <div>
         <%= hidden_field_tag 'conversation_id', @conversation.id %>
         <%= f.label :content %>
