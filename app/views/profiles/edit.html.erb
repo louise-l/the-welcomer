@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="form">
+      <h2>Edit my statut </h2>
+      <%= simple_form_for [@company, @user] do |f| %>
+      <%= f.input :role, collection: ["Newcomer", "Teammate", "Manager", "RH"] %>
+      <%= f.submit "Update Role", class:"btn button color-yellow" %>
+      <% end %>
+    </div>
+</div>
