@@ -87,10 +87,24 @@
   }
 }
 
+.notif-title {
+  font-size: 24px;
+  color: $sun-yellow !important;
+}
+
 .icon-calendar {
   color: $sun-yellow;
   &:hover {
     color: $sun-yellow;
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
+.seen-icon {
+  color: rgb(175,175,175);
+  &:hover {
+    color: rgb(175,175,175);
     opacity: 0.8;
     cursor: pointer;
   }

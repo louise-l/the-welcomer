@@ -101,18 +101,27 @@
     </div>
     <div class='d-none' id='notifications-dropdown'>
       <div class ='mt-3'>
+        <h2 class='notif-title'> Notifications</h2>
         <% if current_user.notifications.count == 0 %>
           <p>No notifications, yet!</p>
         <% else %>
-          <% current_user.notifications.each do |notif| %>
+          <% current_user.notifications.sort_by { |notifi| notifi.seen ? 1 : 0 }.each do |notif| %>
             <% if notif.seen %>
-              <p>
-                <i class="far fa-calendar mr-2"></i>
-                <%= link_to notif.to_notification.message, notif.to_notification.url, method: :patch %>
+              <p class='seen-icon'>
+                <% if notif.type == "MeetingNotification" %>
+                  <i class="far fa-calendar mr-2"></i>
+                <% else %>
+                  <i class="far fa-file-alt"></i>
+                <% end %>
+                <%= link_to notif.to_notification.message, notif.to_notification.url, method: :patch, class: 'seen-icon' %>
               </p>
             <% else %>
               <p class='icon-calendar'>
-                <i class="far fa-calendar mr-2"></i>
+                <% if notif.type == "MeetingNotification" %>
+                  <i class="far fa-calendar mr-2"></i>
+                <% else %>
+                  <i class="far fa-file-alt"></i>
+                <% end %>
                 <%= link_to notif.to_notification.message, notif.to_notification.url, method: :patch, class: 'icon-calendar'  %>
               </p>
             <% end %>
