@@ -19,6 +19,7 @@ class MeetingsController < ApplicationController
   end
 
   def create
+    @company = current_user.company
     @meeting = Meeting.new(meeting_params)
     if @meeting.save
       Participate.create(user: current_user, meeting: @meeting, owner: true)
