@@ -8,10 +8,13 @@ const initConversationCable = () => {
 
     consumer.subscriptions.create({ channel: "ConversationChannel", id: id }, {
       received(data) {
+        console.log("1ère partie-----------------------------")
+        console.log(lastMessage);
+        console.log("-----------------------------")
         const currentUserId = messagesContainer.dataset.userId
         messagesContainer.insertAdjacentHTML('beforeend', data);
         const messages = document.querySelectorAll('.message');
-        const lastMessage = messages[messages.length - 1];
+        let lastMessage = messages[messages.length - 1];
         console.log(lastMessage);
         const senderId = lastMessage.dataset.senderId;
         if (senderId === currentUserId) {
