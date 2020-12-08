@@ -14,6 +14,7 @@ class MeetingsController < ApplicationController
   end
 
   def new
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
     @meeting = Meeting.new
     @company = current_user.company
   end
