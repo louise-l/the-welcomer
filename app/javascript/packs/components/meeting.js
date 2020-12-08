@@ -3,10 +3,10 @@ const hideButtons = () => {
   if (meetingsDays) {
     meetingsDays.forEach((day) => {
       day.addEventListener("mouseover", (event) => {
-        day.children[0].classList.remove("d-none")
+        day.children[1].classList.remove("d-none")
       })
       day.addEventListener("mouseleave", (event) => {
-        day.children[0].classList.add("d-none")
+        day.children[1].classList.add("d-none")
       })
 
     });
