@@ -17,9 +17,10 @@ class User < ApplicationRecord
   belongs_to :company
   has_one_attached :photo
   belongs_to :team
-  # Notifications
-  has_many :notifications, as: :recipient
   has_many :libraries, dependent: :destroy
+  # Notifications
+  # has_many :notifications, as: :notifiable, dependent: :destroy
+  has_many :notifications, as: :recipient
 
     def arrives_in
       days_until_arrival = (arrival_date - Date.today).to_i
