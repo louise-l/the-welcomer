@@ -15,10 +15,22 @@
     <% if controller_name == "pages" %>
       <%= render 'shared/navbar_home' %>
     <% else %>
-      <%= render 'shared/navbar' %>
+      <% if controller_name != "conversations" %>
+        <%= render 'shared/navbar' %>
+      <% end %>
     <% end %>
     <%= render 'shared/flashes' %>
 
-    <%= yield %>
+    <div id="grid">
+      <div id="yield-page">
+        <%= yield %>
+      </div>
+      <% if user_signed_in? %>
+        <%= render 'shared/conversations' %>
+      <% end %>
+    </div>
+    <% if controller_name != "conversations" %>
+      <i class="fas fa-comment"></i>
+    <% end %>
   </body>
 </html>

@@ -10,7 +10,16 @@ Rails.application.routes.draw do
     #Libraries
     resources :libraries
     #Messagerie
-    resources :conversations, only: [:index, :show]
+    
+    get '/conversations', to: 'conversations#index', as: 'conversations'
+    get '/conversations/window/:name', to: 'conversations#window', as: 'window'
+    get '/conversations/:id', to: 'conversations#show', as: 'conversation'
+
+
+    # company_conversations GET    /companies/:company_name/conversations(.:format)                                         conversations#index
+    # company_conversation GET    /companies/:company_name/conversations/:id(.:format)                                     conversations#show
+
+
     resources :messages, only: [:new, :create]
     resources :users, only: [:index]
     # Dashboards

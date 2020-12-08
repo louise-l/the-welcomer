@@ -17,3 +17,128 @@
 	padding: 10px 10px 0px 10px;
 	color: white;
 }
+
+#conversation-content {
+	max-height: 600px;
+	overflow-y: auto;
+	margin-bottom: 2em;
+}
+
+.form-window {
+	position: fixed !important;
+	bottom: 0 !important;
+}
+
+.span-window {
+	margin-bottom: 10px;
+}
+
+.content-conversation-window {
+	font-size: 18px;
+}
+
+.date-conversation-window {
+	font-size: 14px;
+}
+
+
+#users-list {
+  margin-top: 120px;
+}
+
+.fa-comment-slash {
+  color: $sun-yellow;
+  font-size: 23px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.fa-comment {
+  color: $sun-yellow;
+  font-size: 40px;
+  position: absolute;
+  top: 65px;
+  right: 15px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+.conversations-menu-user{
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.conversation-js-1 {
+  position: fixed;
+  bottom: 0;
+  right: 1%;
+  width: 20%;
+  height: 50%;
+  border: 2px solid $sun-yellow;
+  background-color: white;
+}
+
+.reduce {
+	height: 4% !important;
+	background-color: $sun-yellow;
+}
+
+.conversation-js-2 {
+  position: fixed;
+  bottom: 0;
+  right: 22%;
+  width: 20%;
+  height: 50%;
+  border: 2px solid $sun-yellow;
+  background-color: white;
+}
+
+.conversation-js-3 {
+  position: fixed;
+  bottom: 0;
+  right: 43%;
+  width: 20%;
+  height: 50%;
+  border: 2px solid $sun-yellow;
+  background-color: white;
+}
+
+.conversation-js-title {
+  background-color: $sun-yellow;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  z-index: 10;
+  padding: 3px 10px;
+  font-size: 20px;
+}
+
+.fa-minus {
+  font-size: 20px;
+  margin-right: 10px;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.fa-plus {
+  font-size: 20px;
+  margin-right: 10px;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.fa-times {
+  font-size: 20px;
+  &:hover{
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,12 @@
+<div class="col-2 d-none" id="users-list">
+	<div class="d-flex justify-content-center align-items-center">
+		<h2 class="btn button color-yellow medium">Start a conversation with :</h2>
+	</div>
+	<div class="p-4">
+		<% current_user.company.users.each do |user| %>
+			<% unless user == current_user %>
+				<li class="list-group-item conversations-menu-user" data-conversation-name="<%= user.first_name %>%20<%= user.last_name %>"> <%= user.first_name %> <%= user.last_name %> </li>
+			<% end %>
+		<% end %>
+	</div>
+</div>

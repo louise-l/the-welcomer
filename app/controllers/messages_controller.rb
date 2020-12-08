@@ -6,8 +6,8 @@ class MessagesController < ApplicationController
 
 	def new
 	redirect_to company_conversation_path(current_user.company.name, @conversation) and return if @conversation
-    @message = current_user.messages.build
-  end
+		@message = current_user.messages.build
+	end
 
 	def create
 		@conversation ||= Conversation.create(author_id: current_user.id,
@@ -23,7 +23,12 @@ class MessagesController < ApplicationController
 			@conversation.save
 
 			flash[:success] = "Your message was sent!"
-			redirect_to company_conversation_path(current_user.company.name, @conversation, anchor: "message-#{@conversation.messages.size}")
+			@request = request.referrer
+			if @request.include?("window")
+				redirect_to :back
+			else
+				redirect_to company_conversation_path(current_user.company.name, @conversation, anchor: "message-#{@conversation.messages.size}")
+			end
 		else
 			render :new
 		end
