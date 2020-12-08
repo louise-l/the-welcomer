@@ -49,7 +49,6 @@ document.addEventListener('turbolinks:load', () => {
   buttonAddFiles();
   hideIcons();
   initConversationCable();
-
   pickernotime();
   displayNotifs();
 });
