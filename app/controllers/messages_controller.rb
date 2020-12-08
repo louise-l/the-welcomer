@@ -14,13 +14,13 @@ class MessagesController < ApplicationController
                                         receiver_id: @receiver.id)
 		@message = current_user.messages.build(message_params)
 		@message.conversation_id = @conversation.id
-		if @message.save!
+		if @message.save
 		ConversationChannel.broadcast_to(
 			@conversation,
 			render_to_string(partial: "message", locals: { message: @message, user_id: @message.user.id})
 		)
 			@conversation.updated_at = @message.created_at
-			@conversation.save!
+			@conversation.save
 
 			flash[:success] = "Your message was sent!"
 			redirect_to company_conversation_path(current_user.company.name, @conversation, anchor: "message-#{@conversation.messages.size}")

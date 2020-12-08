@@ -17,9 +17,11 @@ const initConversationCable = () => {
         if (senderId === currentUserId) {
           lastMessage.classList.add("author");
           lastMessage.classList.remove("d-none");
+          messagesContainer.scrollTop = 10000000000;
         } else {
           lastMessage.classList.add("receiver");
           lastMessage.classList.remove("d-none");
+          messagesContainer.scrollTop = 10000000000;
         }
       },
     });
