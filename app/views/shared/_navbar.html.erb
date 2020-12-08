@@ -20,16 +20,16 @@
   <!-- Route du newcomer -->
   <% if current_user.role == 'Newcomer' %>
     <div class="d-flex">
-      <div class='inactive <%= 'active'if current_page?(company_dashboard_path(current_user.company.name, current_user.id)) %> margin-tab' >
+      <div class=' <%= 'active'if current_page?(company_dashboard_path(current_user.company.name, current_user.id)) %> margin-tab' >
         <%= link_to "Dashboard", company_dashboard_path(current_user.company.name, current_user.id), class: 'navbar-tabs' %>
       </div>
-      <div class='inactive <%= 'active'if current_page?(company_libraries_path(current_user.company.name)) %> margin-tab' >
+      <div class=' <%= 'active'if current_page?(company_libraries_path(current_user.company.name)) %> margin-tab' >
         <%= link_to "Entreprise", company_libraries_path(current_user.company.name), class: 'navbar-tabs' %>
       </div>
-      <div class='inactive <%= 'active'if current_page?(company_meetings_path(current_user.company.name)) %> margin-tab' >
+      <div class=' <%= 'active'if current_page?(company_meetings_path(current_user.company.name)) %> margin-tab' >
         <%= link_to "Planning", company_meetings_path(current_user.company.name), class: 'navbar-tabs' %>
       </div>
-      <div class='inactive <%= 'active'if current_page?(company_team_path(current_user.company.name, current_user.team)) %> margin-tab' >
+      <div class=' <%= 'active'if current_page?(company_team_path(current_user.company.name, current_user.team)) %> margin-tab' >
         <%= link_to "Teams", company_team_path(current_user.company.name, current_user.team), class: 'navbar-tabs no-margin-last' %>
       </div>
     </div>
@@ -37,16 +37,16 @@
   <!-- Route du RH -->
   <% elsif current_user.role == 'RH' %>
     <div class="d-flex">
-      <div class='inactive <%= 'active'if current_page?(company_dashboards_path(current_user.company.name)) %> margin-tab' >
+      <div class=' <%= 'active'if current_page?(company_dashboards_path(current_user.company.name)) %> margin-tab' >
         <%= link_to "Overview", company_dashboards_path(current_user.company.name), class: 'navbar-tabs' %>
       </div>
-      <div class='inactive <%= 'active'if current_page?(company_libraries_path(current_user.company.name)) %> margin-tab' >
+      <div class=' <%= 'active'if current_page?(company_libraries_path(current_user.company.name)) %> margin-tab' >
         <%= link_to "Entreprise", company_libraries_path(current_user.company.name), class: 'navbar-tabs' %>
       </div>
-      <div class='inactive <%= 'active'if current_page?(company_meetings_path(current_user.company.name)) %> margin-tab' >
+      <div class=' <%= 'active'if current_page?(company_meetings_path(current_user.company.name)) %> margin-tab' >
         <%= link_to "Planning", company_meetings_path(current_user.company.name), class: 'navbar-tabs' %>
       </div>
-      <div class='inactive <%= 'active'if current_page?(company_teams_path(current_user.company.name)) %> margin-tab' >
+      <div class=' <%= 'active'if current_page?(company_teams_path(current_user.company.name)) %> margin-tab' >
         <%= link_to "Team", company_teams_path(current_user.company.name), class: 'navbar-tabs no-margin-last' %>
       </div>
     </div>
@@ -54,16 +54,16 @@
   <!-- Route du manager -->
   <% elsif current_user.role == 'Manager' %>
    <div class="d-flex">
-      <div class='inactive <%= 'active'if current_page?(company_dashboards_path(current_user.company.name)) %> margin-tab' >
+      <div class=' <%= 'active'if current_page?(company_dashboards_path(current_user.company.name)) %> margin-tab' >
         <%= link_to "Dashboard", company_dashboards_path(current_user.company.name), class: 'navbar-tabs'%>
       </div>
-      <div class='inactive <%= 'active'if current_page?(company_libraries_path(current_user.company.name)) %> margin-tab' >
+      <div class=' <%= 'active'if current_page?(company_libraries_path(current_user.company.name)) %> margin-tab' >
           <%= link_to "Entreprise", company_libraries_path(current_user.company.name), class: 'navbar-tabs' %>
       </div>
-      <div class='inactive <%= 'active'if current_page?(company_meetings_path(current_user.company.name)) %> margin-tab' >
+      <div class=' <%= 'active'if current_page?(company_meetings_path(current_user.company.name)) %> margin-tab' >
         <%= link_to "Planning", company_meetings_path(current_user.company.name), class: 'navbar-tabs' %>
       </div>
-      <div class='inactive <%= 'active'if current_page?(company_team_path(current_user.company.name, current_user.team)) %> margin-tab' >
+      <div class=' <%= 'active'if current_page?(company_team_path(current_user.company.name, current_user.team)) %> margin-tab' >
         <%= link_to "Team", company_team_path(current_user.company.name, current_user.team), class: 'navbar-tabs no-margin-last' %>
       </div>
     </div>
@@ -71,16 +71,16 @@
 <!-- Route des teammates -->
   <% else %>
     <div class="d-flex">
-      <div class='inactive <%= 'active'if current_page?(company_dashboard_path(current_user.company.name, current_user.id)) %>margin-tab' >
+      <div class=' <%= 'active'if current_page?(company_dashboard_path(current_user.company.name, current_user.id)) %>margin-tab' >
         <%= link_to "Dashboard", company_dashboard_path(current_user.company.name, current_user.id), class: 'navbar-tabs' %>
       </div>
-      <div class='inactive <%= 'active'if current_page?(company_libraries_path(current_user.company)) %>margin-tab' >
+      <div class=' <%= 'active'if current_page?(company_libraries_path(current_user.company)) %>margin-tab' >
         <%= link_to "Entreprise", company_libraries_path(current_user.company), class: 'navbar-tabs' %>
       </div>
-      <div class='inactive <%= 'active'if current_page?(company_meetings_path(current_user.company.name)) %>margin-tab' >
+      <div class=' <%= 'active'if current_page?(company_meetings_path(current_user.company.name)) %>margin-tab' >
         <%= link_to "Planning", company_meetings_path(current_user.company.name), class: 'navbar-tabs' %>
       </div>
-      <div class='inactive <%= 'active'if current_page?(company_team_path(current_user.company.name, current_user.team)) %> margin-tab' >
+      <div class=' <%= 'active'if current_page?(company_team_path(current_user.company.name, current_user.team)) %> margin-tab' >
         <%= link_to "Team", company_team_path(current_user.company.name, current_user.team), class: 'navbar-tabs no-margin-last' %>
       </div>
     </div>
