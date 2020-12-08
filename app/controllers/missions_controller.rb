@@ -53,7 +53,6 @@ class MissionsController < ApplicationController
     redirect_to company_dashboard_path(@company, @user)
   end
 
-
   private
 
   def authorizing_mission
