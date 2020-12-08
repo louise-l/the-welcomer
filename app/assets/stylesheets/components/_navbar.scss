@@ -20,9 +20,6 @@
   color: $charcoal;
   text-decoration: none;
   font-size: 18px;
-  margin-right: 25px;
-  margin-left: 25px;
-  padding-top: 20px;
   font-family: $rubik;
   text-transform: uppercase;
   font-weight: 300;
@@ -36,10 +33,17 @@
   }
 }
 
+.margin-tab {
+  margin-right: 25px;
+  margin-left: 25px;
+  padding-top: 3px;
+  border-top: 5px solid white;
+}
+
 .active{
-    border-top: 5px solid $fire;
-    border-left: 5px white solid;
-    border-right: 5px white solid;
+    border-top: 5px solid $fire !important;
+    border-left: 5px solid white;
+    border-right: 5px solid white;
   }
 
 .no-margin-last {
