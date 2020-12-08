@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
     @user.team_id = @team_id
     if @user.save
       UserMailer.with(user: @user).welcome.deliver_now
+      NewProfileNotification.with(notif_user: @user).deliver(User.where(team: @user.team))
       redirect_to company_dashboards_path(current_user.company.name)
     else
       render :new

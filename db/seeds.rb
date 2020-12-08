@@ -34,12 +34,12 @@ team1 = Team.create!(name: "Back-end development team",address: "146 rue solfér
 team2 = Team.create!(name: "Artists of front-end",address: "12 rue de la clé, Lille", company_id: company1.id)
 team3 = Team.create!(name: "Community of comptability",address: "25 bis avenue du simflouz, Lille", company_id: company1.id)
 team4 = Team.create!(name: "Public relations",address: "HQ, La Défense, Paris, center of the world", company_id: company1.id)
-file7 = URI.open("https://source.unsplash.com/500x350/?team,company")
-file8 = URI.open("https://source.unsplash.com/500x350/?team,company")
-file9 = URI.open("https://source.unsplash.com/500x351/?team,company")
-team1.photo.attach(io: file7, filename: 'image1.jpg', content_type: 'image/jpg')
-team2.photo.attach(io: file8, filename: 'image2.jpg', content_type: 'image/jpg')
-team3.photo.attach(io: file9, filename: 'image3.jpg', content_type: 'image/jpg')
+#file7 = URI.open("https://source.unsplash.com/500x350/?team,company")
+#file8 = URI.open("https://source.unsplash.com/500x350/?team,company")
+#file9 = URI.open("https://source.unsplash.com/500x351/?team,company")
+#team1.photo.attach(io: file7, filename: 'image1.jpg', content_type: 'image/jpg')
+#team2.photo.attach(io: file8, filename: 'image2.jpg', content_type: 'image/jpg')
+#team3.photo.attach(io: file9, filename: 'image3.jpg', content_type: 'image/jpg')
 
 puts "Team created"
 
