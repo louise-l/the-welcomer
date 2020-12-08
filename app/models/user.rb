@@ -19,7 +19,7 @@ class User < ApplicationRecord
   belongs_to :team
   has_many :libraries, dependent: :destroy
   # Notifications
-  # has_many :notifications, as: :notifiable, dependent: :destroy
+  has_many :notifications, as: :notifiable, dependent: :destroy
   has_many :notifications, as: :recipient
 
     def arrives_in

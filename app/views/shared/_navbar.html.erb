@@ -110,8 +110,10 @@
             <p class='icon-calendar'>
               <% if notif.type == "MeetingNotification" %>
                 <i class="far fa-calendar mr-2"></i>
+              <% elsif notif.type == "NewProfileNotification" %>
+                <i class="fas fa-user-check mr-2"></i>
               <% else %>
-                <i class="far fa-file-alt"></i>
+                <i class="far fa-file-alt mr_2"></i>
               <% end %>
               <%= link_to notif.to_notification.message, notif.to_notification.url, method: :patch, class: 'icon-calendar'  %>
             </p>
@@ -121,8 +123,10 @@
             <p class='seen-icon'>
               <% if notif.type == "MeetingNotification" %>
                 <i class="far fa-calendar mr-2"></i>
+              <% elsif notif.type == "NewProfileNotification" %>
+                <i class="fas fa-user-check mr-2"></i>
               <% else %>
-                <i class="far fa-file-alt"></i>
+                <i class="far fa-file-alt mr-2"></i>
               <% end %>
               <%= link_to notif.to_notification.message, notif.to_notification.url, method: :patch, class: 'seen-icon' %>
             </p>
