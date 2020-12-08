@@ -19,6 +19,14 @@
   border-left: none;
 }
 
+tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+
 //   .wday-2 {}
 //   .wday-3 {}
 //   .wday-4 {}
