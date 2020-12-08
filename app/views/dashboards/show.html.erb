@@ -1,40 +1,52 @@
 <div class="container">
   <div class="grid-dashboard-container">
 
-    <!-- Présentation -->
+    <!-- Présentation du welcomee-->
     <div class="presentation-section card-dashboard">
-      <div class='d-flex'>
-        <% if @user.photo.attachment%>
-          <%= cl_image_tag @user.photo.key, class: "avatar defaut fifty-px avatar-bordered-cloud m-2" %>
-        <% else %>
-          <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar fifty-px avatar-bordered-cloud m-2" %>
-        <% end %>
-        <h2 class='title-dashboard'> <%= @user.first_name + " " + @user.last_name %> </h2>
-      </div>
       <div>
-        <p> <strong>Name:</strong> <%= @user.email %></p>
+        <% if @user.photo.attachment%>
+          <%= cl_image_tag @user.photo.key, class: "avatar-xl" %>
+        <% else %>
+          <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar-xl" %>
+        <% end %>
+      </div>
+      <h2 class='title-dashboard'> <%= @user.first_name + " " + @user.last_name %> </h2>
+      <div>
+        <p> <strong>Email:</strong> <%= @user.email %></p>
         <p> <strong>Job:</strong> <%= @user.job.capitalize %></p>
         <p> <strong>Team:</strong> <%=@user.team.name.capitalize %></p>
       </div>
-      <% if @average == 100 %>
-        <div class="progress">
-          <div class="progress-bar bg-success" role="progressbar" style="width: <%="#{@user.progression}%"%>;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><%= @user.progression %>%</div>
-        </div>
-      <% else %>
-        <div class="progress">
-          <div class="progress-bar bg-yellow" role="progressbar" style="width: <%="#{@user.progression}%"%>;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><%= @user.progression %>%</div>
-        </div>
-        <br>
-        <div>
-        </div>
+      <% if current_user.role =='RH' %>
+        <%= link_to company_edit_user_role_path(@company, @user), class: 'button color-yellow edit-role' do %>
+          <i class="fas fa-pen"></i>
+        <% end %>
       <% end %>
-    </div>
-          <%= link_to "Change the status", company_edit_user_role_path(@company, @user), class: 'button color-yellow center' %>
 
-    <!-- Calendar -->
-    <%= link_to company_meetings_path(current_user.company.name) do  %>
-      <div class ='calendar-section card-dashboard'>
-      <h2><%= Time.now.strftime("%d %B %Y") %></h2>
+    </div>
+
+
+
+    <!-- Avancée dans l'onboard -->
+    <div class="onboard-section">
+      <h3><%= @user.arrives_in %> !</h3>
+        <% if @average == 100 %>
+          <div class="progress progress-dashboard">
+            <div class="progress-bar bg-success" role="progressbar" style="width: <%="#{@user.progression}%"%>;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><%= @user.progression %>%</div>
+          </div>
+        <% else %>
+          <div class="progress progress-dashboard">
+            <div class="progress-bar bg-yellow" role="progressbar" style="width: <%="#{@user.progression}%"%>;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><%= @user.progression %>%</div>
+          </div>
+        <% end %>
+        <div>
+          <p>Progression in your program</p>
+        </div>
+    </div>
+
+    <!-- Planning -->
+    <div class ='calendar-section card-dashboard'>
+      <%= link_to company_meetings_path(current_user.company.name) do  %>
+      <h2>Upcoming meetings</h2>
       <% if @meetings != [] %>
           <% @meetings.first(4).each do |meeting| %>
             <% if meeting.end_time <= Time.now %>
@@ -55,28 +67,27 @@
             <% end %>
           <% end %>
       <% else %>
-        <p>No meetings for today !</p>
+        <p>Nothing planned ! 🏖</p>
       <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+
     <!-- Missions -->
     <div class='missions-section card-dashboard'>
-        <% if current_user.role =='Manager' %>
-          <div class="d-flex justify-content-between mb-3">
-            <h2>Missions</h2>
-            <div class='align-self-center'>
-              <%= link_to 'Add a mission', company_new_user_mission_path(@company, @user), class: 'button-dashboard color-yellow mr-2'  %>
-              <span id= 'button-edit-mission' class='button-dashboard color-yellow mr-3 py-1'>Edit</span>
-            </div>
+      <% if current_user.role =='Manager' %>
+        <h2>Missions</h2>
+          <div class='edit-missions-manager'>
+            <%= link_to 'Add a mission', company_new_user_mission_path(@company, @user), class: 'button-dashboard color-yellow mr-2'  %>
+            <span id= 'button-edit-mission' class='button-dashboard color-yellow mr-3 py-1'>Edit</span>
           </div>
-        <% else %>
-          <h2 class='mb-3'>Missions</h2>
-        <% end %>
+      <% else %>
+        <h2 class='mb-3'>Missions</h2>
+      <% end %>
 
+      <div class='missions-description'>
         <% @missions.each do |mission| %>
-          <div class='d-flex justify-content-between align-items-center px-3'>
-            <%if mission.status == 'Not mastered' %>
-            <div class='d-flex'>
+          <%if mission.status == 'Not mastered' %>
+            <div class='mission-tag'>
               <% if current_user == @user %>
                 <%= link_to company_edit_user_mission_path(@company, @user, mission) do  %>
                   <p class='mr-3 tag-alert'> <%= mission.status %> </p>
@@ -84,9 +95,9 @@
               <% else %>
                 <p class='mr-3 tag-alert'> <%= mission.status %> </p>
               <% end %>
-              <p class='mr-1'><%= mission.name %><p>
             </div>
-            <div class = 'align-self-start'>
+            <p class='mission-details'><strong><%= mission.name %></strong> <br> <%= mission.description %> </p>
+            <div class = 'mission-edit-details-manager'>
               <% if current_user.role == 'Manager' %>
                 <%= link_to company_edit_user_mission_path(@company, @user, mission) do%>
                   <i class="far fa-edit icon-mission d-none" style='color: #353A47;'></i>
@@ -96,55 +107,73 @@
                 <% end %>
               <% end %>
             </div>
-            <% elsif mission.status == 'Mastered' %>
-              <div class='d-flex'>
-                <% if current_user == @user %>
-                  <%= link_to company_edit_user_mission_path(@company, @user, mission) do  %>
-                    <p class='mr-3 tag-understood'> <%= mission.status %></p>
-                  <% end %>
-                <% else %>
+
+          <% elsif mission.status == 'Mastered' %>
+            <div class='mission-tag'>
+              <% if current_user == @user %>
+                <%= link_to company_edit_user_mission_path(@company, @user, mission) do  %>
                   <p class='mr-3 tag-understood'> <%= mission.status %></p>
                 <% end %>
-                <p class='mr-1'><%= mission.name %><p>
-              </div>
-              <div class="align-self-start">
-                <% if current_user.role == 'Manager' %>
-                  <%= link_to company_edit_user_mission_path(@company, @user, mission) do%>
-                    <i class="far fa-edit icon-mission d-none" style='color: #353A47;'></i>
-                  <% end %>
-                  <%= link_to company_user_mission_path(@company, @user, mission), method: :delete do%>
-                    <i class="far fa-times-circle icon-mission d-none" style='color: #353A47;'></i>
-                  <% end %>
+              <% else %>
+                <p class='mr-3 tag-understood'> <%= mission.status %></p>
+              <% end %>
+            </div>
+            <p class='mission-details'><strong><%= mission.name %></strong> <br> <%= mission.description %> </p>
+            <div class="mission-edit-details-manager">
+              <% if current_user.role == 'Manager' %>
+                <%= link_to company_edit_user_mission_path(@company, @user, mission) do%>
+                  <i class="far fa-edit icon-mission d-none" style='color: #353A47;'></i>
                 <% end %>
-              </div>
-            <% else %>
-              <div class='d-flex'>
-                <% if current_user == @user %>
-                  <%= link_to company_edit_user_mission_path(@company, @user, mission) do  %>
-                    <p class='mr-3 tag-progress'> <%= mission.status %></p>
-                  <% end %>
-                <% else %>
+                <%= link_to company_user_mission_path(@company, @user, mission), method: :delete do%>
+                  <i class="far fa-times-circle icon-mission d-none" style='color: #353A47;'></i>
+                <% end %>
+              <% end %>
+            </div>
+
+          <% else %>
+            <div class='mission-tag'>
+              <% if current_user == @user %>
+                <%= link_to company_edit_user_mission_path(@company, @user, mission) do  %>
                   <p class='mr-3 tag-progress'> <%= mission.status %></p>
                 <% end %>
-                <p class='mr-1'><%= mission.name  %><p>
-              </div>
-              <div class="align-self-start">
-                <% if current_user.role == 'Manager' %>
-                  <%= link_to company_edit_user_mission_path(@company, @user, mission) do%>
-                    <i class="far fa-edit icon-mission d-none" style='color: #353A47;'></i>
-                  <% end %>
-                  <%= link_to company_user_mission_path(@company, @user, mission), method: :delete do%>
-                    <i class="far fa-times-circle icon-mission d-none" style='color: #353A47;'></i>
-                  <% end %>
+              <% else %>
+                <p class='mr-3 tag-progress'> <%= mission.status %></p>
+              <% end %>
+            </div>
+            <p class='mission-details'><strong><%= mission.name %></strong> <br> <%= mission.description %> </p>
+            <div class="align-self-start">
+              <% if current_user.role == 'Manager' %>
+                <%= link_to company_edit_user_mission_path(@company, @user, mission) do%>
+                  <i class="far fa-edit icon-mission d-none" style='color: #353A47;'></i>
                 <% end %>
-              </div>
-            <% end %>
-          </div>
+                <%= link_to company_user_mission_path(@company, @user, mission), method: :delete do%>
+                  <i class="far fa-times-circle icon-mission d-none" style='color: #353A47;'></i>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
+      </div>
     </div>
 
     <!-- Habits -->
-    <div class='habits-section card-dashboard'>
+
+    <div class="habit-sample card-dashboard">
+      <h2>Good habits <i class="fas fa-check-circle"></i></h2>
+      <% if @habits.exists? %>
+        <%= @habits.sample.name %>
+        <%= link_to "Show all", company_user_habits_path(@company, @user)  %>
+      <% else %>
+        <p>There are no habits yet !</p>
+      <% end %>
+      <% if current_user.role =='Manager' %>
+        <%= link_to company_new_user_habit_path(@company, @user), class: 'button color-yellow edit-habit' do %>
+          <i class="fas fa-pen"></i>
+        <% end %>
+      <% end %>
+    </div>
+<!--
+    <div class='habits-section card-dashboard d-none'>
       <% if current_user.role =='Manager' %>
           <div class="d-flex justify-content-between mb-3">
             <h2>Habits</h2>
@@ -224,7 +253,7 @@
           <% end %>
         </div>
       <% end %>
-    </div>
+    </div> -->
 
     <!-- Documents -->
     <div class='documents-section card-dashboard'>
@@ -237,9 +266,10 @@
     </div>
 
     <!-- Chat -->
-    <div class='chat-section card-dashboard'>
+    <div class='d-none chat-section card-dashboard'>
       <h2>Chat</h2>
       <p>Work in progress. Ready next Friday.</p>
     </div>
   </div>
 </div>
+
