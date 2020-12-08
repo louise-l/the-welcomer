@@ -11,8 +11,7 @@ const initConversationCable = () => {
         const currentUserId = messagesContainer.dataset.userId
         messagesContainer.insertAdjacentHTML('beforeend', data);
         const messages = document.querySelectorAll('.message');
-        const lastMessage = messages[messages.length - 1];
-        console.log(lastMessage);
+        let lastMessage = messages[messages.length - 1];
         const senderId = lastMessage.dataset.senderId;
         if (senderId === currentUserId) {
           lastMessage.classList.add("author");
