@@ -19,6 +19,7 @@
         <tr>
           <% week.each do |day| %>
             <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+            <%= link_to "+", new_company_meeting_path(current_user.company.name, date: day), class: "meeting-button d-none button-meeting " %>
               <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
                 <% capture_haml(day.day, sorted_events.fetch(day, []), &passed_block) %>
               <% else %>

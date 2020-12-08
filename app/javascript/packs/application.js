@@ -36,6 +36,7 @@ import { initConversationCable } from '../channels/conversation_channel'
 
 import { pickernotime } from "../plugins/flatpickr"
 import { displayNotifs } from './components/notifications_display'
+import { hideButtons } from './components/meeting'
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -51,4 +52,5 @@ document.addEventListener('turbolinks:load', () => {
   initSelect2();
   pickernotime();
   displayNotifs();
+  hideButtons();
 });
