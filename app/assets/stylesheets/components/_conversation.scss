@@ -48,6 +48,7 @@
 
 #users-list {
   margin-top: 60px;
+  position: sticky;
 }
 
 .fa-comment-slash {
@@ -61,7 +62,7 @@
 .fa-comment {
   color: $sun-yellow;
   font-size: 40px;
-  position: absolute;
+  position: fixed;
   top: 65px;
   right: 15px;
   &:hover {
