@@ -74,10 +74,10 @@
       <div class='<%= 'active'if current_page?(company_dashboard_path(current_user.company.name, current_user.id)) %>margin-tab' >
         <%= link_to "Dashboard", company_dashboard_path(current_user.company.name, current_user.id), class: 'navbar-tabs' %>
       </div>
-      <div class='<%= 'active'if current_page?(company_libraries_path(current_user.company)) %>margin-tab' >
+      <div class='<%= 'active'if current_page?(company_libraries_path(current_user.company)) %> margin-tab' >
         <%= link_to "Entreprise", company_libraries_path(current_user.company), class: 'navbar-tabs' %>
       </div>
-      <div class='<%= 'active'if current_page?(company_meetings_path(current_user.company.name)) %>margin-tab' >
+      <div class='<%= 'active'if current_page?(company_meetings_path(current_user.company.name)) %> margin-tab' >
         <%= link_to "Planning", company_meetings_path(current_user.company.name), class: 'navbar-tabs' %>
       </div>
       <div class='<%= 'active'if current_page?(company_team_path(current_user.company.name, current_user.team)) %> margin-tab' >
