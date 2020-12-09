@@ -6,7 +6,8 @@
 			<div class = "message receiver" id="message-<%= index + 1 %>">
 		<% end %>
 		<p class="text-left content-conversation-window"><%= message.content %></p>
-		<p class="text-right date-conversation-window"><%= message.created_at.strftime('%b-%d %H:%M:%S') %></p>
+		<p class="text-right date-conversation-window"><%= message.created_at.utc.in_time_zone("Paris").strftime('%b-%d %H:%M:%S')
+ %></p>
 		</div>
 	<% end %>
 </div>
