@@ -2,11 +2,12 @@
   <% if current_user.role == 'Manager' %>
     <div class="form">
       <h2>Edit <%= @user.first_name %>'s habit </h2>
-      <%= simple_form_for [@user, @habit], remote: true do |f| %>
+      <%= simple_form_for [@company, @user, @habit], remote: true do |f| %>
         <%= f.input :name %>
         <%= f.button :submit, class: 'button color-yellow' %>
       <% end %>
     </div>
+
   <% else %>
     <div class="form">
       <h2>Edit my habit </h2>

@@ -1,6 +1,14 @@
 class HabitsController < ApplicationController
   after_action :authorizing_habit, only: [:new, :create, :edit, :update, :destroy]
 
+
+  def index
+    @habit = policy_scope(Habit)
+    @habits = Habit.where(user_id: params[:user_id])
+    @user = User.find(params[:user_id])
+    @company = @user.company
+  end
+
   def new
     @habit = Habit.new
     @user = User.find(params[:user_id])
@@ -35,7 +43,7 @@ class HabitsController < ApplicationController
     @company = @user.company.name
     @habit = Habit.find(params[:id])
     if @habit.update(set_params_habit)
-      redirect_to company_dashboard_path(@company, @user)
+      redirect_to company_user_habits_path(@company, @user)
     else
       render :edit
     end
@@ -46,7 +54,7 @@ class HabitsController < ApplicationController
     @company = @user.company.name
     @habit = Habit.find(params[:id])
     @habit.destroy
-    redirect_to company_dashboard_path(@company, @user)
+    redirect_to company_user_habits_path(@company, @user)
   end
 
   private

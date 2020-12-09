@@ -31,17 +31,19 @@
   }
   .edit-missions-manager{
     position:absolute;
-    bottom:20px;
+    bottom:10px;
     right: 10px;
   }
   .missions-description{
     display:grid;
     grid-template-columns: repeat(5, 1fr);
     justify-items: center;
+  align-items:center;
 
     .mission-tag{
       grid-column:1/2;
       margin: 0 auto;
+
     }
     .mission-details{
       grid-column:2/5;
@@ -164,6 +166,9 @@
   h3{
     padding-bottom:30px;
   }
+  p{
+    color:rgba(0, 0, 0, 0.5);
+  }
 }
 
 .chat-section {
@@ -209,13 +214,13 @@
   border-radius: 10px;
   color: white;
   background-color: $sun-yellow;
-  font-size: 12px;
+  font-size: 16px;
   height: 25px;
   text-align: center;
   padding-left: 3px;
   padding-right: 3px;
   padding-top: 3px;
-  width: 100px;
+  width: 120px;
   &:hover {
     text-decoration: none !important;
   }
@@ -225,13 +230,13 @@
   border-radius: 10px;
   color: white;
   background-color: $ocean-blue;
-  font-size: 12px;
+  font-size: 16px;
   height: 25px;
   text-align: center;
   padding-left: 3px;
   padding-right: 3px;
   padding-top: 3px;
-  width: 100px;
+  width: 120px;
   &:hover {
     text-decoration: none !important;
   }
@@ -241,13 +246,13 @@
   border-radius: 10px;
   color: white;
   background-color: $fire;
-  font-size: 12px;
+  font-size: 16px;
   height: 25px;
   text-align: center;
   padding-left: 3px;
   padding-right: 3px;
   padding-top: 3px;
-  width: 100px;
+  width: 120px;
   &:hover {
     text-decoration-color: none !important;
   }
@@ -269,6 +274,58 @@
 }
 
 .progress-dashboard{
-  width:300px;
+  width:400px;
+  height: 40px;
   border-radius:30px;
 }
+
+.document-description{
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+}
+
+.document-label-tag{
+  grid-column: 2/4;
+}
+.document-status-tag{
+  grid-column: 1/2;
+  text-align:center;
+}
+
+
+.tiny-tag{
+  border-radius: 10px;
+  color: white;
+  font-size: 12px;
+  height: 20px;
+  text-align: center;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 3px;
+  width: 60px;
+  margin:0 auto;
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+.habit-list{
+  margin-bottom: 20px;
+  i{
+    font-size: 12px;
+    color: $charcoal;
+  }
+}
+
+.form-habit-index{
+  position:relative;
+  .add-habit{
+    position:absolute;
+    bottom:-20px;
+    right:-20px;
+  }
+}
