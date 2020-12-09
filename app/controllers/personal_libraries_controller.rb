@@ -21,6 +21,7 @@ class PersonalLibrariesController < ApplicationController
     @personal_library = PersonalLibrary.new(library_params)
     @personal_library.user = @user
     if @personal_library.save
+      DocumentNotification.with(personal_library: @personal_library).deliver(current_user.company.users.where(role: 'RH'))
       redirect_to company_personal_libraries_path(@company, @user)
     else
       redirect_back(fallback_location: company_personal_libraries_path)
@@ -38,6 +39,7 @@ class PersonalLibrariesController < ApplicationController
     @personal_library = PersonalLibrary.find(params[:id])
     @company = current_user.company
     if @personal_library.update(library_params)
+      ValidateDocNotification.with(validate_doc: @personal_library).deliver(@user)
       redirect_to company_personal_libraries_path(@company, @user)
     else
       render :edit

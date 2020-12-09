@@ -34,4 +34,16 @@ en:
   notifications:
     meeting_notification:
       message:
-        "New meeting the %{meeting}."
+        "New meeting the %{meeting}"
+    document_notification:
+      message:
+        "%{name} %{letter} uploaded this document: \"%{document}\""
+    validate_doc_notification:
+      message:
+        "HR team has %{status} your document"
+    new_profile_notification:
+      message:
+        "%{name} just joined your team"
+    help_notification:
+      message:
+        "%{name} has change a mission status to \"%{status}\""

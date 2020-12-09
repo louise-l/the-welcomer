@@ -14,11 +14,13 @@ class MeetingsController < ApplicationController
   end
 
   def new
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
     @meeting = Meeting.new
     @company = current_user.company
   end
 
   def create
+    @company = current_user.company
     @meeting = Meeting.new(meeting_params)
     if @meeting.save
       Participate.create(user: current_user, meeting: @meeting, owner: true)

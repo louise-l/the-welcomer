@@ -17,22 +17,23 @@ class User < ApplicationRecord
   belongs_to :company
   has_one_attached :photo
   belongs_to :team
-  # Notifications
-  has_many :notifications, as: :recipient
   has_many :libraries, dependent: :destroy
+  # Notifications
+  has_many :notifications, as: :notifiable, dependent: :destroy
+  has_many :notifications, as: :recipient
 
     def arrives_in
       days_until_arrival = (arrival_date - Date.today).to_i
       if days_until_arrival.positive?
-        "Arrives in #{days_until_arrival} days"
+        "Arriving in #{days_until_arrival} days"
       else
         "Arrived since #{- days_until_arrival} days"
       end
    end
 
   def progression
-  @sum_mastered = self.missions.where(status: "Mastered").count + self.habits.where(status: "Mastered").count
-  @sum_missions = self.missions.count + self.habits.count
+  @sum_mastered = self.missions.where(status: "Mastered").count
+  @sum_missions = self.missions.count
     if @sum_mastered == 0
       @average = 0
     else

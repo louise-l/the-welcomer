@@ -24,6 +24,7 @@
               <% else %>
                 <% passed_block.call day.day, sorted_events.fetch(day, []) %>
               <% end %>
+                <%= link_to "+", new_company_meeting_path(current_user.company.name, date: day), class: "meeting-button d-none button-meeting " %>
             <% end %>
           <% end %>
         </tr>

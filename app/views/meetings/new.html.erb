@@ -2,8 +2,8 @@
 	<div class="form-with-title">
 		<h2 class="text-center mb-4">Create a meeting</h2>
 		<%= simple_form_for [@company, @meeting], remote: true do |f| %>
-			<%= f.input :start_time, label: "Start at", as: :string, required: false, input_html: {class: "datepicker"} %>
-			<%= f.input :end_time, label: "End", as: :string, required: false, input_html: {class: "datepicker"} %>
+			<%= f.input :start_time, label: "Start at", as: :string, required: false, input_html: {class: "datepicker", value: @date} %>
+			<%= f.input :end_time, label: "End", as: :string, required: false, input_html: {class: "datepicker", value: @date} %>
 			<%= f.input :title, label: "Object" %>
 			<%= f.input :description %>
 			<div class="form-actions d-flex justify-content-center">

@@ -37,6 +37,7 @@ import { showUsers } from './components/conversation'
 import { addConversation } from './components/conversation'
 import { pickernotime } from "../plugins/flatpickr"
 import { displayNotifs } from './components/notifications_display'
+import { hideButtons } from './components/meeting'
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -54,4 +55,5 @@ document.addEventListener('turbolinks:load', () => {
   displayNotifs();
   showUsers();
   addConversation();
+  hideButtons();
 });

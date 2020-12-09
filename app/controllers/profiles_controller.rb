@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
     @user.team_id = @team_id
     if @user.save
       UserMailer.with(user: @user).welcome.deliver_now
+      NewProfileNotification.with(notif_user: @user).deliver(User.where(team: @user.team))
       redirect_to company_dashboards_path(current_user.company.name)
     else
       render :new
@@ -40,6 +41,6 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:user).permit(:first_name, :last_name, :role, :email, :job, :team, :arrival_date)
+    params.require(:profile).permit(:first_name, :last_name, :role, :email, :job, :team, :arrival_date)
   end
 end

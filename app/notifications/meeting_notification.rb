@@ -1,5 +1,4 @@
 # To deliver this notification:
-#
 # MeetingNotification.with(post: @post).deliver_later(current_user)
 # MeetingNotification.with(post: @post).deliver(current_user)
 
@@ -31,6 +30,10 @@ class MeetingNotification < Noticed::Base
   end
 
   def url
-    company_edit_notification_path(params[:meeting].users.first.company.name, params[:meeting])
+    company_edit_notification_path(params[:meeting].users.first.company.name, @record)
+  end
+
+  def url_bis
+    company_meeting_path(params[:meeting].users.first.company.name, params[:meeting])
   end
 end

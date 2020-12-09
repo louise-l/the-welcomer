@@ -75,7 +75,24 @@ tr:last-child td:first-child {
   color: white;
   font-weight: lighter;
   border: none;
+}
 
+.day {
+  position: relative;
+}
+
+.button-meeting {
+  color: $sun-yellow;
+  position: absolute;
+  top: -4px;
+  right: 10px;
+  font-size:30px;
+  opacity:0.6;
+  font-weight: bolder;
+    &:hover {
+      color: $sun-yellow;
+      opacity:1
+    }
 }
 
 .link-into-calendar {

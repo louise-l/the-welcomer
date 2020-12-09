@@ -16,41 +16,78 @@
   <% end   %>
 
 <% if user_signed_in? %>
-  <% if current_user.role == 'Newcomer' %>
-    <div>
-      <%= link_to "Dashboard", company_dashboard_path(current_user.company.name, current_user.id), class: 'navbar-tabs' %>
-      <%= link_to "Entreprise", company_libraries_path(current_user.company.name), class: 'navbar-tabs' %>
-      <!-- Route du calendrier de Pierre Damien -->
-      <%= link_to "Planning", company_meetings_path(current_user.company.name), class: 'navbar-tabs' %>
-      <%= link_to "Teams", company_team_path(current_user.company.name, current_user.team), class: 'navbar-tabs no-margin-last' %>
-    </div>
-  <% elsif current_user.role == 'RH' %>
-    <div>
-      <%= link_to "Overview", company_dashboards_path(current_user.company.name), class: 'navbar-tabs' %>
 
-      <%= link_to "Entreprise", company_libraries_path(current_user.company.name), class: 'navbar-tabs' %>
-      <%= link_to "Planning", company_meetings_path(current_user.company.name), class: 'navbar-tabs' %>
-      <%= link_to "Team", company_teams_path(current_user.company.name), class: 'navbar-tabs no-margin-last' %>
+  <!-- Route du newcomer -->
+  <% if current_user.role == 'Newcomer' %>
+    <div class="d-flex">
+      <div class='<%= 'active'if current_page?(company_dashboard_path(current_user.company.name, current_user.id)) %> margin-tab' >
+        <%= link_to "Dashboard", company_dashboard_path(current_user.company.name, current_user.id), class: 'navbar-tabs' %>
+      </div>
+      <div class='<%= 'active'if current_page?(company_libraries_path(current_user.company.name)) %> margin-tab' >
+        <%= link_to "Entreprise", company_libraries_path(current_user.company.name), class: 'navbar-tabs' %>
+      </div>
+      <div class='<%= 'active'if current_page?(company_meetings_path(current_user.company.name)) %> margin-tab' >
+        <%= link_to "Planning", company_meetings_path(current_user.company.name), class: 'navbar-tabs' %>
+      </div>
+      <div class='<%= 'active'if current_page?(company_team_path(current_user.company.name, current_user.team)) %> margin-tab' >
+        <%= link_to "Teams", company_team_path(current_user.company.name, current_user.team), class: 'navbar-tabs no-margin-last' %>
+      </div>
     </div>
+
+  <!-- Route du RH -->
+  <% elsif current_user.role == 'RH' %>
+    <div class="d-flex">
+      <div class='<%= 'active'if current_page?(company_dashboards_path(current_user.company.name)) %> margin-tab' >
+        <%= link_to "Overview", company_dashboards_path(current_user.company.name), class: 'navbar-tabs' %>
+      </div>
+      <div class='<%= 'active'if current_page?(company_libraries_path(current_user.company.name)) %> margin-tab' >
+        <%= link_to "Entreprise", company_libraries_path(current_user.company.name), class: 'navbar-tabs' %>
+      </div>
+      <div class='<%= 'active'if current_page?(company_meetings_path(current_user.company.name)) %> margin-tab' >
+        <%= link_to "Planning", company_meetings_path(current_user.company.name), class: 'navbar-tabs' %>
+      </div>
+      <div class='<%= 'active'if current_page?(company_teams_path(current_user.company.name)) %> margin-tab' >
+        <%= link_to "Team", company_teams_path(current_user.company.name), class: 'navbar-tabs no-margin-last' %>
+      </div>
+    </div>
+
+  <!-- Route du manager -->
   <% elsif current_user.role == 'Manager' %>
-   <div>
-      <%= link_to "Dashboard", company_dashboards_path(current_user.company.name), class: 'navbar-tabs' %>
-      <%= link_to "Entreprise", company_libraries_path(current_user.company.name), class: 'navbar-tabs' %>
-      <!-- Route du calendrier de Pierre Damien -->
-      <%= link_to "Planning", company_meetings_path(current_user.company.name), class: 'navbar-tabs' %>
-      <%= link_to "Team", company_team_path(current_user.company.name, current_user.team), class: 'navbar-tabs no-margin-last' %>
+   <div class="d-flex">
+      <div class='<%= 'active'if current_page?(company_dashboards_path(current_user.company.name)) %> margin-tab' >
+        <%= link_to "Dashboard", company_dashboards_path(current_user.company.name), class: 'navbar-tabs'%>
+      </div>
+      <div class='<%= 'active'if current_page?(company_libraries_path(current_user.company.name)) %> margin-tab' >
+          <%= link_to "Entreprise", company_libraries_path(current_user.company.name), class: 'navbar-tabs' %>
+      </div>
+      <div class='<%= 'active'if current_page?(company_meetings_path(current_user.company.name)) %> margin-tab' >
+        <%= link_to "Planning", company_meetings_path(current_user.company.name), class: 'navbar-tabs' %>
+      </div>
+      <div class='<%= 'active'if current_page?(company_team_path(current_user.company.name, current_user.team)) %> margin-tab' >
+        <%= link_to "Team", company_team_path(current_user.company.name, current_user.team), class: 'navbar-tabs no-margin-last' %>
+      </div>
     </div>
+
+<!-- Route des teammates -->
   <% else %>
-    <div>
-      <%= link_to "Dashboard", company_dashboard_path(current_user.company.name, current_user.id), class: 'navbar-tabs' %>
-      <%= link_to "Entreprise", company_libraries_path(current_user.company), class: 'navbar-tabs' %>
-      <!-- Route du calendrier de Pierre Damien -->
-      <%= link_to "Planning", company_meetings_path(current_user.company.name), class: 'navbar-tabs' %>
-      <%= link_to "Team", company_team_path(current_user.company.name, current_user.team), class: 'navbar-tabs no-margin-last' %>
+    <div class="d-flex">
+      <div class='<%= 'active'if current_page?(company_dashboard_path(current_user.company.name, current_user.id)) %>margin-tab' >
+        <%= link_to "Dashboard", company_dashboard_path(current_user.company.name, current_user.id), class: 'navbar-tabs' %>
+      </div>
+      <div class='<%= 'active'if current_page?(company_libraries_path(current_user.company)) %>margin-tab' >
+        <%= link_to "Entreprise", company_libraries_path(current_user.company), class: 'navbar-tabs' %>
+      </div>
+      <div class='<%= 'active'if current_page?(company_meetings_path(current_user.company.name)) %>margin-tab' >
+        <%= link_to "Planning", company_meetings_path(current_user.company.name), class: 'navbar-tabs' %>
+      </div>
+      <div class='<%= 'active'if current_page?(company_team_path(current_user.company.name, current_user.team)) %> margin-tab' >
+        <%= link_to "Team", company_team_path(current_user.company.name, current_user.team), class: 'navbar-tabs no-margin-last' %>
+      </div>
     </div>
   <% end %>
 <% else %>
 <% end %>
+
 <!-- Notifications -->
   <% if user_signed_in? %>
   <div class='d-flex align-items-center'>
@@ -64,21 +101,35 @@
     </div>
     <div class='d-none' id='notifications-dropdown'>
       <div class ='mt-3'>
+        <h2 class='notif-title'> Notifications</h2>
         <% if current_user.notifications.count == 0 %>
           <p>No notifications, yet!</p>
         <% else %>
-          <% current_user.notifications.each do |notif| %>
-            <% if notif.seen %>
-              <p>
+          <p >New (<%= current_user.notifications.select { |notifi| notifi.seen == false }.count %>)</p>
+          <% current_user.notifications.select { |notifi| notifi.seen == false }.each do |notif| %>
+            <p class='icon-calendar'>
+              <% if notif.type == "MeetingNotification" %>
                 <i class="far fa-calendar mr-2"></i>
-                <%= link_to notif.to_notification.message, notif.to_notification.url, method: :patch %>
-              </p>
-            <% else %>
-              <p class='icon-calendar'>
+              <% elsif notif.type == "NewProfileNotification" %>
+                <i class="fas fa-user-check mr-2"></i>
+              <% else %>
+                <i class="far fa-file-alt mr-2"></i>
+              <% end %>
+              <%= link_to notif.to_notification.message, notif.to_notification.url, method: :patch, class: 'icon-calendar'  %>
+            </p>
+          <% end %>
+          <p>Already seen</p>
+          <% current_user.notifications.select { |notifi| notifi.seen }.each do |notif| %>
+            <p class='seen-icon'>
+              <% if notif.type == "MeetingNotification" %>
                 <i class="far fa-calendar mr-2"></i>
-                <%= link_to notif.to_notification.message, notif.to_notification.url, method: :patch, class: 'icon-calendar'  %>
-              </p>
-            <% end %>
+              <% elsif notif.type == "NewProfileNotification" %>
+                <i class="fas fa-user-check mr-2"></i>
+              <% else %>
+                <i class="far fa-file-alt mr-2"></i>
+              <% end %>
+              <%= link_to notif.to_notification.message, notif.to_notification.url, method: :patch, class: 'seen-icon' %>
+            </p>
           <% end %>
         <% end %>
       </div>

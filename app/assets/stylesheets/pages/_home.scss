@@ -1,9 +1,5 @@
 // Specific CSS for your home-page
 
-body{
-  margin-top:0 !important;
-}
-
 .home-navbar{
   position:sticky;
   top:30px;
@@ -24,7 +20,7 @@ header{
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  top: -60px;
+  top: -120px;
   height: 100vh;
   background-color: $sun-yellow;
   // background-image: linear-gradient(rgba($charcoal,.1),rgba($charcoal,.1)),url(https://res.cloudinary.com/devnkcikq/image/upload/v1606816656/image_banner_p6pcms.png);

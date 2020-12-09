@@ -1,5 +1,10 @@
 <div class="home-navbar">
     <% if user_signed_in? %>
+      <% if current_user.role == 'Newcomer' %>
+        <%= link_to 'Dashboard', company_dashboard_path(current_user.company.name, current_user.id), class: 'button-navbar m-2'  %>
+      <% else  %>
+        <%= link_to 'Dashboard', company_dashboards_path(current_user.company.name), class: 'button-navbar m-2'  %>
+      <% end %>
       <% if current_user.photo.attachment%>
         <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle avatar-bordered m-3", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
       <% else %>
