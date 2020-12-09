@@ -33,7 +33,8 @@ import { anchor } from '../plugins/anchor'
 import { buttonAddFiles } from './components/hide_button'
 import { hideIcons } from './components/hide_icon'
 import { initConversationCable } from '../channels/conversation_channel'
-
+import { showUsers } from './components/conversation'
+import { addConversation } from './components/conversation'
 import { pickernotime } from "../plugins/flatpickr"
 import { displayNotifs } from './components/notifications_display'
 import { hideButtons } from './components/meeting'
@@ -52,5 +53,7 @@ document.addEventListener('turbolinks:load', () => {
   initSelect2();
   pickernotime();
   displayNotifs();
+  showUsers();
+  addConversation();
   hideButtons();
 });

@@ -1,0 +1,21 @@
+<span class="span-window m-2" id="conversation-content" data-conversation-id="<%= @conversation.id %>" data-user-id="<%= current_user.id %>">
+	<% @conversation.messages.each_with_index do |message, index| %>
+		<% if message.user == current_user %>
+			<div class = "message author" id="message-<%= index + 1 %>">
+		<% else %>
+			<div class = "message receiver" id="message-<%= index + 1 %>">
+		<% end %>
+		<p class="text-left content-conversation-window"><%= message.content %></p>
+		<p class="text-right date-conversation-window"><%= message.created_at.strftime('%b-%d %H:%M:%S') %></p>
+		</div>
+	<% end %>
+</span>
+<%= simple_form_for [current_user.company, @chatroom, @message], remote: true do |f| %>
+	<div class="form-window">
+		<%= hidden_field_tag 'conversation_id', @conversation.id %>
+		<%= f.text_area :content, class:"input-message w-80" %>
+		<%= button_tag(type: 'submit', class: "btn button color-yellow medium ml-3 mb-3") do %>
+			<i class="fas fa-paper-plane"></i>
+		<% end %>
+	</div>
+<% end %>

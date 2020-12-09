@@ -13,15 +13,17 @@ const initConversationCable = () => {
         const messages = document.querySelectorAll('.message');
         let lastMessage = messages[messages.length - 1];
         const senderId = lastMessage.dataset.senderId;
-        if (senderId === currentUserId) {
-          lastMessage.classList.add("author");
-          lastMessage.classList.remove("d-none");
-          messagesContainer.scrollTop = 10000000000;
-        } else {
-          lastMessage.classList.add("receiver");
-          lastMessage.classList.remove("d-none");
-          messagesContainer.scrollTop = 10000000000;
-        }
+        if (lastMessage.classList.contains("author") === false ) {
+          if (senderId === currentUserId) {
+            lastMessage.classList.add("author");
+            lastMessage.classList.remove("d-none");
+            messagesContainer.scrollTop = 10000000000;
+          } else {
+            lastMessage.classList.add("receiver");
+            lastMessage.classList.remove("d-none");
+            messagesContainer.scrollTop = 10000000000;
+          };
+        };
       },
     });
   };
