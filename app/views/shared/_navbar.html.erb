@@ -93,9 +93,9 @@
   <div class='d-flex align-items-center'>
     <div id='bell'>
       <i class="far fa-bell mr-4 bell-class fa-lg"></i>
-      <% if current_user.notifications.where(seen: false).count != 0 %>
+      <% if current_user.notifications.where(seen: false).where.not(type: 'MessageNotification').count != 0 %>
         <div class='red-circle'>
-          <%= current_user.notifications.where(seen: false).count %>
+          <%= current_user.notifications.where(seen: false).where.not(type: 'MessageNotification').count %>
         </div>
       <% end %>
     </div>
@@ -105,8 +105,8 @@
         <% if current_user.notifications.count == 0 %>
           <p>No notifications, yet!</p>
         <% else %>
-          <p >New (<%= current_user.notifications.select { |notifi| notifi.seen == false }.count %>)</p>
-          <% current_user.notifications.select { |notifi| notifi.seen == false }.each do |notif| %>
+          <p >New (<%= current_user.notifications.select {|n| n.type != "MessageNotification"}.select { |notifi| notifi.seen == false }.count %>)</p>
+          <% current_user.notifications.select {|n| n.type != "MessageNotification"}.select { |notifi| notifi.seen == false }.each do |notif| %>
             <p class='icon-calendar'>
               <% if notif.type == "MeetingNotification" %>
                 <i class="far fa-calendar mr-2"></i>
@@ -119,7 +119,7 @@
             </p>
           <% end %>
           <p>Already seen</p>
-          <% current_user.notifications.select { |notifi| notifi.seen }.each do |notif| %>
+          <% current_user.notifications.select {|n| n.type != "MessageNotification"}.select { |notifi| notifi.seen }.each do |notif| %>
             <p class='seen-icon'>
               <% if notif.type == "MeetingNotification" %>
                 <i class="far fa-calendar mr-2"></i>

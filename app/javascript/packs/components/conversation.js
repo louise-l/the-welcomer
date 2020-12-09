@@ -1,21 +1,24 @@
-const chat_window = () => { 
+const chat_window = () => {
 		const showUsers = () => {
 		const conversationButton = document.querySelector(".fa-comment");
 		const grid = document.getElementById('grid');
-		const yieldPage = document.getElementById('yield-page')
+		const yieldPage = document.getElementById('yield-page');
 		const usersList = document.getElementById("users-list");
+    const bubbleNotif = document.querySelector(".red-circle-chat");
 
 		if (conversationButton) {
 			conversationButton.addEventListener('click', () => {
 				if (usersList.classList.contains('d-none')) {
 					grid.classList.add("row");
 					yieldPage.classList.add("col-10");
-					usersList.classList.remove('d-none')
+					usersList.classList.remove('d-none');
+          bubbleNotif.classList.add('d-none');
 				} else {
 					grid.classList.remove("row");
 					yieldPage.classList.remove("col-10");
 					conversationButton.classList.remove("d-none");
 					usersList.classList.add("d-none");
+          bubbleNotif.classList.remove('d-none');
 				}
 			});
 		}
@@ -92,7 +95,7 @@ const chat_window = () => {
 
 	const addConversation = () => {
 		const user = document.querySelectorAll(".conversations-menu-user");
-		
+
 		user.forEach((user) => {
 			user.addEventListener("click", () => {
 				const name = user.dataset.conversationName;

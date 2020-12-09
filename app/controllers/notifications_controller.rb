@@ -14,4 +14,13 @@ class NotificationsController < ApplicationController
     # redirect_to company_meeting_path(current_user.company.name, params[:id])
     redirect_to @notification.to_notification.url_bis
   end
+
+  def change_message
+    @notifications = Notification.where(type: "MessageNotification")
+    @notifications.each do |notif|
+      notif.seen = true
+      notif.save
+    end
+    redirect_to company_conversations_path(current_user.company.name)
+  end
 end

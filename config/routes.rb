@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :companies, param: :name, only: [:show] do
     get 'notifications', to: 'notifications#index', as: 'notifications'
+    patch 'notifications/change_message', to: 'notifications#change_message', as: 'change_message_notification'
     patch 'notifications/:id', to: 'notifications#update', as: 'edit_notification'
     #Libraries
     resources :libraries
