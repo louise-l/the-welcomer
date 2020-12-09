@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     #Libraries
     resources :libraries
     #Messagerie
-    
+
     get '/conversations', to: 'conversations#index', as: 'conversations'
     get '/conversations/window/:name', to: 'conversations#window', as: 'window'
     get '/conversations/:id', to: 'conversations#show', as: 'conversation'
@@ -62,6 +62,7 @@ Rails.application.routes.draw do
 
 
     #Profiles
+    get 'meetings/activity', to: 'meetings#activity', as:'activity'
     resources :meetings do
       resources :participates, only: [:new, :create, :destroy, :show]
     end
