@@ -83,7 +83,8 @@
   width: 20%;
   height: 50%;
   border: 2px solid $sun-yellow;
-  background-color: white;
+  background-color: $cloud;
+  border-radius: 10px;
 }
 
 .reduce {
@@ -98,7 +99,8 @@
   width: 20%;
   height: 50%;
   border: 2px solid $sun-yellow;
-  background-color: white;
+  background-color: $cloud;
+  border-radius: 10px;
 }
 
 .conversation-js-3 {
@@ -108,7 +110,8 @@
   width: 20%;
   height: 50%;
   border: 2px solid $sun-yellow;
-  background-color: white;
+  background-color:$cloud;
+  border-radius: 10px;
 }
 
 .conversation-js-title {
@@ -149,4 +152,12 @@
 
 #window_body {
   margin-top: 0px;
+}
+
+.input-message-window {
+  width: 70vw;
+}
+
+.button-window {
+  width: 20vw;
 }
