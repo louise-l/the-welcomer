@@ -5,7 +5,8 @@
 	float: right;
 	margin-bottom: 10px;
 	padding: 10px 10px 0px 10px;
-	color: white;
+  color: white;
+  overflow-wrap: break-word;
 }
 
 .receiver {
@@ -15,7 +16,8 @@
 	float: left;
 	margin-bottom: 10px;
 	padding: 10px 10px 0px 10px;
-	color: white;
+  color: white;
+  overflow-wrap: break-word;
 }
 
 #conversation-content {
