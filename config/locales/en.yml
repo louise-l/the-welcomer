@@ -47,3 +47,6 @@ en:
     help_notification:
       message:
         "%{name} has change a mission status to \"%{status}\""
+    message_notification:
+      message:
+        "You have a new message"
