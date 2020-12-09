@@ -5,7 +5,8 @@
 	float: right;
 	margin-bottom: 10px;
 	padding: 10px 10px 0px 10px;
-	color: white;
+  color: white;
+  overflow-wrap: break-word;
 }
 
 .receiver {
@@ -15,7 +16,8 @@
 	float: left;
 	margin-bottom: 10px;
 	padding: 10px 10px 0px 10px;
-	color: white;
+  color: white;
+  overflow-wrap: break-word;
 }
 
 #conversation-content {
@@ -30,7 +32,9 @@
 }
 
 .span-window {
-	margin-bottom: 10px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  height: 80vh !important;
 }
 
 .content-conversation-window {
@@ -43,7 +47,7 @@
 
 
 #users-list {
-  margin-top: 120px;
+  margin-top: 60px;
 }
 
 .fa-comment-slash {
@@ -141,4 +145,8 @@
   &:hover{
     cursor: pointer;
   }
+}
+
+#window_body {
+  margin-top: 0px;
 }

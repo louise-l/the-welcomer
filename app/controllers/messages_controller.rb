@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
 			flash[:success] = "Your message was sent!"
 			@request = request.referrer
 			if @request.include?("window")
-				redirect_to :back
+				redirect_to request.referrer
 			else
 				redirect_to company_conversation_path(current_user.company.name, @conversation, anchor: "message-#{@conversation.messages.size}")
 			end

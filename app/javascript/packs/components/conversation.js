@@ -29,15 +29,12 @@ const closeConversation = (index) => {
 		if (arrayConversationsOpened.includes("0") === false && arrayConversationsOpened.includes("1") === true && arrayConversationsOpened.includes("2") === true) {
 			conversationDiv.remove();
 			arrayConversationsOpened[0] = "0";
-			console.log(arrayConversationsOpened);
 		} else if (arrayConversationsOpened.includes("0") === false && arrayConversationsOpened.includes("1") === false && arrayConversationsOpened.includes("2") === true) {
 			conversationDiv.remove();
 			if (index === "1") {
 				arrayConversationsOpened[0] = "0";
-				console.log(arrayConversationsOpened);
 			} else {
 				arrayConversationsOpened[1] = "1";
-				console.log(arrayConversationsOpened);
 			}
 		} else if (arrayConversationsOpened.includes("0") === false && arrayConversationsOpened.includes("1") === false && arrayConversationsOpened.includes("2") === false) {
 			conversationDiv.remove();
@@ -96,6 +93,7 @@ const addConversation = () => {
 	
 	user.forEach((user) => {
 		user.addEventListener("click", () => {
+			const name = user.dataset.conversationName;
 			if (arrayConversationsOpened.includes(user.innerHTML) === false && arrayConversationsOpened[0] === "0") {
 			arrayConversationsOpened[0] = user.innerHTML;
 			const body = document.body
@@ -108,11 +106,11 @@ const addConversation = () => {
 						<i class="fas fa-times" id="remove-conversation-1"></i>
 					</div>
 				</div>
-				<div class="mt-2 mx-3" style="height: 90%;" id="${user.innerHTML}">
+				<div class="mt-2 mx-3" style="height: 90%;" id="${name}">
 				</div>
 			</div>`)
 			function load_home() {
-				document.getElementById(`${user.innerHTML}`).innerHTML=`<object type="text/html" data="/companies/The-Welcomer/conversations/window/${user.innerHTML}" width="100%" height="100%" ></object>`;
+				document.getElementById(`${name}`).innerHTML=`<object type="text/html" data="/companies/The-Welcomer/conversations/window/${name}" width="100%" height="100%" ></object>`;
 			};
 			 load_home();
 			 closeConversation("1");
@@ -129,11 +127,11 @@ const addConversation = () => {
 							<i class="fas fa-times" id="remove-conversation-2"></i>
 						</div>
 					</div>
-					<div class="mt-2 mx-3" style="height: 90%;" id="${user.innerHTML}">
+					<div class="mt-2 mx-3" style="height: 90%;" id="${name}">
 					</div>
 				</div>`)
 				function load_home() {
-					document.getElementById(`${user.innerHTML}`).innerHTML=`<object type="text/html" data="/companies/The-Welcomer/conversations/window/${user.innerHTML}" width="100%" height="100%" ></object>`;
+					document.getElementById(`${name}`).innerHTML=`<object type="text/html" data="/companies/The-Welcomer/conversations/window/${name}" width="100%" height="100%" ></object>`;
 				};
 				 load_home();
 				 closeConversation("2");
@@ -150,11 +148,11 @@ const addConversation = () => {
 							<i class="fas fa-times" id="remove-conversation-3"></i>
 						</div>
 					</div>
-					<div class="mt-2 mx-3" style="height: 90%;" id="${user.innerHTML}">
+					<div class="mt-2 mx-3" style="height: 90%;" id="${name}">
 					</div>
 				</div>`)
 				function load_home() {
-					document.getElementById(`${user.innerHTML}`).innerHTML=`<object type="text/html" data="/companies/The-Welcomer/conversations/window/${user.innerHTML}" width="100%" height="100%" ></object>`;
+					document.getElementById(`${name}`).innerHTML=`<object type="text/html" data="/companies/The-Welcomer/conversations/window/${name}" width="100%" height="100%" ></object>`;
 				};
 				 load_home();
 				 closeConversation("3");
@@ -173,11 +171,11 @@ const addConversation = () => {
 							<i class="fas fa-times" id="remove-conversation-1"></i>
 						</div>
 					</div>
-					<div class="mt-2 mx-3" style="height: 90%;" id="${user.innerHTML}">
+					<div class="mt-2 mx-3" style="height: 90%;" id="${name}">
 					</div>
 				</div>`)
 				function load_home() {
-					document.getElementById(`${user.innerHTML}`).innerHTML=`<object type="text/html" data="/companies/The-Welcomer/conversations/window/${user.innerHTML}" width="100%" height="100%" ></object>`;
+					document.getElementById(`${name}`).innerHTML=`<object type="text/html" data="/companies/The-Welcomer/conversations/window/${name}" width="100%" height="100%" ></object>`;
 				};
 				 load_home();
 				 closeConversation("1");
