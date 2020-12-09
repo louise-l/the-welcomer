@@ -114,7 +114,7 @@ const addConversation = () => {
 			};
 			 load_home();
 			 closeConversation("1");
-			 reduceConversation("1", user.innerHTML);
+			 reduceConversation("1", name);
 			} else if (arrayConversationsOpened.includes(user.innerHTML) === false && arrayConversationsOpened[1] === "1") {
 				arrayConversationsOpened[1] = user.innerHTML;
 				const body = document.body
@@ -135,7 +135,7 @@ const addConversation = () => {
 				};
 				 load_home();
 				 closeConversation("2");
-				 reduceConversation("2", user.innerHTML);
+				 reduceConversation("2", name);
 			} else if (arrayConversationsOpened.includes(user.innerHTML) === false && arrayConversationsOpened[2] === "2") {
 				arrayConversationsOpened[2] = user.innerHTML;
 				const body = document.body
@@ -156,7 +156,7 @@ const addConversation = () => {
 				};
 				 load_home();
 				 closeConversation("3");
-				 reduceConversation("3", user.innerHTML);
+				 reduceConversation("3", name);
 			} else if (arrayConversationsOpened.includes(user.innerHTML) === false && arrayConversationsOpened.length === 3) {
 				const conversation = document.querySelector(".conversation-js-1");
 				conversation.remove();
@@ -179,11 +179,29 @@ const addConversation = () => {
 				};
 				 load_home();
 				 closeConversation("1");
-				 reduceConversation("1", user.innerHTML);
+				 reduceConversation("1", name);
 			}
 		});
 	});
 };
 
+const removeConversationBeforeNavigating = () => {
+	const conversation1 = document.getElementById("remove-conversation-1");
+	const conversation2 = document.getElementById("remove-conversation-2");
+	const conversation3 = document.getElementById("remove-conversation-3");
+
+	if (conversation1) {
+		closeConversation(1);
+	};
+	if (conversation2) {
+		closeConversation(2);
+	};
+	if (conversation3) {
+		closeConversation(3);
+	};
+};
+
 export { showUsers };
 export { addConversation };
+export { removeConversationBeforeNavigating };
+export { closeConversation };
