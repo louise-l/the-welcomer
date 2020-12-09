@@ -21,10 +21,7 @@
           <i class="fas fa-pen"></i>
         <% end %>
       <% end %>
-
     </div>
-
-
 
     <!-- Avancée dans l'onboard -->
     <div class="onboard-section">
@@ -39,7 +36,7 @@
           </div>
         <% end %>
         <div>
-          <p>Progression in your program</p>
+          <p>Progression in the program</p>
         </div>
     </div>
 
@@ -78,7 +75,7 @@
         <h2>Missions</h2>
           <div class='edit-missions-manager'>
             <%= link_to 'Add a mission', company_new_user_mission_path(@company, @user), class: 'button-dashboard color-yellow mr-2'  %>
-            <span id= 'button-edit-mission' class='button-dashboard color-yellow mr-3 py-1'>Edit</span>
+            <span id= 'button-edit-mission' class='button-dashboard color-yellow py-1'>Edit</span>
           </div>
       <% else %>
         <h2 class='mb-3'>Missions</h2>
@@ -90,10 +87,10 @@
             <div class='mission-tag'>
               <% if current_user == @user %>
                 <%= link_to company_edit_user_mission_path(@company, @user, mission) do  %>
-                  <p class='mr-3 tag-alert'> <%= mission.status %> </p>
+                  <p class='tag-alert'> <%= mission.status %> </p>
                 <% end %>
               <% else %>
-                <p class='mr-3 tag-alert'> <%= mission.status %> </p>
+                <p class='tag-alert'> <%= mission.status %> </p>
               <% end %>
             </div>
             <p class='mission-details'><strong><%= mission.name %></strong> <br> <%= mission.description %> </p>
@@ -112,10 +109,10 @@
             <div class='mission-tag'>
               <% if current_user == @user %>
                 <%= link_to company_edit_user_mission_path(@company, @user, mission) do  %>
-                  <p class='mr-3 tag-understood'> <%= mission.status %></p>
+                  <p class='tag-understood'> <%= mission.status %></p>
                 <% end %>
               <% else %>
-                <p class='mr-3 tag-understood'> <%= mission.status %></p>
+                <p class='tag-understood'> <%= mission.status %></p>
               <% end %>
             </div>
             <p class='mission-details'><strong><%= mission.name %></strong> <br> <%= mission.description %> </p>
@@ -134,10 +131,10 @@
             <div class='mission-tag'>
               <% if current_user == @user %>
                 <%= link_to company_edit_user_mission_path(@company, @user, mission) do  %>
-                  <p class='mr-3 tag-progress'> <%= mission.status %></p>
+                  <p class='tag-progress'> <%= mission.status %></p>
                 <% end %>
               <% else %>
-                <p class='mr-3 tag-progress'> <%= mission.status %></p>
+                <p class='tag-progress'> <%= mission.status %></p>
               <% end %>
             </div>
             <p class='mission-details'><strong><%= mission.name %></strong> <br> <%= mission.description %> </p>
@@ -161,13 +158,13 @@
     <div class="habit-sample card-dashboard">
       <h2>Good habits <i class="fas fa-check-circle"></i></h2>
       <% if @habits.exists? %>
-        <%= @habits.sample.name %>
+        <p class="text-center"><%= @habits.sample.name %></p>
         <%= link_to "Show all", company_user_habits_path(@company, @user)  %>
       <% else %>
         <p>There are no habits yet !</p>
       <% end %>
       <% if current_user.role =='Manager' %>
-        <%= link_to company_new_user_habit_path(@company, @user), class: 'button color-yellow edit-habit' do %>
+        <%= link_to company_user_habits_path(@company, @user), class: 'button color-yellow edit-habit' do %>
           <i class="fas fa-pen"></i>
         <% end %>
       <% end %>
@@ -259,10 +256,22 @@
     <div class='documents-section card-dashboard'>
       <%= link_to company_personal_libraries_path(@company, @user) do %>
         <h2>Documents</h2>
+        <div class="document-description">
+          <%@personal_libraries.each do |library| %>
+          <% if library.status == "Not read" %>
+            <span class="document-status-tag tiny-tag color-fire"><%= library.status %></span>
+          <% elsif library.status == "Read" %>
+            <span class="document-status-tag tiny-tag color-yellow"><%= library.status %></span>
+          <% else %>
+            <span class="document-status-tag tiny-tag color-green"><%= library.status %></span>
+          <% end %>
+
+            <span class="document-label-tag"><%= library.label %> </span>
+          <% end %>
+
+        </div>
       <% end %>
-      <%@personal_libraries.each do |library| %>
-      <p> <%= library.label %> : <%= library.status %></p>
-      <% end %>
+    </div>
     </div>
 
     <!-- Chat -->
@@ -270,6 +279,6 @@
       <h2>Chat</h2>
       <p>Work in progress. Ready next Friday.</p>
     </div>
-  </div>
+
 </div>
 

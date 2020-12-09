@@ -29,15 +29,12 @@ const closeConversation = (index) => {
 		if (arrayConversationsOpened.includes("0") === false && arrayConversationsOpened.includes("1") === true && arrayConversationsOpened.includes("2") === true) {
 			conversationDiv.remove();
 			arrayConversationsOpened[0] = "0";
-			console.log(arrayConversationsOpened);
 		} else if (arrayConversationsOpened.includes("0") === false && arrayConversationsOpened.includes("1") === false && arrayConversationsOpened.includes("2") === true) {
 			conversationDiv.remove();
 			if (index === "1") {
 				arrayConversationsOpened[0] = "0";
-				console.log(arrayConversationsOpened);
 			} else {
 				arrayConversationsOpened[1] = "1";
-				console.log(arrayConversationsOpened);
 			}
 		} else if (arrayConversationsOpened.includes("0") === false && arrayConversationsOpened.includes("1") === false && arrayConversationsOpened.includes("2") === false) {
 			conversationDiv.remove();
@@ -96,6 +93,7 @@ const addConversation = () => {
 	
 	user.forEach((user) => {
 		user.addEventListener("click", () => {
+			const name = user.dataset.conversationName;
 			if (arrayConversationsOpened.includes(user.innerHTML) === false && arrayConversationsOpened[0] === "0") {
 			arrayConversationsOpened[0] = user.innerHTML;
 			const body = document.body
@@ -108,15 +106,15 @@ const addConversation = () => {
 						<i class="fas fa-times" id="remove-conversation-1"></i>
 					</div>
 				</div>
-				<div class="mt-2 mx-3" style="height: 90%;" id="${user.innerHTML}">
+				<div class="mt-2 mx-3" style="height: 90%;" id="${name}">
 				</div>
 			</div>`)
 			function load_home() {
-				document.getElementById(`${user.innerHTML}`).innerHTML=`<object type="text/html" data="/companies/The-Welcomer/conversations/window/${user.innerHTML}" width="100%" height="100%" ></object>`;
+				document.getElementById(`${name}`).innerHTML=`<object type="text/html" data="/companies/The-Welcomer/conversations/window/${name}" width="100%" height="100%" ></object>`;
 			};
 			 load_home();
 			 closeConversation("1");
-			 reduceConversation("1", user.innerHTML);
+			 reduceConversation("1", name);
 			} else if (arrayConversationsOpened.includes(user.innerHTML) === false && arrayConversationsOpened[1] === "1") {
 				arrayConversationsOpened[1] = user.innerHTML;
 				const body = document.body
@@ -129,15 +127,15 @@ const addConversation = () => {
 							<i class="fas fa-times" id="remove-conversation-2"></i>
 						</div>
 					</div>
-					<div class="mt-2 mx-3" style="height: 90%;" id="${user.innerHTML}">
+					<div class="mt-2 mx-3" style="height: 90%;" id="${name}">
 					</div>
 				</div>`)
 				function load_home() {
-					document.getElementById(`${user.innerHTML}`).innerHTML=`<object type="text/html" data="/companies/The-Welcomer/conversations/window/${user.innerHTML}" width="100%" height="100%" ></object>`;
+					document.getElementById(`${name}`).innerHTML=`<object type="text/html" data="/companies/The-Welcomer/conversations/window/${name}" width="100%" height="100%" ></object>`;
 				};
 				 load_home();
 				 closeConversation("2");
-				 reduceConversation("2", user.innerHTML);
+				 reduceConversation("2", name);
 			} else if (arrayConversationsOpened.includes(user.innerHTML) === false && arrayConversationsOpened[2] === "2") {
 				arrayConversationsOpened[2] = user.innerHTML;
 				const body = document.body
@@ -150,15 +148,15 @@ const addConversation = () => {
 							<i class="fas fa-times" id="remove-conversation-3"></i>
 						</div>
 					</div>
-					<div class="mt-2 mx-3" style="height: 90%;" id="${user.innerHTML}">
+					<div class="mt-2 mx-3" style="height: 90%;" id="${name}">
 					</div>
 				</div>`)
 				function load_home() {
-					document.getElementById(`${user.innerHTML}`).innerHTML=`<object type="text/html" data="/companies/The-Welcomer/conversations/window/${user.innerHTML}" width="100%" height="100%" ></object>`;
+					document.getElementById(`${name}`).innerHTML=`<object type="text/html" data="/companies/The-Welcomer/conversations/window/${name}" width="100%" height="100%" ></object>`;
 				};
 				 load_home();
 				 closeConversation("3");
-				 reduceConversation("3", user.innerHTML);
+				 reduceConversation("3", name);
 			} else if (arrayConversationsOpened.includes(user.innerHTML) === false && arrayConversationsOpened.length === 3) {
 				const conversation = document.querySelector(".conversation-js-1");
 				conversation.remove();
@@ -173,19 +171,37 @@ const addConversation = () => {
 							<i class="fas fa-times" id="remove-conversation-1"></i>
 						</div>
 					</div>
-					<div class="mt-2 mx-3" style="height: 90%;" id="${user.innerHTML}">
+					<div class="mt-2 mx-3" style="height: 90%;" id="${name}">
 					</div>
 				</div>`)
 				function load_home() {
-					document.getElementById(`${user.innerHTML}`).innerHTML=`<object type="text/html" data="/companies/The-Welcomer/conversations/window/${user.innerHTML}" width="100%" height="100%" ></object>`;
+					document.getElementById(`${name}`).innerHTML=`<object type="text/html" data="/companies/The-Welcomer/conversations/window/${name}" width="100%" height="100%" ></object>`;
 				};
 				 load_home();
 				 closeConversation("1");
-				 reduceConversation("1", user.innerHTML);
+				 reduceConversation("1", name);
 			}
 		});
 	});
 };
 
+const removeConversationBeforeNavigating = () => {
+	const conversation1 = document.getElementById("remove-conversation-1");
+	const conversation2 = document.getElementById("remove-conversation-2");
+	const conversation3 = document.getElementById("remove-conversation-3");
+
+	if (conversation1) {
+		closeConversation(1);
+	};
+	if (conversation2) {
+		closeConversation(2);
+	};
+	if (conversation3) {
+		closeConversation(3);
+	};
+};
+
 export { showUsers };
 export { addConversation };
+export { removeConversationBeforeNavigating };
+export { closeConversation };

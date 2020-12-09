@@ -10,12 +10,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body <%= "data-no-turbolinks='true'".html_safe if controller_name=="conversations" && action_name=="show" %>>
+  <body id="<%=action_name%>_body" <%= "data-no-turbolinks='true'".html_safe if controller_name=="conversations" && action_name=="show" %>>
     <!-- Faire les IF pour la navbar une fois que le front sera codé -->
     <% if controller_name == "pages" %>
       <%= render 'shared/navbar_home' %>
     <% else %>
-      <% if controller_name != "conversations" %>
+      <% if (action_name != "window") %>
         <%= render 'shared/navbar' %>
       <% end %>
     <% end %>
