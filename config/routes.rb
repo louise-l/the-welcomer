@@ -62,7 +62,6 @@ Rails.application.routes.draw do
 
 
     #Profiles
-    get 'meetings/activity', to: 'meetings#activity', as:'activity'
     resources :meetings do
       resources :participates, only: [:new, :create, :destroy, :show]
     end
