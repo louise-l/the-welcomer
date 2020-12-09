@@ -18,3 +18,23 @@ footer{
     }
   }
 }
+
+.footer-setting {
+  background-color: rgba(180,180,180,0.5);
+  height: 100px;
+  padding: 0px 50px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+}
+
+.footer-setting i {
+    color: $cloud;
+    &:hover {
+      color: $fire;
+    }
+}
+
+.footer-fix {
+  min-height: calc(100vh - 163px);
+}

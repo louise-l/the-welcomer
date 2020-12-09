@@ -1,4 +1,7 @@
 class Meeting < ApplicationRecord
+
+  attr_accessor :activity
+
   validates :start_time, :end_time, :title, :description, presence: true
   has_many :participates, dependent: :destroy
   has_many :users, through: :participates

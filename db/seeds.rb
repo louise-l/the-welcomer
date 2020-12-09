@@ -30,10 +30,10 @@ puts "..library created"
 
 puts "Users created"
 Team.destroy_all
-team1 = Team.create!(name: "Back-end development team",address: "146 rue solférino, Lille", company_id: company1.id)
-team2 = Team.create!(name: "Artists of front-end",address: "12 rue de la clé, Lille", company_id: company1.id)
-team3 = Team.create!(name: "Community of comptability",address: "25 bis avenue du simflouz, Lille", company_id: company1.id)
-team4 = Team.create!(name: "Public relations",address: "HQ, La Défense, Paris, center of the world", company_id: company1.id)
+team1 = Team.create!(name: "Back-end development team",address: "Lille", company_id: company1.id)
+team2 = Team.create!(name: "Artists of front-end",address: "Paris", company_id: company1.id)
+team3 = Team.create!(name: "Community of comptability",address: "Lille", company_id: company1.id)
+team4 = Team.create!(name: "Public relations",address: "Paris", company_id: company1.id)
 #file7 = URI.open("https://source.unsplash.com/500x350/?team,company")
 #file8 = URI.open("https://source.unsplash.com/500x350/?team,company")
 #file9 = URI.open("https://source.unsplash.com/500x351/?team,company")
