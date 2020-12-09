@@ -9,9 +9,9 @@ class DashboardsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @company = @user.company.name
-    @missions = Mission.where(user: @user)
+    @missions = Mission.where(user: @user).order(status: :desc)
     @habits = Habit.where(user: @user)
-    @personal_libraries = PersonalLibrary.where(user: @user)
+    @personal_libraries = PersonalLibrary.where(user: @user).order(status: :asc)
     @meetings = Meeting.all.order(:start_time).select { |meeting| meeting.users.include?(current_user)}.select do |meeting|
       meeting.start_time.strftime("%d") == Time.now.strftime("%d")
     end

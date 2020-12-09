@@ -12,9 +12,13 @@ class HabitPolicy < ApplicationPolicy
     user.role == "Manager" || user.role =="RH"
   end
 
+  def index?
+    true
+  end
+
   class Scope < Scope
     def resolve
-      scope.where(company: user.company)
+      scope.all
     end
   end
 end
