@@ -32,5 +32,15 @@
     <% if controller_name != "conversations" %>
       <i class="fas fa-comment"></i>
     <% end %>
+
+    <% unless controller_name == "pages"  %>
+      <div class="footer-setting">
+        <a href="#"><i class="fab fa-2x fa-instagram mr-4"></i></a>
+        <a href="#"><i class="fab fa-2x fa-facebook mr-4"></i></a>
+        <a href="#"><i class="fab fa-2x fa-twitter mr-4"></i></a>
+        <a href="#"><i class="fab fa-2x fa-linkedin mr-4"></i></a>
+      </div>
+    <% end %>
+
   </body>
 </html>
