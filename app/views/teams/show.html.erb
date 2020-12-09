@@ -1,34 +1,56 @@
-<div class="container my-5">
-    <div class="card-team-infos">
+<div class="container">
+  <div class="text-center mb-4">
+    <h2 class="text-center"><%= @team.name  %></h2>
+    <%= @team.address  %>
+  </div>
+    <div class="text-center">
       <% if @team.photo.attachment %>
-        <%= cl_image_tag @team.photo.key, class: "photo" %>
+        <%= cl_image_tag @team.photo.key, class: "photo-team" %>
       <% else  %>
-        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1650&q=80" class= "photo">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1650&q=80" class= "photo-team">
       <% end %>
-        <div class="card-infos-text">
-         <h2 class="text-center"><%= @team.name  %></h2>
-          <%= @team.address  %>
-        </div>
-    </div>
+  </div>
+      <div class="background-text mb-5 mt-5">
+    <h4><div class="text-center mb-3 title-team"> The member of the <%=@team.name%> : </div></h4>
         <div class="display-card">
           <% @team.users.each do |user| %>
-            <div class="card-infos-user">
-              <div class="display-photo">
-                <% if user.photo.attachment %>
-                  <%= cl_image_tag user.photo.key, class: "avatar-large defaut m-1" %>
-                <% else %>
-                  <img src="https://res.cloudinary.com/dsaxkp6xo/image/upload/v1606476250/xeufvuv1hyp198mg13x09b6y3iim.jpg" class="avatar-large defaut m-1">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+             <div class="flip-card-front">
+                <div class="card-infos-user">
+                  <div class="display-text">
+                    <div>
+                      <% if user.photo.attachment %>
+                        <%= cl_image_tag user.photo.key, class: "avatar-xl" %>
+                      <% else %>
+                        <img src="https://res.cloudinary.com/dsaxkp6xo/image/upload/v1606476250/xeufvuv1hyp198mg13x09b6y3iim.jpg" class="avatar-xl">
+                      <% end %>
+                    </div>
+                    <strong class="title-name"><%= user.first_name%> <%= user.last_name%></strong>
+                    <p><strong>Email: </strong><%= user.email%></p>
+                    <p><strong>Job: </strong><%= user.job%></p>
+                  </div>
+                  <% if user.role == "Manager" %>
+                    <p class='label-team-red'> <%= user.role %> </p>
+                  <% elsif user.role == "Newcomer" %>
+                    <p class='label-team-yellow'> <%= user.role %> </p>
+                  <% else %>
+                    <p class='label-team-blue'> <%= user.role %> </p>
                 <% end %>
-                  <strong><%= user.first_name%> <%= user.last_name%></strong>
-              </div>
-              <div class="text-show mt-1">
-                <p><strong>Email: </strong><%= user.email%></p>
-                <p><strong>Role: </strong><%= user.role %></p>
-                <p><strong>Job: </strong><%= user.job%></p>
-                <p><strong>Description: </strong><%= user.description %></p>
               </div>
             </div>
-          <% end %>
+            <div class="flip-card-back">
+              <% if user.photo.attachment %>
+                <%= cl_image_tag user.photo.key, class: "avatar-xl mt-2" %>
+              <% else %>
+                <img src="https://res.cloudinary.com/dsaxkp6xo/image/upload/v1606476250/xeufvuv1hyp198mg13x09b6y3iim.jpg" class="avatar-xl mt-2">
+              <% end %>
+              <p class="mt-2"><%=user.description  %> <p>
+            </div>
+          </div>
         </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
