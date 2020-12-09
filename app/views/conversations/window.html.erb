@@ -14,8 +14,8 @@
 <%= simple_form_for [current_user.company, @chatroom, @message], remote: true do |f| %>
 	<div class="form-window">
 		<%= hidden_field_tag 'conversation_id', @conversation.id %>
-		<%= f.text_area :content, class:"input-message w-80" %>
-		<%= button_tag(type: 'submit', class: "btn button color-yellow medium ml-3 mb-3") do %>
+		<%= f.text_area :content, class:"input-message input-message-window" %>
+		<%= button_tag(type: 'submit', class: "btn button color-yellow medium button-window ml-3 mb-3") do %>
 			<i class="fas fa-paper-plane"></i>
 		<% end %>
 	</div>
