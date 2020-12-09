@@ -40,6 +40,7 @@ import { closeConversation } from './components/conversation'
 import { pickernotime } from "../plugins/flatpickr"
 import { displayNotifs } from './components/notifications_display'
 import { hideButtons } from './components/meeting'
+import { findActivities} from './components/geocode'
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -58,6 +59,7 @@ document.addEventListener('turbolinks:load', () => {
   showUsers();
   addConversation();
   hideButtons();
+  findActivities();
   // window.onbeforeunload = () => {
   //   console.log("1");
   //   removeConversationBeforeNavigating();
