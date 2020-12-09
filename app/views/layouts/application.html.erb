@@ -29,7 +29,7 @@
         <%= render 'shared/conversations' %>
       <% end %>
     </div>
-    <% if controller_name != "conversations" %>
+    <% if controller_name != "conversations" && user_signed_in? %>
         <i class="fas fa-comment chat-icon">
         <% if current_user.notifications.where(seen: false, type: 'MessageNotification').count != 0 %>
           <div class= 'red-circle-chat'>
