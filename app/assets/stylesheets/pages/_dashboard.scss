@@ -163,11 +163,13 @@
   flex-direction:column;
   justify-content:center;
   align-items:center;
+  position:relative;
   h3{
     padding-bottom:30px;
   }
   p{
     color:rgba(0, 0, 0, 0.5);
+    text-align:center;
   }
 }
 
@@ -310,8 +312,15 @@
 }
 
 
+#progress-bar-dashboard{
+  width:250px;
+  height:250px;
+}
 
-
+.progression-number{
+  position:absolute;
+  bottom:55px;
+}
 
 
 

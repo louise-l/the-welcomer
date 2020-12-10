@@ -39,6 +39,7 @@ import { displayNotifs } from './components/notifications_display'
 import { hideButtons } from './components/meeting'
 import { findActivities} from './components/geocode'
 import { inputMessage } from './components/input_message'
+import{ donutProgression} from './components/donut'
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -53,6 +54,7 @@ document.addEventListener('turbolinks:load', () => {
   initConversationCable();
   initSelect2();
   pickernotime();
+  donutProgression();
   displayNotifs();
   chat_window();
   hideButtons();
