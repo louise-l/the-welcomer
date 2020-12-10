@@ -59,15 +59,22 @@
   }
 }
 
-.fa-comment {
+#fa-comment {
   color: $sun-yellow;
-  font-size: 40px;
+  font-size: 24px;
   position: fixed;
   top: 65px;
   right: 15px;
   &:hover {
     cursor: pointer;
   }
+  display: flex;
+  align-items: center;
+}
+
+#icon-chat {
+  color: $sun-yellow;
+  font-size: 40px;
 }
 
 
