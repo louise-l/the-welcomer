@@ -1,46 +1,46 @@
 <div class="container footer-fix">
-  <div class="layout-library white-card">
-    <h1>Online Library</h1>
-      <% if @company_libraries.exists? %>
-        <% @company_libraries.each do |library| %>
-          <div class="card-library color-yellow">
-            <%= link_to company_library_path(current_user.company.name, library) do  %>
-              <%= cl_image_tag library.file.key, height: 100, width: 100, crop: :fill, format: :png, radius: "max", gravity: "north"%>
-              <% if current_user.role == "RH" %>
-                <%= link_to company_library_path(@company, library), method: :delete do%>
-                  <i class="far fa-times-circle" style='color: #353A47;'></i>
+  <div class='margin-library'>
+    <h1 class='text-center'>Online Library</h1>
+    <div class="layout-library white-card no-margin-library">
+        <% if @company_libraries.exists? %>
+          <% @company_libraries.each do |library| %>
+            <div class="card-library color-yellow">
+              <%= link_to company_library_path(current_user.company.name, library) do  %>
+                <%= cl_image_tag library.file.key, height: 100, width: 100, crop: :fill, format: :png, radius: "max", gravity: "north"%>
+                <% if current_user.role == "RH" %>
+                  <%= link_to company_library_path(@company, library), method: :delete do%>
+                    <i class="far fa-times-circle" style='color: #353A47;'></i>
+                  <% end %>
                 <% end %>
+              <h5><%= library.label %></h5>
               <% end %>
-            <h5><%= library.label %></h5>
-            <% end %>
-          </div>
-         <% end %>
-      <% else %>
-        <% if current_user.role == "RH" %>
-          <p>The library is empty ! Start uploading documents </p>
+            </div>
+           <% end %>
         <% else %>
-          <p>The library is empty !</p>
-        <% end %>
-      <% end %>
-  </div>
-
-  <div class="d-flex justify-content-center">
-    <div class="form-box d-flex justify-content-center">
-      <% if current_user.role == "RH" %>
-      <div class="button color-fire" id="addfile">Add a file</div>
-      <% end %>
-
-      <div class="d-none" id="tohide">
-          <%= simple_form_for [@company, @library] do |f|%>
-          <%= f.input :label, label: "Title of the document" %>
-          <%= f.input :file, as: :file, label: false%>
-          <div class="d-flex justify-content-center">
-            <%= f.submit"Add", class: "button color-fire", id:"submit-button" %>
-          </div>
+          <% if current_user.role == "RH" %>
+            <p>The library is empty ! Start uploading documents </p>
+          <% else %>
+            <p>The library is empty !</p>
           <% end %>
+        <% end %>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <div class="form-box d-flex justify-content-center">
+        <% if current_user.role == "RH" %>
+        <div class="button color-fire" id="addfile">Add a file</div>
+        <% end %>
+
+        <div class="d-none" id="tohide">
+            <%= simple_form_for [@company, @library] do |f|%>
+            <%= f.input :label, label: "Title of the document" %>
+            <%= f.input :file, as: :file, label: false%>
+            <div class="d-flex justify-content-center">
+              <%= f.submit"Add", class: "button color-fire", id:"submit-button" %>
+            </div>
+            <% end %>
+        </div>
       </div>
     </div>
   </div>
-
-
 </div>
