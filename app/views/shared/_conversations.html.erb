@@ -8,6 +8,7 @@
     <% end %>
 	</div>
 	<div class="p-4">
+		<input type="text" name="" id="conversation-window-search" placeholder="Discuss with" class="my-3">
 		<% current_user.company.users.each do |user| %>
 			<% unless user == current_user %>
 				<li class="list-group-item conversations-menu-user" data-conversation-name="<%= user.first_name %>%20<%= user.last_name %>">
@@ -16,7 +17,7 @@
     			<% else %>
       			<%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar dropdown-toggle avatar-bordered", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
     			<% end %>
-					<%= user.first_name %> <%= user.last_name %>
+					<span class="names-windows"><%= user.first_name %> <%= user.last_name %></span>
 				</li>
 			<% end %>
 		<% end %>
