@@ -25,7 +25,6 @@ const chat_window = () => {
 	};
 
 	const arrayConversationsOpened = ["0", "1", "2"];
-	console.log(arrayConversationsOpened);
 
 	const closeConversation = (index) => {
 		const closeSymbol = document.getElementById(`remove-conversation-${index}`)
@@ -101,7 +100,6 @@ const chat_window = () => {
 				const name = user.dataset.conversationName;
 				if (arrayConversationsOpened.includes(user.innerHTML) === false && arrayConversationsOpened[0] === "0") {
 				arrayConversationsOpened[0] = user.innerHTML;
-				console.log(arrayConversationsOpened);
 				const body = document.body
 				body.insertAdjacentHTML("beforeend", `
 				<div class="conversation-js-1">

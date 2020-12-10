@@ -7,12 +7,10 @@ const findActivities = () => {
       const address = document.querySelector('.targeted-activity').value;
       const mapboxKey = 'pk.eyJ1IjoiY2hhcmxlc3ByIiwiYSI6ImNraDY2Mng1ZTA1cnUyc2wycnpod2h5YmoifQ.XvjMe2F6c6U-fTfdEWHvZQ';
       const address_team = addressHTML.dataset.address;
-      console.log(address_team);
 
       fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${address_team}+${address}.json?access_token=${mapboxKey}`)
         .then(response => response.json())
         .then((data) => {
-          console.log(data);
           const info = {
             poiName0: data.features[0].text,
             poiAddress0: data.features[0].properties.address,
@@ -31,7 +29,6 @@ const findActivities = () => {
             poiRelevance4: data.features[4].relevance,
           };
         const divActivity = document.querySelector('.activity-container');
-        console.log(divActivity);
         divActivity.innerHTML = '';
         if (info['poiRelevance0'] > 0.8) {
           divActivity.insertAdjacentHTML ('beforeend', `
@@ -83,12 +80,10 @@ const findActivities = () => {
 const setField = () => {
   const boxAct = document.querySelectorAll('.margin-box-activity');
   if (boxAct.length !== 0) {
-    console.log(boxAct)
     const setValue = document.querySelector('.targeted-activity');
     boxAct.forEach((box) => {
       if (box) {
         box.addEventListener('click', (event) => {
-          console.log('clicked')
           const newValue = box.getElementsByTagName('p')[0].innerText;
           setValue.value = newValue;
         });
