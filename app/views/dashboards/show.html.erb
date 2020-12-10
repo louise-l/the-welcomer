@@ -37,7 +37,7 @@
         <% if @meetings != [] %>
             <% @meetings.each do |meeting| %>
               <div class="calendar-grid">
-              <% if meeting.start_time <= Time.now && meeting.end_time >= Time.now % %>
+              <% if meeting.start_time <= Time.now && meeting.end_time >= Time.now %>
                   <p class='tiny-tag color-green document-status-tag' style = "font-size: 8px"> Currently</p>
                   <p class= "document-label-tag"> <%= meeting.start_time.strftime("%d %b") %> - <%= meeting.start_time.strftime("%Hh%M") %> : <%= meeting.title %> </p>
               <% else %>
