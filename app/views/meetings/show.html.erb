@@ -15,7 +15,7 @@
 		<div class="d-flex flex-column align-items-center my-3">
 			<p class="title-card">Description:</p>
 			<p><%= @meeting.description %></p>
-      <% unless @meeting.activity_address == nil || @meeting.activity_address == '' %>
+      <% unless @meeting.activity_address == nil || @meeting.activity_address == '' || @meeting.activity_address == 'undefined' %>
         <p class="title-card">Address:</p>
         <p> <%= @meeting.activity_address %> </p>
       <% end %>
