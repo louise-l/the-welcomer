@@ -162,3 +162,85 @@
 .button-window {
   width: 20vw;
 }
+
+.users-list-choice {
+  padding: 1.5rem;
+}
+
+@media (max-width: 1450px) {
+  .conversation-js-1 {
+    position: fixed;
+    bottom: 0;
+    right: 1%;
+    width: 25%;
+    height: 50%;
+    border: 2px solid $sun-yellow;
+    background-color: $cloud;
+    border-radius: 10px;
+  }
+
+  .conversation-js-2 {
+    position: fixed;
+    bottom: 0;
+    right: 27%;
+    width: 25%;
+    height: 50%;
+    border: 2px solid $sun-yellow;
+    background-color: $cloud;
+    border-radius: 10px;
+  }
+
+  .conversation-js-3 {
+    position: fixed;
+    bottom: 0;
+    right: 53%;
+    width: 25%;
+    height: 50%;
+    border: 2px solid $sun-yellow;
+    background-color:$cloud;
+    border-radius: 10px;
+  }
+
+  .conversation-js-title {
+    background-color: $sun-yellow;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    z-index: 10;
+    padding: 3px 10px;
+    font-size: 20px;
+  }
+
+  .input-message-window {
+    width: 70vw;
+    height: 15vh;
+  }
+  
+  .button-window {
+    width: 20vw;
+    height: 15vh;
+  }
+
+  .span-window {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    height: 75vh !important;
+  }
+
+  .users-list-choice {
+    padding: 1rem;
+  }
+
+  .list-group-item {
+    padding: 0.5rem 0.25rem !important;
+    font-size: 16px;
+  }
+
+  .avatar.dropdown-toggle.avatar-bordered {
+    width: 20px;
+    height: 20px;
+  }
+}
