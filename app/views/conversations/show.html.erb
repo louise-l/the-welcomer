@@ -19,10 +19,10 @@
       <div>
         <%= hidden_field_tag 'conversation_id', @conversation.id %>
         <%= f.label :content %>
-        <%= f.text_area :content, class:"input-message w-100" %>
+        <%= f.text_area :content, class:"input-message w-100", id: "input-message" %>
       </div>
       <div class="form-actions d-flex justify-content-center mt-3">
-        <%= f.submit "Send Message", class: "btn button color-yellow" %>
+        <%= f.submit "Send Message", class: "btn button color-yellow", id: "submit-message" %>
         <%= link_to "Conversations", company_conversations_path(current_user.company.name), class:"button color-yellow ml-3" %>
       </div>
     <% end %>
