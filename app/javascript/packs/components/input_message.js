@@ -4,7 +4,7 @@ const inputMessage = () => {
 
 	if (input) {
 		input.addEventListener("keyup", (event) => {
-			if (event.keyCode === 13) {
+			if (event.keyCode === 13 && !event.shiftKey) {
 				event.preventDefault();
 				submit.click();
 			}
