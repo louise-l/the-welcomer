@@ -40,10 +40,9 @@
     <% end %>
     <% unless controller_name == "pages" || action_name == 'window'  %>
       <div class="footer-setting">
-        <a href="#"><i class="fab fa-2x fa-instagram mr-4"></i></a>
-        <a href="#"><i class="fab fa-2x fa-facebook mr-4"></i></a>
-        <a href="#"><i class="fab fa-2x fa-twitter mr-4"></i></a>
-        <a href="#"><i class="fab fa-2x fa-linkedin mr-4"></i></a>
+        <%= link_to root_path do  %>
+        <p>Onboarding solution brought to you by <span class="text-color-fire">The Welcomer <i class="fas fa-circle text-color-fire"></i></span></p>
+        <% end %>
       </div>
     <% end %>
 
