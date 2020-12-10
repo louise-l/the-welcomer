@@ -26,18 +26,8 @@
     <!-- Avancée dans l'onboard -->
     <div class="onboard-section">
       <h3><%= @user.arrives_in %> !</h3>
-        <% if @average == 100 %>
-          <div class="progress progress-dashboard">
-            <div class="progress-bar bg-success" role="progressbar" style="width: <%="#{@user.progression}%"%>;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><%= @user.progression %>%</div>
-          </div>
-        <% else %>
-          <div class="progress progress-dashboard">
-            <div class="progress-bar bg-yellow" role="progressbar" style="width: <%="#{@user.progression}%"%>;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><%= @user.progression %>%</div>
-          </div>
-        <% end %>
-        <div>
-          <p>Progression in the program</p>
-        </div>
+        <canvas id="progress-bar-dashboard" data-done="<%= @user.progression %>" data-todo ="<%= 100 - @user.progression %>"> </canvas>
+        <p class = "progression-number"> <strong><%= @user.progression %> % </strong> </br>Progression in </br>the program </p>
     </div>
 
     <!-- Planning -->

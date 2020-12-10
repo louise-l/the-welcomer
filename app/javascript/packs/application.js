@@ -40,6 +40,7 @@ import { hideButtons } from './components/meeting'
 import { findActivities} from './components/geocode'
 import { newMessage } from './components/new_message'
 import { inputMessage } from './components/input_message'
+import{ donutProgression} from './components/donut'
 import { conversationWindowSearch } from './components/conversation_window_search'
 
 document.addEventListener('turbolinks:load', () => {
@@ -54,6 +55,7 @@ document.addEventListener('turbolinks:load', () => {
   initConversationCable();
   initSelect2();
   pickernotime();
+  donutProgression();
   displayNotifs();
   chat_window();
   hideButtons();
