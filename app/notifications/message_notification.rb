@@ -33,6 +33,6 @@ class MessageNotification < Noticed::Base
   end
 
   def url_bis
-    # à réfléchir
+    #à penser
   end
 end

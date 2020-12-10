@@ -3,8 +3,8 @@ const inputMessage = () => {
 	const submit = document.getElementById('submit-message');
 
 	if (input) {
-		input.addEventListener("keyup", (event) => {
-			if (event.keyCode === 13) {
+		input.addEventListener("keydown", (event) => {
+			if (event.keyCode === 13 && !event.shiftKey) {
 				event.preventDefault();
 				submit.click();
 			}
