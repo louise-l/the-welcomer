@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
                                         receiver_id: @receiver.id)
 		@message = current_user.messages.build(message_params)
 		@message.conversation_id = @conversation.id
-		if @message.save
+		if @message.save && @message.content != ""
 		ConversationChannel.broadcast_to(
 			@conversation,
 			render_to_string(partial: "message", locals: { message: @message, user_id: @message.user.id})
@@ -32,7 +32,8 @@ class MessagesController < ApplicationController
 				redirect_to company_conversation_path(current_user.company.name, @conversation, anchor: "message-#{@conversation.messages.size}")
 			end
 		else
-			render :new
+			redirect_to request.referrer
+			flash[:alert] = "Message cannot be blank"
 		end
 	end
 
