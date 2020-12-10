@@ -29,14 +29,16 @@
         <%= render 'shared/conversations' %>
       <% end %>
     </div>
-    <% if controller_name != "conversations" && user_signed_in? %>
-        <i class="fas fa-comment chat-icon">
+    <% if controller_name != "conversations" && user_signed_in? && controller_name != "pages" %>
+	 	<div id="fa-comment">
+        <p class="m-2">Chat</p> <i class="fas fa-comment chat-icon" id="icon-chat">
         <% if current_user.notifications.where(seen: false, type: 'MessageNotification').count != 0 %>
           <div class= 'red-circle-chat'>
             <%= current_user.notifications.where(seen: false, type: 'MessageNotification').count %>
           </div>
         <% end %>
         </i>
+		</div>
     <% end %>
     <% unless controller_name == "pages" || action_name == 'window'  %>
       <div class="footer-setting">

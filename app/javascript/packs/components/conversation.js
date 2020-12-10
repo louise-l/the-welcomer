@@ -1,9 +1,10 @@
 const chat_window = () => {
 		const showUsers = () => {
-		const conversationButton = document.querySelector(".fa-comment");
+		const conversationButton = document.getElementById("fa-comment");
 		const grid = document.getElementById('grid');
 		const yieldPage = document.getElementById('yield-page');
 		const usersList = document.getElementById("users-list");
+		const iconChat = document.getElementById("icon-chat");
     const bubbleNotif = document.querySelector(".red-circle-chat");
 
 		if (conversationButton) {
@@ -12,12 +13,16 @@ const chat_window = () => {
 					grid.classList.add("row");
 					yieldPage.classList.add("col-10");
 					usersList.classList.remove('d-none');
+					iconChat.classList.remove('fa-comment');
+					iconChat.classList.add('fa-times');
           bubbleNotif.classList.add('d-none');
 				} else {
 					grid.classList.remove("row");
 					yieldPage.classList.remove("col-10");
 					conversationButton.classList.remove("d-none");
 					usersList.classList.add("d-none");
+					iconChat.classList.add('fa-comment');
+					iconChat.classList.remove('fa-times');
           bubbleNotif.classList.remove('d-none');
 				}
 			});
