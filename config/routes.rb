@@ -5,9 +5,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :companies, param: :name, only: [:show] do
-    get 'notifications', to: 'notifications#index', as: 'notifications'
-    patch 'notifications/change_message', to: 'notifications#change_message', as: 'change_message_notification'
-    patch 'notifications/:id', to: 'notifications#update', as: 'edit_notification'
     #Libraries
     resources :libraries
     #Messagerie
@@ -16,6 +13,9 @@ Rails.application.routes.draw do
     get '/conversations/window/:name', to: 'conversations#window', as: 'window'
     get '/conversations/:id', to: 'conversations#show', as: 'conversation'
 
+    get 'notifications', to: 'notifications#index', as: 'notifications'
+    patch '/conversations/:id/notifications/change_message', to: 'notifications#change_message', as: 'change_message_notification'
+    patch 'notifications/:id', to: 'notifications#update', as: 'edit_notification'
 
     # company_conversations GET    /companies/:company_name/conversations(.:format)                                         conversations#index
     # company_conversation GET    /companies/:company_name/conversations/:id(.:format)                                     conversations#show

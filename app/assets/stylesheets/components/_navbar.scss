@@ -110,6 +110,10 @@
   }
 }
 
+.absolute-notif-parent {
+  position: relative;
+}
+
 .red-circle-conversations {
   height: 20px;
   position: absolute;
@@ -118,12 +122,35 @@
   font-size: 10px;
   color: white;
   border-radius: 50%;
-  top: -5px;
-  right: 82px;
+  top: -12px;
+  right: -6px;
   text-align: center;
   padding-top: 3px;
   z-index: 50000;
   font-family: $rubik;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.parent-notif {
+  position: relative;
+}
+
+.red-circle-conversation {
+  height: 20px;
+  width: 20px;
+  background-color: $fire;
+  font-size: 10px;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 3px;
+  z-index: 50000;
+  font-family: $rubik;
+  position: absolute;
+  top: 0px;
+  right: -4px;
   &:hover {
     cursor: pointer;
   }

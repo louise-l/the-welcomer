@@ -244,3 +244,42 @@
     height: 20px;
   }
 }
+
+.margin-conv {
+  margin-top: 100px;
+}
+
+.target-pen {
+  color: $sun-yellow;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
+#hour {
+  font-size: 12px;
+  color: rgb(200,200,200);
+  padding-right: 15px;
+}
+
+.hour-div {
+  align-self: flex-start !important;
+  margin-left: auto;
+}
+
+.chat-name {
+  font-size: 20px;
+  color: $sun-yellow;
+  margin-bottom: 5px !important;
+}
+
+.chat-message {
+  margin-bottom: 5px !important;
+}
+
+.target-chat-section {
+  &:hover {
+    background-color: rgba(27, 154, 170,0.05);
+  }
+}

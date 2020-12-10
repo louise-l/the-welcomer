@@ -1,21 +1,28 @@
 <div class="container footer-fix">
-	<div class="row">
-		<div class="col-3">
-			<h3 class="text-center mt-5">Users</h3>
-				<select onchange="location = this.value;" class="select2">
-					<option selected>Select an user</option>
-					<% @users.each do |user| %>
-						<option value=<%= new_company_message_path(current_user.company.name, receiver_id: user) %> ><%= user.first_name %> <%= user.last_name %></option>
-					<% end %>
-				</select>
-		</div>
-		<div class=col-9>
-			<h2 class="text-center mt-5">Your conversations</h2>
-
-			<div id="conversations">
+	<div>
+      <div class="d-flex justify-content-between align-items-center margin-conv" style='height: 50px;'>
+  			<h2>Chat with your co-workers</h2>
+        <i class="fas fa-pen target-pen fa-lg"></i>
+      </div>
+      <div id='new-message' class="d-none">
+        <div class='d-flex align-items-center'>
+          <h3 class="text-left mt-2 mr-4" style = 'font-size: 20px;'>To</h3>
+          <select onchange="location = this.value;" class="select2 browser-default custom-select">
+            <option>Select an user</option>
+            <% @users.each do |user| %>
+              <option  value= '<%= new_company_message_path(current_user.company.name, receiver_id: user)%>' >
+                <%= user.first_name %> <%= user.last_name %>
+              </option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+      <% if current_user.notifications.where(seen: false, type: 'MessageNotification').count != 0 %>
+        <p class= 'mt-3' style='color: #F5B858;'>New messages - <%= current_user.notifications.where(seen: false, type: 'MessageNotification').count  %></p>
+      <% end %>
+			<div id="conversations" class='mt-1'>
 				<%= render @conversations %>
 			</div>
-		</div>
 	</div>
 
 </div>
