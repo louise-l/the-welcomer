@@ -39,6 +39,8 @@ import { displayNotifs } from './components/notifications_display'
 import { hideButtons } from './components/meeting'
 import { findActivities} from './components/geocode'
 import { newMessage } from './components/new_message'
+import { inputMessage } from './components/input_message'
+import { conversationWindowSearch } from './components/conversation_window_search'
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -57,4 +59,6 @@ document.addEventListener('turbolinks:load', () => {
   hideButtons();
   findActivities();
   newMessage();
+  inputMessage();
+  conversationWindowSearch();
 });

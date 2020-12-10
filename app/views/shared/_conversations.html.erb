@@ -9,16 +9,17 @@
       <% end %>
     </div>
 	</div>
-	<div class="p-4">
+	<div class="users-list-choice">
+		<input type="text" name="" id="conversation-window-search" placeholder="Discuss with" class="w-100 my-3">
 		<% current_user.company.users.each do |user| %>
 			<% unless user == current_user %>
 				<li class="list-group-item conversations-menu-user" data-conversation-name="<%= user.first_name %>%20<%= user.last_name %>">
 					<% if user.photo.attachment%>
       			<%= cl_image_tag user.photo.key, class: "avatar dropdown-toggle avatar-bordered", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
     			<% else %>
-      			<%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar dropdown-toggle avatar-bordered", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      			<%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar dropdown-toggle avatar-bordered", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
     			<% end %>
-					<%= user.first_name %> <%= user.last_name %>
+					<span class="names-windows list-user"><%= user.first_name %> <%= user.last_name %></span>
 				</li>
 			<% end %>
 		<% end %>
