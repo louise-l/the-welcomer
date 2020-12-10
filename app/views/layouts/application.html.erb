@@ -10,12 +10,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body <%= "data-no-turbolinks='true'".html_safe if controller_name=="conversations" && action_name=="show" %>>
+  <body id="<%=action_name%>_body" <%= "data-no-turbolinks='true'".html_safe if controller_name=="conversations" && action_name=="show" %>>
     <!-- Faire les IF pour la navbar une fois que le front sera codé -->
     <% if controller_name == "pages" %>
       <%= render 'shared/navbar_home' %>
     <% else %>
-      <% if controller_name != "conversations" %>
+      <% if (action_name != "window") %>
         <%= render 'shared/navbar' %>
       <% end %>
     <% end %>
@@ -29,8 +29,23 @@
         <%= render 'shared/conversations' %>
       <% end %>
     </div>
-    <% if controller_name != "conversations" %>
-      <i class="fas fa-comment"></i>
+    <% if controller_name != "conversations" && user_signed_in? %>
+        <i class="fas fa-comment chat-icon">
+        <% if current_user.notifications.where(seen: false, type: 'MessageNotification').count != 0 %>
+          <div class= 'red-circle-chat'>
+            <%= current_user.notifications.where(seen: false, type: 'MessageNotification').count %>
+          </div>
+        <% end %>
+        </i>
     <% end %>
+    <% unless controller_name == "pages" || action_name == 'window'  %>
+      <div class="footer-setting">
+        <a href="#"><i class="fab fa-2x fa-instagram mr-4"></i></a>
+        <a href="#"><i class="fab fa-2x fa-facebook mr-4"></i></a>
+        <a href="#"><i class="fab fa-2x fa-twitter mr-4"></i></a>
+        <a href="#"><i class="fab fa-2x fa-linkedin mr-4"></i></a>
+      </div>
+    <% end %>
+
   </body>
 </html>

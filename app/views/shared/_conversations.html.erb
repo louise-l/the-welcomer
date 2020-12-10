@@ -1,11 +1,23 @@
 <div class="col-2 d-none" id="users-list">
 	<div class="d-flex justify-content-center align-items-center">
-		<h2 class="btn button color-yellow medium">Start a conversation with :</h2>
+		<%= link_to "Conversations", company_change_message_notification_path(current_user.company.name), method: :patch, class:"button color-yellow conversations" %>
+    <% if current_user.notifications.where(seen: false, type: 'MessageNotification').count != 0 %>
+        <div class= 'red-circle-conversations'>
+          <%= current_user.notifications.where(seen: false, type: 'MessageNotification').count %>
+        </div>
+    <% end %>
 	</div>
 	<div class="p-4">
 		<% current_user.company.users.each do |user| %>
 			<% unless user == current_user %>
-				<li class="list-group-item conversations-menu-user" data-conversation-name="<%= user.first_name %>%20<%= user.last_name %>"> <%= user.first_name %> <%= user.last_name %> </li>
+				<li class="list-group-item conversations-menu-user" data-conversation-name="<%= user.first_name %>%20<%= user.last_name %>">
+					<% if user.photo.attachment%>
+      			<%= cl_image_tag user.photo.key, class: "avatar dropdown-toggle avatar-bordered", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+    			<% else %>
+      			<%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar dropdown-toggle avatar-bordered", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+    			<% end %>
+					<%= user.first_name %> <%= user.last_name %>
+				</li>
 			<% end %>
 		<% end %>
 	</div>

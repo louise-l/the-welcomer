@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container footer-fix">
 	<div class="form-with-title">
 		<h2 class="text-center mb-4">Create a meeting</h2>
 		<%= simple_form_for [@company, @meeting], remote: true do |f| %>
@@ -6,6 +6,12 @@
 			<%= f.input :end_time, label: "End", as: :string, required: false, input_html: {class: "datepicker", value: @date} %>
 			<%= f.input :title, label: "Object" %>
 			<%= f.input :description %>
+      <p>Needed to organise a meeting outside the company :</p>
+      <div id = 'div-activity' class="d-flex justify-content-between align-items-start">
+        <%= f.input :activity_address, label: false, placeholder: 'An activity or a place...', input_html: {class: 'targeted-activity', data: {address:  @current_user.team.address} } %>
+        <div class= 'btn button color-blue submit-activity'>Search</div>
+      </div>
+      <div class="activity-container"> </div>
 			<div class="form-actions d-flex justify-content-center">
 				<%= f.submit "Create Meeting", class: 'btn button color-yellow' %>
 				<%= link_to "Back", :back, class: 'btn button color-yellow ml-4' %>

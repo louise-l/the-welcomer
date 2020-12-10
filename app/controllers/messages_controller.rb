@@ -23,9 +23,11 @@ class MessagesController < ApplicationController
 			@conversation.save
 
 			flash[:success] = "Your message was sent!"
+      @conversation.author_id == current_user.id ? @receiver = User.find(@conversation.receiver_id) : @receiver = User.find(@conversation.author_id)
+      MessageNotification.with(message: @message).deliver(@receiver)
 			@request = request.referrer
 			if @request.include?("window")
-				redirect_to :back
+				redirect_to request.referrer
 			else
 				redirect_to company_conversation_path(current_user.company.name, @conversation, anchor: "message-#{@conversation.messages.size}")
 			end

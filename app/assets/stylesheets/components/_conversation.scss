@@ -5,7 +5,8 @@
 	float: right;
 	margin-bottom: 10px;
 	padding: 10px 10px 0px 10px;
-	color: white;
+  color: white;
+  overflow-wrap: break-word;
 }
 
 .receiver {
@@ -15,7 +16,8 @@
 	float: left;
 	margin-bottom: 10px;
 	padding: 10px 10px 0px 10px;
-	color: white;
+  color: white;
+  overflow-wrap: break-word;
 }
 
 #conversation-content {
@@ -30,7 +32,9 @@
 }
 
 .span-window {
-	margin-bottom: 10px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  height: 80vh !important;
 }
 
 .content-conversation-window {
@@ -43,7 +47,8 @@
 
 
 #users-list {
-  margin-top: 120px;
+  margin-top: 60px;
+  position: sticky;
 }
 
 .fa-comment-slash {
@@ -57,7 +62,7 @@
 .fa-comment {
   color: $sun-yellow;
   font-size: 40px;
-  position: absolute;
+  position: fixed;
   top: 65px;
   right: 15px;
   &:hover {
@@ -79,7 +84,8 @@
   width: 20%;
   height: 50%;
   border: 2px solid $sun-yellow;
-  background-color: white;
+  background-color: $cloud;
+  border-radius: 10px;
 }
 
 .reduce {
@@ -94,7 +100,8 @@
   width: 20%;
   height: 50%;
   border: 2px solid $sun-yellow;
-  background-color: white;
+  background-color: $cloud;
+  border-radius: 10px;
 }
 
 .conversation-js-3 {
@@ -104,7 +111,8 @@
   width: 20%;
   height: 50%;
   border: 2px solid $sun-yellow;
-  background-color: white;
+  background-color:$cloud;
+  border-radius: 10px;
 }
 
 .conversation-js-title {
@@ -141,4 +149,16 @@
   &:hover{
     cursor: pointer;
   }
+}
+
+#window_body {
+  margin-top: 0px;
+}
+
+.input-message-window {
+  width: 70vw;
+}
+
+.button-window {
+  width: 20vw;
 }

@@ -2,8 +2,41 @@
   background-color: $fire !important;
   color: white;
   border: none !important;
+  max-height: 75px !important;
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
   color: white;
+}
+
+.targeted-activity {
+  width: 150% !important;
+}
+
+
+// Activity
+.activity-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 5px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.margin-box-activity {
+  margin: 5px !important;
+  padding-top: 5px;
+  border: $ocean-blue 1px solid;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.activity-title {
+  font-size: 16px;
+  color: $ocean-blue
+}
+
+.activity-address {
+  font-size: 10px;
 }

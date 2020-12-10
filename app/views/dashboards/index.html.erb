@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container footer-fix">
   <% if current_user.role == 'Manager' %>
     <div class="white-card p-4">
         <h2 class= "text-center">Onboardings in progress </h2>
-        <p class= "text-center">Keep up with all the people onboarding at the moment</p>
+        <p class= "text-center">Keep up with all the people onboarding in your team</p>
       <div class="card-container">
         <% @company.users.each do |user| %>
           <% if user.role == 'Newcomer' && user.team == current_user.team %>

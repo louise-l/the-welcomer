@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container footer-fix">
   <h2 class="text-center my-5">Chatting with <%= @conversation.with(current_user).first_name %> <%= @conversation.with(current_user).last_name %> </h2>
 
-  <div id="conversation-main">
+  <div id="conversation-main" class= 'mb-5'>
     <div id="conversation-content" data-conversation-id="<%= @conversation.id %>" data-user-id="<%= current_user.id %>">
       <% @conversation.messages.each_with_index do |message, index| %>
         <% if message.user == current_user %>
@@ -10,7 +10,7 @@
           <div class = "message receiver" id="message-<%= index + 1 %>">
         <% end %>
           <p class="text-left content-conversation-window"><%= message.content %></p>
-		      <p class="text-right date-conversation-window"><%= message.created_at.strftime('%b-%d %H:%M:%S') %></p>
+		      <p class="text-right date-conversation-window"><%= message.created_at.utc.in_time_zone("Paris").strftime('%b-%d %H:%M:%S') %></p>
         </div>
       <% end %>
     </div>

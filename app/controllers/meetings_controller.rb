@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
-  skip_after_action :verify_authorized, only: [:index, :new, :create, :edit, :update, :destroy, :show]
-  skip_after_action :verify_policy_scoped, :only => [:index, :new, :create, :edit, :update, :destroy, :show]
+  skip_after_action :verify_authorized, only: [:index, :new, :create, :edit, :update, :destroy, :show, :activity]
+  skip_after_action :verify_policy_scoped, :only => [:index, :new, :create, :edit, :update, :destroy, :show, :activity]
 
   def index
     @meetings = Meeting.all.order(:start_time).select { |meeting| meeting.users.include?(current_user)}
@@ -14,6 +14,12 @@ class MeetingsController < ApplicationController
   end
 
   def new
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
+    @meeting = Meeting.new
+    @company = current_user.company
+  end
+
+  def activity
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
     @meeting = Meeting.new
     @company = current_user.company
@@ -56,6 +62,6 @@ class MeetingsController < ApplicationController
   private
 
   def meeting_params
-    params.require(:meeting).permit(:start_time, :end_time, :title, :description)
+    params.require(:meeting).permit(:start_time, :end_time, :title, :description, :activity_address)
   end
 end

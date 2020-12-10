@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_one_attached :photo
   belongs_to :team
   has_many :libraries, dependent: :destroy
+  has_many :personal_libraries, dependent: :destroy
   # Notifications
   has_many :notifications, as: :notifiable, dependent: :destroy
   has_many :notifications, as: :recipient

@@ -1,0 +1,24 @@
+<div class="container footer-fix">
+  <div class="form form-habit-index">
+  <h1>Good habits</h1>
+  <p class="text-center mb-5" >to have in mind while working with the <%= @user.team.name  %></p>
+  <% @habits.each do |habit| %>
+    <div class="habit-list">
+      <span><%= habit.name %></span>
+      <% if current_user.role == "Manager" %>
+        <%= link_to company_edit_user_habit_path(@company, @user, habit) do  %>
+          <i class="fas fa-pen"></i>
+        <% end %>
+      <%= link_to company_user_habit_path(@company, @user, habit), method: :delete do%>
+          <i class="far fa-times-circle" style='color: #353A47;'></i>
+      <% end %>
+      <% end %>
+    </div>
+  <% end %>
+  <% if current_user.role == "Manager" %>
+    <%= link_to company_new_user_habit_path(@company, @user), class: 'button color-yellow add-habit' do  %>
+      <i class="fas fa-plus"></i><span>Add a habit</span>
+    <% end %>
+  <% end %>
+  </div>
+</div>
