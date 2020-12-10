@@ -34,29 +34,22 @@
     <div class ='calendar-section card-dashboard'>
       <%= link_to company_meetings_path(current_user.company.name) do  %>
       <h2>Upcoming meetings</h2>
-      <% if @meetings != [] %>
-          <% @meetings.first(4).each do |meeting| %>
-            <% if meeting.end_time <= Time.now %>
-              <div class="d-flex justify-content-between align-items-center">
-                <p class='tag-alert' style='width: 50px; font-size: 9px; text-align: center; padding: 2px 5px; padding-top: 4px;'> Past</p>
-                <p><%= meeting.start_time.strftime("%Hh%M") %> - <%= meeting.end_time.strftime("%Hh%M :") %> <%= meeting.title %> </p>
-              </div>
-            <% elsif meeting.start_time <= Time.now && meeting.end_time >= Time.now %>
-              <div class="d-flex justify-content-between align-items-center">
-                <p class='tag-progress' style='width: 50px; font-size: 9px; text-align: center; padding: 2px 5px; padding-top: 4px;'> Currently</p>
-                <p><%= meeting.start_time.strftime("%Hh%M") %> - <%= meeting.end_time.strftime("%Hh%M :") %> <%= meeting.title %> </p>
-              </div>
-            <% else %>
-              <div class="d-flex justify-content-between align-items-center">
-                <p class='tag-understood' style='width: 50px; font-size: 9px; text-align: center; padding: 2px 5px; padding-top: 4px;'> To come </p>
-                <p><%= meeting.start_time.strftime("%Hh%M") %> - <%= meeting.end_time.strftime("%Hh%M :") %> <%= meeting.title %> </p>
+        <% if @meetings != [] %>
+            <% @meetings.each do |meeting| %>
+              <div class="calendar-grid">
+              <% if meeting.start_time <= Time.now && meeting.end_time >= Time.now % %>
+                  <p class='tiny-tag color-green document-status-tag' style = "font-size: 8px"> Currently</p>
+                  <p class= "document-label-tag"> <%= meeting.start_time.strftime("%d %b") %> - <%= meeting.start_time.strftime("%Hh%M") %> : <%= meeting.title %> </p>
+              <% else %>
+                  <p class='tiny-tag color-blue document-status-tag' style = "font-size: 10px"> To come </p>
+                  <p class= "document-label-tag" > <%= meeting.start_time.strftime("%d %b") %> - <%= meeting.start_time.strftime("%Hh%M") %> : <%= meeting.title %> </p>
+              <% end %>
               </div>
             <% end %>
-          <% end %>
-      <% else %>
-        <p>Nothing planned ! 🏖</p>
-      <% end %>
-      <% end %>
+        <% else %>
+          <p>Nothing planned ! 🏖</p>
+        <% end %>
+        <% end %>
     </div>
 
     <!-- Missions -->

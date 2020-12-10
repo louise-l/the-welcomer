@@ -212,6 +212,11 @@
   }
 }
 
+.calendar-grid{
+  display:grid;
+  grid-template-columns: repeat(3,1fr)
+}
+
 .tag-progress {
   border-radius: 10px;
   color: white;
@@ -322,7 +327,9 @@
   bottom:55px;
 }
 
-
+.color-green{
+  color:$green-light
+}
 
 
 

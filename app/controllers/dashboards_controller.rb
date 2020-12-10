@@ -13,7 +13,8 @@ class DashboardsController < ApplicationController
     @habits = Habit.where(user: @user)
     @personal_libraries = PersonalLibrary.where(user: @user).order(status: :asc)
     @meetings = Meeting.all.order(:start_time).select { |meeting| meeting.users.include?(current_user)}.select do |meeting|
-      meeting.start_time.strftime("%d") == Time.now.strftime("%d")
+      meeting.end_time.strftime("%d %H %M" ) > Time.now.strftime("%d %H %M")
     end
+    @meetings = @meetings[0..2]
   end
 end
