@@ -26,7 +26,7 @@ class HabitsController < ApplicationController
     @habit = Habit.new(set_params_habit)
     @habit.user = @user
     if @habit.save
-      redirect_to company_dashboard_path(@company, @user)
+      redirect_to company_user_habits_path(@company, @user)
     else
       render :new
     end
