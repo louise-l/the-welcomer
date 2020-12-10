@@ -38,7 +38,7 @@ import { pickernotime } from "../plugins/flatpickr"
 import { displayNotifs } from './components/notifications_display'
 import { hideButtons } from './components/meeting'
 import { findActivities} from './components/geocode'
-
+import { newMessage } from './components/new_message'
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -56,4 +56,5 @@ document.addEventListener('turbolinks:load', () => {
   chat_window();
   hideButtons();
   findActivities();
+  newMessage();
 });

@@ -16,11 +16,13 @@ class NotificationsController < ApplicationController
   end
 
   def change_message
-    @notifications = Notification.where(type: "MessageNotification")
+    @conversation = Conversation.find(params[:id])
+    @sender_id = @conversation.with(current_user).id
+    @notifications = Notification.where(type: "MessageNotification").select { |notif| notif.params[:message].user_id == @sender_id }
     @notifications.each do |notif|
       notif.seen = true
       notif.save
     end
-    redirect_to company_conversations_path(current_user.company.name)
+    redirect_to company_conversation_path(current_user.company.name, @conversation, anchor: "message-#{@conversation.messages.size}")
   end
 end
