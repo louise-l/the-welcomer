@@ -1,27 +1,31 @@
-<%= link_to company_change_message_notification_path(current_user.company.name, conversation), method: :patch do %>
-  <div class= 'white-card d-flex align-items-center justify-content-start target-chat-section' style='margin: 5px; padding: 10px;'>
-      <div class='parent-notif'>
-        <% if conversation.with(current_user).photo.attachment%>
-          <%= cl_image_tag conversation.with(current_user).photo.key, class: "avatar dropdown-toggle avatar-bordered defaut", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-        <% else %>
-          <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar dropdown-toggle avatar-bordered defaut", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <% end %>
-        <% if current_user.notifications.where(seen: false, type: 'MessageNotification').select { |notif| notif.params[:message].user_id == conversation.with(current_user).id }.count != 0 %>
-          <div class= 'red-circle-conversation'>
-            <%= current_user.notifications.where(seen: false, type: 'MessageNotification').select { |notif| notif.params[:message].user_id == conversation.with(current_user).id }.count %>
-          </div>
-        <% end %>
-      </div>
-      <div class='ml-4'>
-        <p class='chat-name'><%= conversation.with(current_user).first_name %> <%= conversation.with(current_user).last_name %></p>
-        <% if conversation.messages == [] %>
-          <p class ='chat-message'><em>No message yet</em></p>
-        <% else %>
-          <p class ='chat-message'><%= conversation.messages.last.user.first_name %> :<em> <%= conversation.messages.last.content.truncate(100) %></em></p>
-        <% end %>
-      </div>
-      <div class="hour-div">
-        <p id='hour'> <%= conversation.messages.last.created_at.strftime("%H:%M") %></p>
-      </div>
-  </div>
+<% unless conversation.messages == [] %>
+  <%= link_to company_change_message_notification_path(current_user.company.name, conversation), method: :patch do %>
+    <div class= 'white-card d-flex align-items-center justify-content-start target-chat-section' style='margin: 5px; padding: 10px;'>
+        <div class='parent-notif'>
+          <% if conversation.with(current_user).photo.attachment%>
+            <%= cl_image_tag conversation.with(current_user).photo.key, class: "avatar dropdown-toggle avatar-bordered defaut", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+          <% else %>
+            <%= image_tag "https://www.worldofmanga.fr/img/default-men.png", class: "avatar dropdown-toggle avatar-bordered defaut", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
+          <% if current_user.notifications.where(seen: false, type: 'MessageNotification').select { |notif| notif.params[:message].user_id == conversation.with(current_user).id }.count != 0 %>
+            <div class= 'red-circle-conversation'>
+              <%= current_user.notifications.where(seen: false, type: 'MessageNotification').select { |notif| notif.params[:message].user_id == conversation.with(current_user).id }.count %>
+            </div>
+          <% end %>
+        </div>
+        <div class='ml-4'>
+          <p class='chat-name'><%= conversation.with(current_user).first_name %> <%= conversation.with(current_user).last_name %></p>
+          <% if conversation.messages == [] %>
+            <p class ='chat-message'><em>No message yet</em></p>
+          <% else %>
+            <p class ='chat-message'><%= conversation.messages.last.user.first_name %> :<em> <%= conversation.messages.last.content.truncate(100) %></em></p>
+          <% end %>
+        </div>
+        <div class="hour-div">
+          <% unless conversation.messages == [] %>
+            <p id='hour'> <%= conversation.messages.last.created_at.strftime("%H:%M") %></p>
+          <% end %>
+        </div>
+    </div>
+  <% end %>
 <% end %>
