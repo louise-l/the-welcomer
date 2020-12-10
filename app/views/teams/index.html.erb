@@ -1,6 +1,8 @@
 <div class="container footer-fix">
-  <h2 class="text-center margin-top mb-4">The company's teams</h2>
-  <div class="display-index">
+  <div class='margin-library'>
+    <h1 class="text-center mb-4">The company's teams</h1>
+  </div>
+  <div class="display-index mt-5">
     <% @teams.each do |team| %>
       <%= link_to company_team_path(current_user.company.name, team.id), class: 'card-team' do  %>
           <% if team.photo.attachment %>
