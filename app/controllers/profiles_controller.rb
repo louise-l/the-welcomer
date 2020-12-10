@@ -28,7 +28,7 @@ class ProfilesController < ApplicationController
 
   def update
     @user = User.find(params[:user_id])
-    if @user.update(profile_params)
+    if @user.update(role: params[:user][:role])
       redirect_to company_dashboard_path
     else
       render :edit
@@ -44,3 +44,4 @@ class ProfilesController < ApplicationController
     params.require(:profile).permit(:first_name, :last_name, :role, :email, :job, :team, :arrival_date)
   end
 end
+
