@@ -3,11 +3,8 @@ import Chart from 'chart.js';
 const donutProgression = () => {
   const ctx = document.querySelector('#progress-bar-dashboard');
 
-  console.log(ctx)
 
   if (ctx){
-    console.log(ctx.dataset.done)
-        console.log(ctx.dataset.todo)
     const options = {
         cutoutPercentage:80,
         legend:{
