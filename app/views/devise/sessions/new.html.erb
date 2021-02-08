@@ -23,5 +23,61 @@
     <%= render "devise/shared/links" %>
   </div>
 
+  <div class='form text-center'>
+      <h5 class = 'mb-4'>For work applications demonstation only  </h5>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs d-none">
+          <%= f.input :email,
+                      required: false,
+                      autofocus: true,
+                      input_html: { value: "louise@gmail.com" } %>
+          <%= f.input :password,
+                      required: false,
+                      input_html: { value: "azerty" } %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+  
+        <div class="form-actions">
+          <%= f.button :submit, "Enter as an HR", class: "button color-yellow mt-2"  %>
+        </div>
+      <% end %>
+
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs d-none">
+          <%= f.input :email,
+                      required: false,
+                      autofocus: true,
+                      input_html: { value: "charle@gmail.com" } %>
+          <%= f.input :password,
+                      required: false,
+                      input_html: { value: "azerty" } %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+  
+        <div class="form-actions">
+          <%= f.button :submit, "Enter as a newcomer", class: "button color-fire mt-2"  %>
+        </div>
+      <% end %>
+
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs d-none">
+          <%= f.input :email,
+                      required: false,
+                      autofocus: true,
+                      input_html: { value: "caroline@gmail.com" } %>
+          <%= f.input :password,
+                      required: false,
+                      input_html: { value: "azerty" } %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+  
+        <div class="form-actions">
+          <%= f.button :submit, "Enter as a manager", class: "button color-blue mt-2"  %>
+        </div>
+      <% end %>
+
+
+  </div>   
+
 
 </div>
