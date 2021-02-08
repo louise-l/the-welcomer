@@ -1,5 +1,3 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
-
 # PROJECT BORN IN LE WAGON LILLE
 
 Find The Welcomer online at [thewelcomer.life](http://www.thewelcomer.life/)
