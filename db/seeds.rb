@@ -5,7 +5,6 @@ Company.destroy_all
 Team.destroy_all
 User.destroy_all
 Conversation.destroy_all
-Library.destroy_all
 Message.destroy_all
 Meeting.destroy_all
 Notification.destroy_all
@@ -17,7 +16,7 @@ puts "Creation of companies"
 company1 = Company.create!(name: "The-Welcomer", address: "Le Wagon")
 company2 = Company.create!(name: "Evolve", address: "Le Wagon")
 company3 = Company.create!(name: "Hoops I did it again", address: "Le Wagon")
-file1 = URI.open('https://lntp.net/wp-content/uploads/2016/12/Tesla-logo-2003-2500x2500.png')
+file1 = URI.open('https://res.cloudinary.com/dsaxkp6xo/image/upload/v1607366241/logo_welcomer_zogh93.png')
 file2 = URI.open('https://upload.wikimedia.org/wikipedia/fr/thumb/6/62/Logo_LOSC_Lille_2018.svg/1200px-Logo_LOSC_Lille_2018.svg.png')
 company1.logo.attach(io: file1, filename: 'logo1.png', content_type: 'image/png')
 company2.logo.attach(io: file2, filename: 'logo2.png', content_type: 'image/png')
@@ -38,8 +37,7 @@ puts "-------------------------------"
 puts "Creation of teams"
 team1 = Team.create!(name: "Back-end development team",address: "Lille", company_id: company1.id)
 team2 = Team.create!(name: "Artists of front-end",address: "Paris", company_id: company1.id)
-team3 = Team.create!(name: "Community of comptability",address: "Lille", company_id: company1.id)
-team4 = Team.create!(name: "Public relations",address: "Paris", company_id: company1.id)
+team3 = Team.create!(name: "Human ressources",address: "Lille", company_id: company1.id)
 file7 = URI.open("https://res.cloudinary.com/dsaxkp6xo/image/upload/v1607356904/tzr4htyim87e39kqrd6h6mo6qove.jpg")
 file8 = URI.open("https://res.cloudinary.com/dsaxkp6xo/image/upload/v1607374200/wqdguh4fzdln9yj9xegsmgbdv4w9.jpg")
 file9 = URI.open("https://res.cloudinary.com/dsaxkp6xo/image/upload/v1607417210/q4juw5me1vveonrvlbskrnepzgf3.jpg")
@@ -59,7 +57,7 @@ user5 = User.create!(first_name: "Pierre",last_name: "Xavi", email: "pierre@gmai
 user6 = User.create!(first_name: "Ousmane",last_name: "Dembélé", email: "ousmane@gmail.com", password: "azerty", job: "Intern", role:"Newcomer", arrival_date: Date.today-5, company_id: company1.id, team_id: team2.id, description: "Hi, I am Ousmane. I did a Master French-German Management. I enjoy foreign languages and I am fluent in French, English and German. I learn to code because I want to be able to take part in IT projects. I find the IT-industry interesting and I love solving problems. I also have an idea for a start-up, so I might end up trying to launch one.")
 user7 = User.create!(first_name: "Tim",last_name: "Mate", email: "tim@gmail.com", password: "azerty",job: "Developer", role:"Teammate", company_id: company1.id, team_id: team1.id, description: "Yo, I'm Tim. Mate. TeamMate, got it ?")
 user8 = User.create!(first_name: "Chloé",last_name: "Quipuier", email: "chloé@gmail.com", password: "azerty", job: "Product Owner", role:"Teammate", company_id: company1.id, team_id: team2.id, description: "Hola, I'm Chloé. Before le wagon, I was in an engineering school. I chose to follow the wagon course in order to learn new technical skills. My wish is to work for a tech company as a product owner.")
-file5 = URI.open('https://www.inserm.fr/sites/default/files/styles/thumbnail_scale_w814/public/2020-01/inserm_61188_JeromeGalon_Rub.png?itok=l-3gMvPh')
+file5 = URI.open('https://res.cloudinary.com/dsaxkp6xo/image/upload/v1607682347/xv421sgp29bx9fm7658n6z7mwxkr.jpg')
 file6 = URI.open('https://gal.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fgal.2F2020.2F11.2F17.2F6e0ae737-b41f-4d37-af21-14267296feed.2Ejpeg/480x480/quality/80/the-crown-pourquoi-la-reine-elizabeth-ii-ne-regardera-certainement-pas.jpg')
 file10 = URI.open("https://res.cloudinary.com/dsaxkp6xo/image/upload/v1607438352/au18vt14t6wo0ni426bjjkmyp3o3.jpg")
 file11 = URI.open("https://assets-fr.imgfoot.com/media/cache/1200x900/media/ousmane-dembele-tout-sourire-lors-du-match-du-barca-contre-le-betis_262097.jpg")
